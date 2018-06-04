@@ -1,0 +1,22 @@
+<h1>list_soilcodes() method</h1>
+
+<a href="/<%=params[:rootdir]%>/services/soils/wadl.xml">WADL file</a>
+
+<table border="1">
+	<tr>
+		<th>Links</th>
+		<th>JSON output - <a href="soilcodes.json">raw</a></th>
+	</tr>
+	<tr>
+		<td>
+<%for soilcode in @soilcodes do%>
+<a href="/<%=params[:rootdir]%>/soils/<%=params[:province]%>/<%=soilcode.soil_code%>/modifiers.json?debug=on">modifiers for <%=soilcode.soil_code%> (<%=soilcode.soilname%>)</a><br/>
+<%end%>
+		</td>
+		<td valign="top">
+<pre>
+<%= render :partial => 'list_soilcodes' %>
+</pre>
+		</td>
+	</tr>
+</table>

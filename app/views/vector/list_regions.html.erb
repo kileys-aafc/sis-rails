@@ -1,0 +1,23 @@
+<%content_for :h1 do%>list_framework_regions() method<%end%>
+
+<h2>Parameters</h2>
+<ol>
+	<li>framework: "<%=params[:framework]%>"</li>
+	<li>version: "<%=params[:version]%>"</li>
+</ol>
+
+<h2>Results</h2>
+<p><%=@regions.size%> region<%if @regions.size > 1 then%>s<%end%> found.</p>
+
+<%for region in @regions do%>
+<table>
+<tr>
+	<th><%=region%></th>
+	<td><a href="<%=region%>/polygonids.html">polygon ids</a></td>
+	<td><a href="<%=region%>/polygonsets.html">polygonsets</a></td>
+	<td><a href="<%=region%>/data/datasets.html">datasets</a></td>
+</tr>
+</table>
+<br/>
+<%end%>
+

@@ -1,0 +1,13 @@
+#!/bin/bash
+# This program creates a custom output listing the files in a directory.  
+
+root="/data/dev.sis.www/htdocs/"
+dir=`echo $QUERY_STRING | cut -c5-`
+
+# prepare to output an html page
+echo Content-Type: text/html
+echo ""
+
+# linux command to list the files and subfolders and save to text files
+cd $root/$dir
+find * -type l -maxdepth 0 -printf "%f -> %l\n"

@@ -1,0 +1,22 @@
+<h1>list_attributes() method</h1>
+
+<h2>Parameters</h2>
+<ol>
+	<li>framework: "<%=params[:framework]%>"</li>
+	<li>version: "<%=params[:version]%>"</li>
+	<li>region: "<%=params[:region]%>"</li>
+	<li>dataset: "<%=params[:dataset]%>"</li>
+</ol>
+
+<h2>Results</h2>
+<p><%=@attributes.size%> attribute<%if @attributes.size > 1 then%>s<%end%> found.</p>
+
+<table>
+<%for attribute in @attributes do%>
+<tr>
+<th><%=attribute.attribute_name%></th>
+<td><%=attribute.purpose.gsub(/[A-Z]/, ' \0')%></td>
+<td><a href="<%=attribute.attribute_name%>/description.html">Describe</a></td>
+</tr>
+<%end%>
+</table>

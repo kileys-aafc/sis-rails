@@ -1,0 +1,10 @@
+[
+<%for order in @orders do%>
+	{
+		"SoilOrder":"<%=order.soilorder%>",
+		"SoiOrdre":"<%=order.soilorder%>",
+		"Name":"<%=order.englishname%>",
+		"Nom":"<%=order.frenchname%>"
+	}<%if order.soilorder != @orders[-1].soilorder then%>,<%end%>
+<%end%>
+]

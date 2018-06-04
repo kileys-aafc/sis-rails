@@ -1,0 +1,20 @@
+<%of_region = Region.find_by_code(params[:province].upcase).possessive_en%>
+<% content_for :title do %>Soil codes <%=of_region%><%end%>
+<% content_for :date do %>2013-06-26<%end%>
+
+<h1>Soil codes <%=of_region%></h1>
+
+<table>
+<tr>
+	<th scope="col">Soil Name</th>
+	<th scope="col">Modifiers</th>
+	<th scope="col">Profiles</th>
+</tr>
+<%for soilcode in @soilcodes do%>
+<tr>
+	<td><%=soilcode.soilname%> (<%=soilcode.soil_code%>)</td>
+	<td><a href="/<%=params[:rootdir]%>/soils/<%=params[:province]%>/<%=soilcode.soil_code%>/modifiers.html">modifiers</a></td>
+	<td><a href="/<%=params[:rootdir]%>/soils/<%=params[:province]%>/<%=soilcode.soil_code%>/variants.html">profiles</a></td>
+</tr>
+<%end%>
+</table>

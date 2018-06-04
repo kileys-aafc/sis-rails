@@ -1,0 +1,30 @@
+# encoding: iso-8859-1
+<% content_for :title do %><%=@report.title_fr%><%end%>
+<% content_for :date do %>2013-06-25<%end%>
+
+<div class="alignCenter">
+
+<h1><%=@report.title_fr%></h1>
+
+<%= render :partial=>"home/archived_fr"%>
+
+<%if @report.language_report=="E" then%>
+  <p>Ce rapport est uniquement disponible en <a href="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/index.html">anglais</a>, en conformité avec les politiques en vigueur à l'époque et le lieu de publication.</p>
+<%else%>
+  <%if @report.report_unusual == "Y" then%>
+    <a href="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_link%>"><img src="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>_report_thumb.jpg" alt="Voir le <%=@report.title_fr%> (Format PDF)" /></a><br />
+  <%else%>
+    <%if @report.report_available == "Y"  and @report.volumes == 1 then%><a href="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>_report.pdf"><img src="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>_report_thumb.jpg" alt="Voir le <%=@report.title_fr%> (Format PDF)" /></a><br /><%end%>
+    <%if @report.report_available == "Y" and @report.volumes > 1 then%><%for volume in 1..@report.volumes do%><a href="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>-v<%=volume%>_report.pdf"><img src="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>-v<%=volume%>_report_thumb.jpg" alt="Voir le <%=@report.title_fr%> (Format PDF)" /></a><br />
+    <%end%><%end%>
+  <%end%>
+<%end%>
+<%if @report.language_map!="E" then%>
+  <%for map in @maps do %><section>
+  <h2><%=map.title_fr%></h2>
+  <a href="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=map.mapname%>.zip"><img src="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=map.mapname%>_thumb.jpg" alt="Voir le carte: <%=map.title_fr%> (Format JPG)" /></a><br />
+	</section>
+  <%end%>
+<%end%>
+
+</div>

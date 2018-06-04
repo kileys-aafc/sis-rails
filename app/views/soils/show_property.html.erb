@@ -1,0 +1,18 @@
+<p>
+The <%=params[:property]%> for 
+<a href="<%="/cansis/soils/#{params[:province]}/#{params[:soilcode]}/#{params[:modifier]}/#{params[:profile]}/description.html"%>"><%="#{params[:province].upcase}#{params[:soilcode]}#{params[:modifier]}#{params[:profile]}"%></a> 
+is estimated to be <%=@outputHash[:estimate] %>  [units], 
+based on data found in the <a href="/cansis/nsdb/soil/v2/slt/index.html">Soil Layer Table</a>.
+</p>
+
+
+Make this work for EN and FR!
+
+<h2>PARAMS</h2>
+<%=debug params%>
+
+<h2>OUTPUTHASH</h2>
+<%=debug @outputHash%>
+
+<h2>LAYERDATA</h2>
+<%=debug @layerData%>

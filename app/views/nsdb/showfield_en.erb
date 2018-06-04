@@ -1,0 +1,68 @@
+<% content_for :title do %><%= @attribute.titleprefix_en%><%= @attributedescription.title_en%><%= @attribute.titlesuffix_en%><%end%>
+<% content_for :date do %>2013-06-25<%end%>
+
+<h1><%= @attribute.titleprefix_en%><%= @attributedescription.title_en%><%= @attribute.titlesuffix_en%></h1>
+
+<div class="row">
+<div class="col-md-10">
+<table class="table table-bordered">
+<caption class="blueBG alignCenter white"><strong>Attribute definition</strong></caption>
+<tbody>
+	<tr>
+		<th scope="row">Attribute Label</th>
+		<td><%= @attribute.attributename_en.upcase%></td>
+	</tr>
+	<tr>
+		<th scope="row">Title</th>
+		<td><%= @attribute.titleprefix_en%><%= @attributedescription.title_en%><%= @attribute.titlesuffix_en%></td>
+	</tr>
+	<tr>
+		<th scope="row">Description</th>
+		<td><%= raw @attributedescription.abstract_en%></td>
+	</tr>
+	<%if @attributedescription.shortuom_en != "n/a" then%>
+	<tr>
+		<th scope="row">Units</th>
+		<td><%= @attributedescription.longuom_en%> (<%= @attributedescription.shortuom_en%>)</td>
+	</tr>
+	<%end%>
+	<%if @attributedescription.classesuri != "n/a" then%>
+	<tr>
+		<th scope="row">Classes</th>
+		<td><%= raw @classes.abstract_en%></td>
+	</tr>
+	<%end%>
+</tbody>
+</table>
+</div>
+</div>
+
+<%for valuegroup in @valuegroups do%>
+<br />
+<br />
+<div class="row">
+<div class="col-md-10">
+<table class="table table-bordered">
+	<caption class="blueBG alignCenter white"><strong><%if valuegroup.valuegroup == "none" then%>Classes<%else%><%=valuegroup.name_en%><%end%></strong></caption>
+	<thead>	
+		<tr>
+			<th scope="col">Code</th>
+			<th scope="col">Class</th>
+			<th scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+<%for value in @values do%>
+	<%if valuegroup.valuegroup == value.valuegroup then%>
+		<tr>
+			<td><%=value.identifier%></td>
+			<td><%=value.title_en%></td>
+			<td><%=raw value.abstract_en%></td>
+		</tr>
+	<%end%>
+<%end%>
+	</tbody>
+</table>
+</div>
+</div>
+<%end%>

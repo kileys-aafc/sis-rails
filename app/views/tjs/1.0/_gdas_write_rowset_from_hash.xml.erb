@@ -1,0 +1,6 @@
+<%for row in @rowsetArray do%><Row>
+ <K<%if @aid == "true" then%> aid="<%=@dataset.frameworkkey%>"<%end%>><%=eval("row[:key]")%></K>
+ <V<%if @aid == "true" then%> aid="<%=@attname%>"<%end%><%if @allAttributesHash[@attname][:NullIdentifiers].include?(row[:value]) then%> null="true"<%end%>><%=row[:value]%></V>
+ <V<%if @aid == "true" then%> aid="percent"<%end%>><%=row[:percent]%></V>
+</Row>
+<%end%>

@@ -1,0 +1,30 @@
+<h1>show_data() method</h1>
+
+<p><a href="/cansis/services/vector/wadl.xml">WADL file</a></p>
+<p>For framework: <%=@version.title_en%>, poly_id = <%=params[:poly_id]%></p>
+
+<table border="1">
+	<tr>
+		<th>Data</th>
+		<th>JSON output</th>
+	</tr>
+	<tr>
+		<td valign="top"><%for attribute in @attributes do%>
+		<%=attribute.attribute_name%> = <%=eval("@dataArray[0].#{attribute.attribute_name}")%><br/>
+		<%end%>
+		</td>
+		<td valign="top"<%if @dataArray.size > 1 then%> rowspan="<%=@dataArray.size%>"<%end%>>
+<pre>
+<%= render :partial => 'json_data' %> 
+</pre>
+		</td>
+	</tr>
+	<%if @dataArray.size > 1 then%><%for data in @dataArray[1..-1] do%>
+	<tr>
+		<td valign="top"><%for attribute in @attributes do%>
+		<%=attribute.attribute_name%> = <%=eval("data.#{attribute.attribute_name}")%><br/>
+		<%end%>
+		</td>
+	</tr>
+	<%end%><%end%>
+</table>

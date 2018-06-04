@@ -1,0 +1,18 @@
+# encoding: iso-8859-1
+<h1>Les sols <%=@order3details.frenchname%></h1>
+<%for gg in @ggroup3_null_gg do%>
+ <h2><%=gg.frenchname%> (<%=gg.frenchcode%>)</h2>
+ <%=raw gg.frenchtext%>
+ <%@gg =  gg.soilgreatgroup %>
+ <%@ggroup3_null_sg = Taxonomydetail.where('soilsubgroup IS NOT NULL AND soilorder = ? AND soilgreatgroup = ?', @order3, @gg).order(:sortation)%>
+ <%for sg in @ggroup3_null_sg do%>
+	<section>
+  <h3><%=sg.frenchname%> (<%=sg.frenchcode%>)</h3>
+  <%=raw sg.frenchtext%>
+	</section>
+ <%end%>
+<%end%>
+<p><em><strong>(Les horizons diagnostiques sont sous-ligné.)</strong></em></p>
+<%if @order3 == 'O' then%>
+<p><em><strong><sup>1</sup> Divers horizons de sol minéral.</strong></em></p>
+<%end%>

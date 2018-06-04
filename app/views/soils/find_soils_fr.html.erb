@@ -1,0 +1,21 @@
+# encoding: iso-8859-1
+<% content_for :title do %>Sols<%end%>
+<% content_for :date do %>2013-09-09<%end%>
+
+<h1>Résultats de la recherche</h1>
+<%if !params[:provinces].blank? then%><p>Provinces = <%=params[:provinces]%></p><%end%>
+<%if !params[:orders].blank? then%><p>Ordres de sols = <%=params[:orders]%></p><%end%>
+<%if !params[:ggroups].blank? then%><p>Grands Groupes de sols = <%=params[:ggroups]%></p><%end%>
+<%if !params[:sgroups].blank? then%><p>Sous-groupes de sols = <%=params[:sgroups]%></p><%end%>
+<%if !params[:names].blank? then%><p>Noms de sol = <%=params[:names]%></p><%end%>
+<%if !params[:kinds].blank? then%><p>Kind = <%=params[:kinds]%></p><%end%>
+
+<%if @soils.size > 0 then %>
+<ul>
+<%for soil in @soils do%>
+	<li><a href="/<%=params[:rootdir]%>/soils/<%=soil[0..1].downcase%>/<%=soil[2..4]%>/<%=soil[5..9]%>/<%=soil[10]%>/description.html"><%=soil%></a></li>
+<%end%>
+</ul>
+<%else%>
+<p><em>Il n'y a pas les sols qui correspondent à ces critères de recherche.</em></p>
+<%end%>

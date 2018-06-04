@@ -1,0 +1,44 @@
+<% content_for :title do %>CanSIS What's New<%end%>
+<% content_for :date do %><%=Time.now.strftime("%Y-%m-%d")%><%end%>
+
+<h1>CanSIS</h1>
+
+<section>
+<h2>What's New <a href="/cansis/neuw.xml"><img src="/cansis/images/feed28x28.png" alt="RSS Feeds" /></a></h2>
+
+<table class="table table-bordered">
+<thead>
+<tr>
+  <th id="ttl">Title</th> 
+  <th id="dte">Date</th>  
+</tr>  
+</thead>
+<tbody>
+<%for item in @neuws do%>
+<tr>
+  <th id="r<%=item.id%>" headers="dte"><%if item.url_en == "" then%><%=item.title_en%><%else%><a href="<%=item.url_en%>"><%=item.title_en%></a><%end%></th>
+  <td headers="ttl r<%=item.id%>" align="right"><%=item.created_at.strftime("%B %Y")%></td>
+</tr>
+<%end%>
+</tbody>
+</table>
+
+<h2>CanSIS Website Historic Timeline</h2>
+<table class="table table-bordered">
+<thead>
+<tr>
+  <th id="ttl">Title</th> 
+  <th id="dte">Date</th>  
+</tr>  
+</thead>
+<tbody>
+<%for item in @oldNeuws do%>
+<tr>
+  <th id="r<%=item.id%>" headers="dte"><%if item.url_en == "" then%><%=item.title_en%><%else%><a href="<%=item.url_en%>"><%=item.title_en%></a><%end%></th>
+  <td headers="ttl r<%=item.id%>" align="right"><%=item.created_at.strftime("%B %Y")%></td>
+</tr>
+<%end%>
+</tbody>
+</table>
+
+</section>

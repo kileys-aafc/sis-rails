@@ -1,0 +1,21 @@
+<% content_for :title do %>Polygon <%=params[:poly_id]%><%end%>
+<% content_for :date do %>2013-06-26<%end%>
+
+<h1>Polygon <%=params[:poly_id]%></h1>
+
+<table border="1">
+	<tr>
+		<%for attribute in @attributes do%><%if attribute.show==true then%><th valign="top"><a href="<%=attribute.dataseturi%>/<%=attribute.attribute_name%>.html"><%if attribute.attribute_name == "soil_id" then%>Soil Name<%else%><%=attribute.titleprefix_en%><%=attribute.attributedescription.title_en%><%=attribute.titlesuffix_en%><%end%></a></th><%end%><%end%>
+	</tr>
+	<%for data in @dataArray do%><tr>
+		<%for attribute in @attributes do%><%if attribute.show==true then%><td align="center">
+		<%definition = Datavalue.where(:classesuri=>attribute.attributedescription.classesuri).where(:identifier=>eval("data.#{attribute.attribute_name}")).first%>
+		<%if definition != nil then%><%=definition.title_en%>
+		<%else%><%if attribute.attribute_name == "soil_id" then%><%=eval("Soil_name_#{data.province.downcase}_v2").where(:soil_id=>data.soil_id).first.soilname%> (<a href="/cansis/soils/<%=data.soil_id[0..1].downcase%>/<%=data.soil_id[2..4]%>/<%=data.soil_id[5..9]%>/<%=data.soil_id[10]%>/description.html"><%=data.soil_id%></a>)
+		<%else%><%=eval("data.#{attribute.attribute_name}")%>
+		<%end%>
+		<%end%></td>
+		<%end%>
+		<%end%>
+	</tr><%end%>
+</table>

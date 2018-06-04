@@ -1,0 +1,3 @@
+[<%for framework in @frameworks do%>
+	["<%=framework.framework_name%>","<%=framework.title_en%>","<%=framework.title_fr%>"]<%if framework.id != @frameworks[-1].id then%>,<%end%><%end%>
+]

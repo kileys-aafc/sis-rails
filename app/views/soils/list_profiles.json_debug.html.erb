@@ -1,0 +1,24 @@
+<h1>list_profiles() method</h1>
+
+<a href="/<%=params[:rootdir]%>/services/soils/wadl.xml">WADL file</a>
+
+<h2>For soil_code/modifier <%=@profiles[0].soil_code%> <%=@profiles[0].modifier%> (<%=@profiles[0].soilname%>)</h2>
+
+<table border="1">
+	<tr>
+		<th>Links</th>
+		<th>JSON output - <a href="profiles.json">raw</a></th>
+	</tr>
+	<tr>
+		<td>
+<%for profile in @profiles do%>
+<a href="/<%=params[:rootdir]%>/soils/<%=params[:province]%>/<%=profile.soil_code%>/<%=profile.modifier%>/<%=profile.profile%>/data.json?debug=on">info for <%=profile.soil_id%></a><br/>
+<%end%>
+		</td>
+		<td valign="top">
+<pre>
+<%= render :partial => 'list_profiles' %>
+</pre>
+		</td>
+	</tr>
+</table>

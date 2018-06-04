@@ -1,0 +1,17 @@
+<h1><%=@order3details.englishname%> soils</h1>
+<%for gg in @ggroup3_null_gg do%>
+ <h2><%=gg.englishname%> (<%=gg.englishcode%>)</h2>
+ <p><%=raw gg.englishtext%></p>
+ <%@gg =  gg.soilgreatgroup%>
+ <%@ggroup3_null_sg = Taxonomydetail.where('soilsubgroup IS NOT NULL AND soilorder = ? AND soilgreatgroup = ?', @order3, @gg).order(:sortation)%>
+ <%for sg in @ggroup3_null_sg do%>
+	<section>
+  <h3><%=sg.englishname%> (<%=sg.englishcode%>)</h3>
+  <%=raw sg.englishtext%>
+	</section>
+ <%end%>
+<%end%>
+<p><em><strong>Note: Diagnostic horizons are underlined.</strong></em></p>
+<%if @order3 == 'O' then%>
+<p><em><strong><sup>1</sup> Various mineral soil horizons.</strong></em></p>
+<%end%>

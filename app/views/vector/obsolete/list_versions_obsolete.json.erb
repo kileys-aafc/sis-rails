@@ -1,0 +1,45 @@
+{
+"DocumentType":"http://opengis.net/JSON/template",
+"Title":"List Versions",
+"Description":"List versions of a specified spatial framework that is available from this web application."
+"ParentResources": [
+	{
+	"Title":"List Frameworks",
+	"Description":"List spatial frameworks available from this web application."
+	"UriTemplate","/vector/frameworks.json",
+	}
+]
+"DependentResources": [
+	{
+	"Title":"List Regions",
+	"Description":"List available regions for a specified framework version."
+	"UriTemplate","/vector/{framework}/{version}/regions.json",
+	}
+]
+"TemplateParametersPresent": {
+	"framework":{
+		"Value":"<%=@framework.name%>",
+		"Title":{
+			"en":"<%=@framework.title_en%>",
+			"fr":"<%=@framework.title_fr%>"
+			}
+		}
+	}
+}
+"TemplateParametersToSelect": {
+	"version":{
+		"Name":"version"
+		"Title":"Framework Version"
+		"Action":"Select a version of this framework"
+		"ValueSet":[ 
+			<%for version in @versions do%>{
+			"Value":"<%=version.name%>",
+			"Title":{
+				"en":"<%=version.title_en%>",
+				"fr":"<%=version.title_fr%>"
+				}
+			}<%if version.id != @versions[-1].id then%>,<%end%><%end%>
+		]
+	}
+}
+}

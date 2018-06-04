@@ -1,0 +1,36 @@
+# encoding: iso-8859-1
+<%region_name = Region.find_by_code(params[:province].upcase).name_fr%>
+<% content_for :title do %>Variantes pour <%=region_name%> identificateur de nom du sol <%=@variants[0].soil_code%> (<%=@variants[0].soilname%>)<%end%>
+<% content_for :date do %>2013-06-27<%end%>
+
+<h1>Variantes pour <%=region_name%> identificateur de nom du sol <%=@variants[0].soil_code%> (<%=@variants[0].soilname%>)</h1>
+
+<table class="widthFull">
+<caption class="blueBG alignCenter white"><strong>Caractéristiques du sol</strong></caption>
+<thead>
+<tr>
+	<th colspan="3"></th>
+	<th scope="colgroup" colspan="3">Matériau originel - premier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<th scope="col"><a href="/cansis/nsdb/soil/v2/snt/soil_id.html">SOIL_ID</a></th>
+	<th scope="col"><a href="/cansis/nsdb/soil/v2/snt/profile.html">Profile</a></th>
+	<th scope="col"><a href="/cansis/nsdb/soil/v2/snt/drainage.html">Drainage</a></th>
+	<th scope="col"><a href="/cansis/nsdb/soil/v2/snt/mdep1.html">Mode de dépôt</a></th>
+	<th scope="col"><a href="/cansis/nsdb/soil/v2/snt/pmtex1.html">Texture</a></th>
+	<th scope="col"><a href="/cansis/nsdb/soil/v2/snt/pmchem1.html">Propriété chimique</a></th>
+</tr>
+<%for variant in @variants do%>
+<tr>
+	<td><a href="/<%=params[:rootdir]%>/soils/<%=params[:province]%>/<%=variant.soil_code%>/<%=variant.modifier%>/<%=variant.profile%>/description.html"><%=variant.soil_id%></a></td>
+	<td><%if variant.profile=="N" then%>Non cultivé<%else%>Agricole<%end%></td>
+	<td><%drainage = Datavalue.where(:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/drainage", :identifier=>variant.drainage).first%><%=drainage.title_fr%></td>
+	<td><%mdep = Datavalue.where(:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/mdep", :identifier=>variant.mdep1).first%><%=mdep.title_fr%></td>
+	<td><%pmtex = Datavalue.where(:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/pmtex", :identifier=>variant.pmtex1).first%><%=pmtex.title_fr%></td>
+	<td><%pmchem = Datavalue.where(:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v2/snt/pmchem", :identifier=>variant.pmchem1).first%><%=pmchem.title_fr%></td>
+</tr>
+<%end%>
+</tbody>
+</table>

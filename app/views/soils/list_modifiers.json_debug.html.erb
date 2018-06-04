@@ -1,0 +1,24 @@
+<h1>list_modifiers() method</h1>
+
+<a href="/<%=params[:rootdir]%>/services/soils/wadl.xml">WADL file</a>
+
+<h2>For soil_code <%=@modifiers[0].soil_code%> (<%=@modifiers[0].soilname%>)</h2>
+
+<table border="1">
+	<tr>
+		<th>Links</th>
+		<th>JSON output - <a href="modifiers.json">raw</a></th>
+	</tr>
+	<tr>
+		<td>
+<%for modifier in @modifiers do%>
+<a href="/<%=params[:rootdir]%>/soils/<%=params[:province]%>/<%=modifier.soil_code%>/<%=modifier.modifier%>/profiles.json?debug=on">profiles for <%=modifier.modifier%></a><br/>
+<%end%>
+		</td>
+		<td valign="top">
+<pre>
+<%= render :partial => 'list_modifiers' %>
+</pre>
+		</td>
+	</tr>
+</table>

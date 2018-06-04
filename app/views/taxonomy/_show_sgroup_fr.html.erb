@@ -1,0 +1,19 @@
+# encoding: iso-8859-1
+ <%if @sgroup3 == 'nil' %>
+<!-- display no subgroups-->
+ <%for gg in @sgroup3_null_gg do%>
+  <h1><%=gg.frenchname%> (<%=gg.frenchcode%>)</h1>
+  <%=raw gg.frenchtext%>
+ <%end%>
+<%else%>
+<!-- list out the the requested subgroup-->
+ <%for sg in @requested_sg do%>
+  <h1><%=sg.frenchname%> (<%=sg.frenchcode%>)</h1>
+  <%=raw sg.frenchtext%>
+ <%end%>
+ <p><em><strong>(Les horizons diagnostiques sont sous-ligné.)</strong></em></p>
+ <%if @order3 == 'O' then%>
+  <p><em><sup>1</sup> Divers horizons de sol minéral.</em></p>
+ <%end%>
+ <p><a href="/siscan/soils/find.html?orders=<%=sg.soilorder%>&ggroups=<%=sg.solgrandgroupe%>&sgroups=<%=sg.solsousgroupe%>">Lister tous les exemples connus</a></p>
+<%end%>

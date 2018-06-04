@@ -1,0 +1,10 @@
+[
+<%for subgroup in @subgroups do%>
+	{
+		"SoilSubGroup":"<%=subgroup.soilsubgroup%>",
+		"SolSousGroupe":"<%=subgroup.solsousgroupe%>",
+		"Name":"<%=subgroup.englishname%>",
+		"Nom":"<%=subgroup.frenchname%>"
+	}<%if subgroup.soilsubgroup != @subgroups[-1].soilsubgroup then%>,<%end%>
+<%end%>
+]

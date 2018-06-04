@@ -1,0 +1,21 @@
+<html>
+<head>
+ <title>Glossary of Terms in Soil Science: web service</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <style type="text/css">
+  .restable {margin: auto; background: #FFF; border-collapse: collapse; border-top: 1px solid #363;}
+  .restable th {font-weight: bold; padding: .3em .7em; text-align: left; vertical-align: top; background: #9C9; white-space: nowrap; border-top: 1px solid #363; border-bottom: 1px solid #363;}
+  .restable td {font-weight: normal; padding: .3em .7em; text-align: left; vertical-align: top;}
+  th {font-weight: bold; padding: .3em .7em; text-align: right;}
+ </style>
+</head>
+<body>
+<div class="center">
+ <h1>Terms containing "<%=@term%>"</h1>
+ <%for item in @term_not_null_en do%>
+  <h2><%=item.term_en%></h2>
+  <p><%=item.definition_en%></p>
+ <%end%>
+</div>
+</body>
+</html>

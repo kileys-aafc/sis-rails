@@ -1,0 +1,97 @@
+# return results 
+xml.instruct! :xml, :version=>"1.0", :encoding=>"UTF-8", :standalone=>"no"
+xml.tag!("kml",
+"xmlns".to_sym => "http://www.opengis.net/kml/2.2", 
+"xmlns:gx".to_sym => "http://www.google.com/kml/ext/2.2", 
+"xmlns:xsi".to_sym => "http://www.w3.org/2001/XMLSchema-instance", 
+"xsi:schemaLocation".to_sym => "http://www.opengis.net/kml/2.2 http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd http://www.google.com/kml/ext/2.2 http://code.google.com/apis/kml/schema/kml22gx.xsd") do
+  xml.tag!("Document", "id".to_sym=>"SLC_Boundaries") do
+		if params[:title].blank? then
+			if @poly_ids.size > 1 then
+				if @attributesHash then
+					name = "#{@framework.framework_name}: #{@attributesHash[@attributesHash.keys[0]][:Description].gattributedescription.Title}"
+				else
+					name = "#{@framework.framework_name} #{params[:version]} polygons: #{params[:polygonset]}"
+				end
+			else
+				name = "#{@framework.framework_name} #{params[:version]} polygon: #{params[:poly_id]}"
+			end
+		else
+			name = params[:title]
+		end
+		xml.name(name)
+    xml.Snippet("")
+    xml.tag!("Folder", "id".to_sym=>"FeatureLayer0") do
+			xml.name("#{@framework.framework_name}: #{@themeHash["title"]}")
+			xml.Snippet("")
+			for poly_id in @poly_ids do
+				coordinatesArray = File.open("/production/geodata/#{params[:framework]}/#{params[:version]}/#{params[:region]}/kml/#{poly_id}","r").readlines
+				for polygon in coordinatesArray do
+					xml.tag!("Placemark", "id".to_sym=>"ID_00000") do
+						xml.tag!("name", "#{params[:framework].singularize} #{poly_id}")
+						xml.tag!("Snippet", "")
+						xml.tag!("description") do
+							if @polygonsHash[poly_id] then
+								gad = @attributesHash[@attributesHash.keys[0]][:Description].gattributedescription
+								xml.cdata!("<b>#{@legendHash[@polygonsHash[poly_id][:rating]]}</b><br/><br/>")
+								xml.cdata!("<b>Framework:</b> #{@frameworkHash.Title}<br/>")
+								xml.cdata!("<b>Dataset:</b> #{@datasetHash.Title}<br/>")
+								xml.cdata!("<b>Attribute:</b> #{gad.Title} <br/>")
+								xml.cdata!("<b>Value:</b> #{@polygonsHash[poly_id][:value]} #{gad.ShortUOM}<br/>")
+								xml.cdata!("<a href=\"http://data.gis.agr.gc.ca/vector/#{params[:framework]}/#{params[:version]}/#{params[:region]}/data/cmp/#{poly_id}.json?debug=on\">Component data</a>")
+							else
+								xml.cdata!("No rating information")
+							end
+						end
+						if @polygonsHash[poly_id] then
+							xml.styleUrl("#PolyStyle#{@polygonsHash[poly_id][:rating]}")
+						else
+							xml.styleUrl("#PolyStyle00")
+						end
+						xml.Polygon do
+							xml.outerBoundaryIs do
+								xml.LinearRing do
+									xml.coordinates(polygon)
+								end #LinearRing
+							end #outerBoundaryIs
+						end #Polygon
+					end #Placemark
+				end #for polygon
+			end #for poly_id
+		end #Folder
+		if @classificationArray then
+			for style in @classificationArray.concat(@exceptionsArray) do
+				xml.tag!("Style", "id".to_sym=>"PolyStyle#{style[:identifier]}") do
+					xml.tag!("LabelStyle") do
+						xml.tag!("color", "00000000")
+						xml.tag!("scale", "0.000000")
+					end
+					xml.tag!("LineStyle") do
+						xml.tag!("color", "ff0000ff")
+						xml.tag!("width", "2.000000")
+					end
+					xml.tag!("PolyStyle") do
+						xml.tag!("color", "99"+style[:color])
+						xml.tag!("outline", "1")
+					end
+				end #Style
+			end
+		else
+			xml.tag!("Style", "id".to_sym=>"PolyStyle00") do
+				xml.tag!("LabelStyle") do
+					xml.tag!("color", "00000000")
+					xml.tag!("scale", "0.000000")
+				end
+				xml.tag!("LineStyle") do
+					xml.tag!("color", "ff0000ff")
+					xml.tag!("width", "2.000000")
+				end
+				xml.tag!("PolyStyle") do
+					xml.tag!("color", "00ffffff")
+					xml.tag!("outline", "1")
+				end
+			end #Style
+		end #if @style
+  end #Document
+end #kml
+

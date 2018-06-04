@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Texture>
+<%for row in @textureArray do%>
+  <Row>
+		<Identifier><%=row[0]%></Identifier>
+		<Sand><%=row[1]%></Sand>
+		<Silt><%=row[2]%></Silt>
+		<Clay><%=row[3]%></Clay>
+		<TextureClass><%=row[4]%></TextureClass>
+	</Row>
+<%end%>
+</Texture>

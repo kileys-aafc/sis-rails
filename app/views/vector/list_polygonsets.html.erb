@@ -1,0 +1,15 @@
+<h1>list_polygonsets() method</h1>
+
+<h2>Parameters</h2>
+<ol>
+	<li>framework: "<%=params[:framework]%>"</li>
+	<li>version: "<%=params[:version]%>"</li>
+	<li>region: "<%=params[:region]%>"</li>
+</ol>
+
+<h2>Results</h2>
+<p><%=@polygonsets.size%> polygonset<%if @polygonsets.size > 1 then%>s<%end%> found.</p>
+
+<%for polygonset in @polygonsets do%>
+<%=polygonset%> <a href="polygonsets/<%=polygonset%>.json?debug=on">poly_ids</a> <a href="polygons/map.kml?polygonset=<%=polygonset%>">kml</a><br/>
+<%end%>

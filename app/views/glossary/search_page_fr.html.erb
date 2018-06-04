@@ -1,0 +1,12 @@
+# encoding: iso-8859-1
+<% content_for :title do %><%if @char1 == '_' then%>Glossary: Other<%else%>Glossary: <%=@char1%><%end%>
+<% content_for :date do %>2013-06-25<%end%>
+
+<h1>Termes qui contiennent "<%=@term%>"</h1>
+
+<dl>
+<%for item in @term_not_null_fr do%>
+<dt><%=item.term_fr%></dt>
+<dd><p><%=item.definition_fr%></p></dd>
+<%end%>
+</dl>

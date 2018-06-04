@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Texture calculator</title>
+<link rel="stylesheet"  href="/stylesheets/lsrs/1.0/lsrs.css" type="text/css"/>
+</head>
+<body>
+
+<center>
+
+<div id="main" >
+<div id="header">
+<h1>Soil Texture Calculator</h1>
+</div>
+
+<p>Given the percentage of sand, silt, and clay, this calculator returns the texture class according to the <a href="/cansis/publications/manuals/1982-forms/index.html">CanSIS Manual for describing soils in the field</a>.</p>
+
+<h2>Single values</h2>
+
+
+<form name="formSearch" method="get" action="/cansis/services/texture/calculate">
+  <table class="intro">
+    <tr>
+      <td class="subheader">Percent Sand</td>
+      <td><input type="text" name="Sand" size="6" /></td>
+    </tr>
+    <tr>
+      <td class="subheader">Percent Silt</td>
+      <td><input type="text" name="Silt" size="6" /></td>
+    </tr>
+    <tr>
+      <td class="subheader">Percent Clay</td>
+      <td><input type="text" name="Clay" size="6" /></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+      <br><input type="submit" value="Calculate">
+      </td>
+    </tr>
+  </table>
+</form>
+
+
+<h2>Batch calculator</h2>
+
+<p>Given a <a href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV file</a> <br/>
+where each record contains "identifier", "sand", "silt", and "clay" (see <a href="/schemas/texture/1.0/examples/texture.csv">example</a>), <br/>
+this batch service returns a csv or XML file which includes the <a href="/cansis/glossary/t/index.html">texture class</a>.</p>
+
+<form name="calculate" method="post" action="/cansis/services/texture/batch" enctype="multipart/form-data">
+CSV input file: <input type="file" name="csv" value="Input" size="50"><br/><br/>
+Output format: 
+<select name="ResponseForm">
+	<option value="CSV" selected="selected">CSV</option>
+	<option value="XML">XML</option>
+</select>
+<br/>
+<br/>
+
+<input type="submit" name="submit" value="Process"><br>
+</form> 
+
+
+</center>
+</div>
+</div>
+</body>
+</html>

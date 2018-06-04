@@ -1,0 +1,56 @@
+<h3>Params</h3>
+<%= params%>
+<hr/>
+
+<h3>@attributeNamesArray</h3>
+<%= @attributeNamesArray%>
+<hr/>
+
+<h3>@rowsetArray</h3>
+<%= @rowsetArray%>
+<hr/>
+
+<h3>@rowsetArray ZZ</h3>
+<%= @rowsetArray[0].region%>
+<hr/>
+
+<h3>@attributeNamesArray</h3>
+<%= @attributeNamesArray[0]%>
+<% for name in @attributeNamesArray do%><%=name%><%end%>
+<hr/>
+
+<h3>@rowsetArray</h3>
+<% for row in @rowsetArray do%><%=eval("row.#{name}")%><br/><%end%>
+<%= debug @rowsetArray[0]%>
+
+<hr/>
+
+<h3>@legendHash</h3>
+<%= @legendHash%>
+<hr/>
+
+<h3>@classificationArray</h3>
+<%= @classificationArray%>
+<hr/>
+
+<h3>@exceptionsArray</h3>
+<%= @exceptionsArray%>
+<hr/>
+
+<h3>@exceptionValuesArray</h3>
+<%= @exceptionValuesArray%>
+<hr/>
+
+<h3>exceptions</h3>
+<%=@legendHash["NumericClassification"]["RankingScheme"]["MissingClasses"] + @legendHash["NumericClassification"]["RankingScheme"]["ExceptionClasses"]%>
+<hr/>
+
+<h3>@polygonsHash</h3>
+<%= @polygonsHash%>
+<hr/>
+
+<%=debug @dataset%><br>
+<%= @dataset.frameworkkey%><br>
+<%= @rowsetArray[0][:region]%><br/>
+<%= @rowsetArray[0][@dataset.frameworkkey.to_sym]%>
+

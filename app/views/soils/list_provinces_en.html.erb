@@ -1,0 +1,12 @@
+<% content_for :title do %>Index to soil name and layer data for Canada<%end%>
+<% content_for :date do %>2013-06-26<%end%>
+
+<h1>Soil name and layer data for Canada</h1>
+
+<ul>
+<%for province in @provinces do%>
+	<li><a href="/<%=params[:rootdir]%>/soils/<%=province.code.downcase%>/soils.html">Soils <%=province.possessive_en%></a></li>
+<%end%>
+</ul>
+
+<p><a href="/cansis/nsdb/soil/v2/download.html">Download the Soil Name and Layer Tables</a></p>

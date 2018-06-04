@@ -1,0 +1,14 @@
+<h2>find_poly results as of <%=Time.now%></h2>
+polygon <%=@polygon%>
+<br/>
+<br/>
+<%=debug params%>
+bbox = <%= @bbox%>
+<hr>
+@lang = <%=@lang%>
+<hr>
+<ul>
+<%for dataset in Datadataset.where(:frameworkuri=>"http://sis.agr.gc.ca/cansis/nsdb/#{params[:framework]}/#{params[:version].gsub('r','.')}") do%>
+<li><a href="/services/vector/<%=params[:framework]%>/<%=params[:version]%>/<%=params[:region]%>/<%=dataset.dataseturi.split("/")[-1]%>/"><%=dataset.title_en%></a></li>
+<%end%>
+</ul>

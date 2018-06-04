@@ -1,0 +1,5 @@
+[<%for @attribute in @attributes do%>
+{
+<%= render :partial => 'json_attribute' %>
+}<%if @attribute.id != @attributes[-1].id then%>,<%end%><%end%>
+]

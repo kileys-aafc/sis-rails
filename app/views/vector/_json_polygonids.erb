@@ -1,0 +1,3 @@
+[<%for polygon in @polygonids do%>
+	"<%=polygon%>"<%if polygon != @polygonids[-1] then%>,<%end%><%end%>
+]

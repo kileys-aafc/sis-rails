@@ -1,0 +1,21 @@
+# encoding: iso-8859-1
+<% content_for :title do %>Cartes imprimées<%end%>
+<% content_for :date do %>2013-06-25<%end%>
+
+<h1>Cartes imprimées</h1>
+<p><abbr title="Systéme d'information sur les sols du Canada">SISCan</abbr> et ses partenaires ont imprimé des milliers de cartes des sols, des paysages et du climat du Canada. Plusieurs de ces cartes ont été numérisées par scanneur et sont disponibles ici.</p>
+
+<%for group in @mapGroups do%>
+<section>
+<h2><%=group.title_fr%></h2>
+<p><%= raw group.abstract_fr%></p>
+<ul>
+  <%for set in @mapSets do%>
+  <%if group.mapgroup == set.mapgroup then %>
+  <li><a href="/siscan/publications/maps/<%=set.subdirectory%>/index.html"><%=set.title_fr%></a>
+		<%if set.kml_index == "Y" then%> &#160; (<a href="/siscan/publications/maps/<%=set.subdirectory%>/index.kml">kml</a>)<%end%></li>
+  <%end%>
+  <%end%>
+</ul>
+</section>
+<%end%>

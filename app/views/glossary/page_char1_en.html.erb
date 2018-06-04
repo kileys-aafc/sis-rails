@@ -1,0 +1,38 @@
+<% content_for :title do %><%if @char1 == '_' then%>Glossary: Other<%else%>Glossary: <%=@char1%><%end%><%end%>
+<% content_for :date do %>2013-07-03<%end%>
+
+<h1>Glossary of Terms in Soil Science</h1>
+
+<div class="alignCenter"> 
+<nav> 
+<p class="fontsize120"><strong>
+<%for i in 0..26%>
+<a href="/<%=params[:rootdir]%>/glossary/<%=@SimpleCharArray[i]%>/index.html"><%=@CapitalCharArray[i]%></a>&#160;
+<%end%>
+</strong></p>
+</nav>
+</div>
+
+<dl>
+ <%if @char1 == '_' then%>
+  <%for item in @char1_en do%>
+   <dt><%=item.term_en%></dt>
+   <dd><p><%=raw item.definition_en%></p></dd>
+  <%end%>
+ <%else%>
+  <%for item in @char1_all_en do%>
+   <dt><%=item.term_en%></dt>
+   <dd><p><%=raw item.definition_en%></p></dd>
+  <%end%>
+ <%end%>
+</dl>
+
+<div class="alignCenter"> 
+<nav> 
+<p class="fontsize120"><strong>
+<%for i in 0..26%>
+  <a href="/<%=params[:rootdir]%>/glossary/<%=@SimpleCharArray[i]%>/index.html"><%=@CapitalCharArray[i]%></a>
+<%end%>
+</strong></p>
+</nav>
+</div>

@@ -1,0 +1,30 @@
+<% content_for :title do %>Download Soil Name Table and Soil Layer Table<%end%>
+<% content_for :date do %>2013-07-05<%end%>
+
+<h1>Download Soil Name Table and Soil Layer Table</h1>
+
+<div class="row">
+<div class="col-md-8">
+<table class="table table-bordered">
+<caption class="blueBG alignCenter white"><strong>Latest Soil Name and Soil Layer Tables</strong></caption>
+<tbody>
+<tr>
+	<th scope="row">All of Canada</th>
+	<%snt = @filenames.collect{|f| f if f.include?("name") and f.include?("canada")}.compact.sort.last%>
+	<td><a href="/soildata/canada/<%=snt%>"><%=snt%></a></td>
+	<%slt = @filenames.collect{|f| f if f.include?("layer") and f.include?("canada")}.compact.sort.last%>
+	<td><a href="/soildata/canada/<%=slt%>"><%=slt%></a></td>
+</tr>
+<%for region in Region.provinces do%>
+<tr>
+	<th scope="row"><%=region.name_en%></th>
+	<%snt = @filenames.collect{|f| f if f.include?("name") and f.include?(region.code.downcase)}.compact.sort.last%>
+	<td><a href="/soildata/<%=region.code.downcase%>/<%=snt%>"><%=snt%></a></td>
+	<%slt = @filenames.collect{|f| f if f.include?("layer") and f.include?(region.code.downcase)}.compact.sort.last%>
+	<td><a href="/soildata/<%=region.code.downcase%>/<%=slt%>"><%=slt%></a></td>
+</tr>
+<%end%>
+</tbody>
+</table>
+</div>
+</div>

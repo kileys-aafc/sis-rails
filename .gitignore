@@ -95,6 +95,7 @@ Thumbs.db
 *.png
 *.svg
 *.ico
+*.tif
 
 # Video #
 #########
@@ -120,3 +121,14 @@ Thumbs.db
 *.eot
 *.ttf
 *.woff
+
+# Other #
+#########
+*.pdf
+*.dbf
+*.shp
+
+/public/*
+/tmp/*
+
+

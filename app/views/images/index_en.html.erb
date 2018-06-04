@@ -1,0 +1,34 @@
+<% content_for :title do %>Soil Landscapes Photo Gallery<%end%>
+<% content_for :date do %>2013-06-25<%end%>
+
+<h1>Soil Landscape Illustrations</h1>
+
+<p>The images below illustrate concepts found in the <a href="/cansis/nsdb/slc/index.html">Soil Landscapes of Canada</a></p>
+
+<%for region in @allregions do%>
+<section>
+	<h2><%=region.fulltitle_en%></h2>
+	<div class="row">
+		<div class="col-md-4">
+			<figure>
+				<a href="/cansis/images/<%=region.region_id%>/index.html" title="Soil Landscape Images for <%=region.fulltitle_en%>"><img src="http://sis.agr.gc.ca<%=region.picture_url%>" alt="Soils and associated landscapes for <%=region.fulltitle_en%>" class="image-left blockSpacerRight" /></a>
+			</figure>
+		</div>
+		<div class="col-md-4">
+			<p>
+				<%for factor in @regionHash[region.region_id] do%>
+				<a href="/cansis/images/<%=region.region_id%>/<%=factor.factor_id%>/index.html" title="<%=factor[:smalltitle_en]%> in <%=region.fulltitle_en%>"><%=factor[:smalltitle_en]%></a><br /><br />
+				<%end%>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class ="col-md-6">
+			<a href="/cansis/images/<%=region.region_id%>/index.html">Soils and associated landscapes</a>
+		</div>
+	</div>
+	
+		
+	<hr/>
+</section>
+<%end%>

@@ -1,0 +1,67 @@
+<% content_for :title do %><%= @dataset.title_en%><%end%>
+<% content_for :date do %>2013-06-25<%end%>
+
+<h1><%= @dataset.title_en%></h1>
+
+<section>
+<h2>Filename</h2>
+<p><em><%= @dataset.dataset_name%></em></p>
+</section>
+
+<section>
+<h2>Description</h2>
+<%= raw @dataset.abstract_en%>
+</section>
+
+<section>
+<h2>Contents</h2>
+<div class="row">
+<div class="col-md-6">
+<table class="table table-bordered">
+<caption class="blueBG alignCenter white"><strong>Contents of dataset: <%= @dataset.dataset_name%></strong></caption>
+ <thead>
+	<tr>
+		<th scope="col">Field</th>
+		<th scope="col">Name</th>
+		<th scope="col">Type</th>
+		<th scope="col">Width</th>
+		<th scope="col">Description</th>
+	</tr>
+ </thead>
+ <tbody>
+	<%for field in @attributes do%>
+	<tr>
+		<td><%=field.sortation.to_i%></td>
+		<td><a href="<%=field.attribute_name%>.html"><%=field.attributename_en.upcase%></a></td>
+		<td><%=field.datatype%></td>
+		<td class="center"><%=field.length%></td>
+		<td><%=field.titleprefix_en%><%=field.attributedescription.title_en%><%=field.titlesuffix_en%></td>
+	</tr>
+	<%end%>
+	</tbody>
+	</table>
+</div>
+</div>
+
+</section>
+
+<%if @dataset.relationships_en != "n/a" then%>
+<section>
+<h2>Relationships</h2>
+<%= raw @dataset.relationships_en%>
+</section>
+<%end%>
+
+<%if @dataset.limitations_en != "n/a" then%>
+<section>
+	<h2>Limitations</h2>
+	<%= raw @dataset.limitations_en%>
+</section>
+<%end%>
+
+<%if @dataset.origin_en != "n/a" then%>
+<section>
+	<h2>Origin</h2>
+	<%= raw @dataset.origin_en%>
+</section>
+<%end%>

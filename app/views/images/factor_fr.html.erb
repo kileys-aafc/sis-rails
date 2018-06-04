@@ -1,0 +1,35 @@
+# encoding: iso-8859-1
+<% content_for :title do %>SIScan Photos<%end%>
+<% content_for :date do %>2013-06-25<%end%>
+
+<div class="alignCenter">
+<!--region selector-->
+<nav>
+<%for region in @allregions do%>
+  <%if @displayHash[region.region_id]==true then%>
+    <%if region.region_id==@region.region_id then%>
+      <%=region.smalltitle_fr%>
+    <%else%>
+      <a href="/<%=params[:rootdir]%>/images/<%=region.region_id%>/<%=@factor.factor_id%>/index.html"><%=region.smalltitle_fr%></a>
+    <%end%>
+    <%if region.region_id!=@last_region_id then%> | 
+    <%end%>
+  <%end%>
+<%end%>
+</nav>
+
+<h1><%=@factor.fulltitle_fr%> : <br/><%=@region.inlinetitle_fr%></h1>
+
+<!--landscape and soil images-->
+<%for image in @images do%>
+	<figure>
+		<a href="<%=image.url%>.jpg"><img src="<%=image.url%>2.jpg" alt="Voir une plus grande version de cette image (jpg).  (<%=image.title_fr%>)" /></a><br />
+		<figcaption>
+			<strong><%=image.title_fr%></strong><br />
+			<%=image.abstract_fr%><br /><br /> 
+		</figcaption>
+	</figure>
+	<hr />
+<%end%>
+
+</div>

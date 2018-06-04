@@ -1,0 +1,24 @@
+# encoding: iso-8859-1
+<%of_region = Region.find_by_code(params[:province].upcase).possessive_fr%>
+<% content_for :title do %>Les séries de sols <%=of_region%><%end%>
+<% content_for :date do %>2013-06-26<%end%>
+
+<h1>Les séries de sols <%=of_region%></h1>
+
+
+<div class="row">
+<div class="col-md-4">
+<table class="table table-bordered">
+<tr>
+	<th scope="col">Identificateur</th>
+	<th scope="col">Nom du sol</th>
+</tr>
+<%for soil in @soils do%>
+<tr>
+	<td><%=soil.province%> <%=soil.soil_code%> <%=soil.modifier%> <%=soil.profile%> </td>
+	<td><a href="<%=soil.soil_code%>/<%=soil.modifier%>/<%=soil.profile%>/description.html"><%=soil.soilname%></td>
+</tr>
+<%end%>
+</table>
+</div>
+</div>

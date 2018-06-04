@@ -1,0 +1,15 @@
+<%content_for :h1 do%>list_frameworks() method<%end%>
+
+<h2>Results</h2>
+<p><%=@frameworks.size%> framework<%if @frameworks.size > 1 then%>s<%end%> found.</p>
+
+<%for framework in @frameworks do%>
+<table>
+<tr><th>identifier</th><td><a href="<%=framework.framework_name%>/versions.html"><%=framework.framework_name%></a></td></tr>
+<tr><th>title_en</th><td><%=framework.title_en%></td></tr>
+<tr><th>title_fr</th><td><%=framework.title_fr%></td></tr>
+<tr><th>description_en</th><td><%=framework.abstract_en%></td></tr>
+<tr><th>description_fr</th><td><%=framework.abstract_fr%></td></tr>
+</table>
+<br/>
+<%end%>

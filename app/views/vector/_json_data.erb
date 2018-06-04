@@ -1,0 +1,19 @@
+{
+	"framework":"<%=params[:framework]%>",
+	"version":"<%=params[:version]%>",
+	"dataset":"<%=params[:dataset]%>",
+	"poly_id":"<%=params[:poly_id]%>",
+	"data":
+		[<%for data in @dataArray do%>
+			[<%for attribute in @attributes do%>
+				{
+				"attribute_name":"<%=attribute.attribute_name%>",
+				"title_en":"<%=attribute.attributedescription.title_en%>",
+				"title_fr":"<%=attribute.attributedescription.title_fr%>",
+				"value":<%value=eval("data.#{attribute.attribute_name}")%><%if value.class==String then %>"<%=value%>"<%else%><%=value%><%end%>
+				}<%if attribute.id != @attributes[-1].id then%>,<%end%>
+			<%end%>
+			]<%if data.id != @dataArray[-1].id then%>,<%end%>
+		<%end%>
+		]
+}		

@@ -1,0 +1,12 @@
+[<% values = @attribute.values %><%for value in values do%>
+	{
+		"identifier":"<%=value.identifier%>",
+		"title_en":"<%=value.title_en%>",
+		"title_fr":"<%=value.title_fr%>",
+		"description_en":"<%=value.abstract_en%>",
+		"description_fr":"<%=value.abstract_fr%>",
+		"valuegroup":"<%=value.valuegroup%>",
+		"nullvalue":"<%=value.nullvalue%>",
+		"color":"<%=value.color%>"
+	}<%if value.id != values[-1].id then%>,<%end%><%end%>
+]

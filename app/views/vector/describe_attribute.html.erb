@@ -1,0 +1,37 @@
+<h1>describe_attribute() method</h1>
+
+<h2>Parameters</h2>
+<ol>
+	<li>framework: "<%=params[:framework]%>"</li>
+	<li>version: "<%=params[:version]%>"</li>
+	<li>region: "<%=params[:region]%>"</li>
+	<li>dataset: "<%=params[:dataset]%>"</li>
+	<li>attribute: "<%=params[:attribute]%>"</li>
+</ol>
+
+<h2>Results</h2>
+
+<table>
+<tr><th>Name:</th><td><%=@attribute.attribute_name%></td></tr>
+<tr><th>Purpose:</th><td><%=@attribute.purpose.gsub(/[A-Z]/, ' \0')%></td></tr>
+<tr><th>Title (en)</th><td><%=@attribute.titleprefix_en%><%=@attribute.attributedescription.title_en%><%=@attribute.titlesuffix_en%></td></tr>
+<tr><th>Title (fr)</th><td><%=@attribute.titleprefix_fr%><%=@attribute.attributedescription.title_fr%><%=@attribute.titlesuffix_fr%></td></tr>
+<tr><th>Description (en)</th><td><%=@attribute.attributedescription.abstract_en%></td></tr>
+<tr><th>Description (fr)</th><td><%=@attribute.attributedescription.abstract_fr%></td></tr>
+<tr><th>Kind:</th><td><%=@attribute.attributedescription.kind%></td></tr>
+<% if @attribute.purpose == "Attribute" then%><% if ["Nominal","Ordinal"].include?(@attribute.attributedescription.kind) then%><tr><th>Values:</th><td></td></tr>
+<tr><th></th><td>
+	<%for value in @attribute.values do%>
+	<table border=1>
+	<tr><th>identifier</th><td><%=value.identifier%></td></tr>
+	<tr><th>title_en</th><td><%=value.title_en%></td></tr>
+	<tr><th>title_fr</th><td><%=value.title_fr%></td></tr>
+	<tr><th>description_en</th><td><%=raw value.abstract_en%></td></tr>
+	<tr><th>description_fr</th><td><%=raw value.abstract_fr%></td></tr>
+	<tr><th>valuegroup</th><td><%=value.valuegroup%></td></tr>
+	<tr><th>nullvalue</th><td><%=value.nullvalue%></td></tr>
+	<tr><th>color</th><td><%=value.color%></td></tr>
+	</table><br/>
+	<%end%>
+<%end%><%end%></td></tr>
+</table>

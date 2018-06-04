@@ -1,0 +1,34 @@
+<% content_for :title do %><%=@mapSet.title_fr%><%end%>
+<% content_for :date do %>2013-06-25<%end%>
+
+<h1><%=@mapGroup.title_fr%></h1>
+
+<section>
+<h2><%=@mapSet.title_fr%></h2>
+
+<p><%= raw @mapSet.abstract_fr%></p>
+
+<%if @mapSet.kml_index == "Y" then%>
+<p>Cet indice est disponible <a href="index.kml">sous forme de fichier KML.</a></p>
+<%end%>
+
+<table class="table table-bordered">
+<caption class="blueBG alignCenter white"><strong>Cartes</strong></caption>
+<thead> 
+  <tr>
+    <th id="id">Feuille</th>
+    <th id="ti">Titre</th>
+    <th id="vm">Voir la carte</th><%if @mapSet.descriptions == "Y" then%>
+    <th id="vd">Voir la description</th><%end%>
+  </tr>
+</thead>  
+<tbody><%for map in @mapSheets do%><%if map.language != "en" then%>
+  <tr>
+    <th headers="id" id="<%=map.mapsheet%>.<%=map.format%>"><%=map.mapsheet%></th>
+    <td headers="ti <%=map.mapsheet%>.<%=map.format%>"><%=map.title_fr%></td>
+    <td headers="vm <%=map.mapsheet%>.<%=map.format%>" class="alignCenter"><%if map.scanned == "Y" then%><a href="/<%if map.language == "fr" then%>siscan<%else%>cansis<%end%>/publications/maps/<%=@mapSet.subdirectory%>/<%=@mapSet.subdirectory.gsub("/","_")%>_<%=map.mapsheet%>.<%=map.format%>">Carte (Format JPG)</a><%else%><%end%></td><%if @mapSet.descriptions == "Y" then%>
+    <td headers="vd <%=map.mapsheet%>.<%=map.format%>" class="alignCenter"><%if map.scanned == "Y" and map.description == "Y" then%><a href="/<%if map.language == "fr" then%>siscan<%else%>cansis<%end%>/publications/maps/<%=@mapSet.subdirectory%>/<%=@mapSet.subdirectory.gsub("/","_")%>_<%=map.mapsheet%>.pdf">Description (Format PDF)</a><%end%></td><%end%>
+  </tr><%end%><%end%>
+</tbody>	
+</table>
+</section>

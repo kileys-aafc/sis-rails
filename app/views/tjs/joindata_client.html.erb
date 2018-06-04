@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>TJS 1.0 JoinData client</title>
+  </head>
+  <body>
+    <div id="page">
+      <div id="sidebar">
+      </div>
+
+      <div id="content">
+        <div id="header">
+          <h2>TJS 1.0 JoinData client</h2>
+        </div>
+
+<table border="1"><tbody>
+<tr>
+  <td>
+    <form name="input" action="/tjs/service" method="get">
+      <font size="2">
+			<table>
+			<tr>
+				<th><strong>Service: </strong></th>
+				<td><input type="text" size="6" name="Service" value="TJS"></td>
+			</tr>
+			<tr>
+				<th><strong>Version: </strong></th>
+				<td><input type="text" size="6" name="Version" value="1.0"></td>
+			</tr>
+			<tr>
+				<th><strong>Request: </strong></th>
+				<td><input type="text" size="6" name="Request" value="JoinData"></td>
+			</tr>
+			<tr>
+				<th><strong>AcceptLanguages: </strong></th>
+				<td><input type="text" size="6" name="AcceptLanguages" value="en"></td>
+			</tr>
+			<tr>
+				<th><strong>FrameworkURI: </strong></th>
+				<td><input type="text" size="125" name="FrameworkURI" value="http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/v1"></td>
+			</tr>
+			<tr>
+				<th><strong>GetData URL: </strong></th>
+				<td><input type="text" size="125" name="GetDataURL" value="http://zonbu/tjs/service?service=TJS&request=GetData&Version=1.0&FrameworkURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1&DatasetURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1%2Ftemperature_1961-1990&Attributes=tmin_jan"></td>
+			</tr>
+			<tr>
+				<th><strong>Update: </strong></th>
+				<td><input type="text" size="125" name="Update" value="false"></td>
+			</tr>
+			<tr>
+				<th><strong>StylingIdentifier: </strong></th>
+				<td><input type="text" size="125" name="StylingIdentifier" value=""></td>
+			</tr>
+			<tr>
+				<th><strong>classificationURL: </strong></th>
+				<td><input type="text" size="125" name="classificationURL" value="http://localhost/classify/1.0/temperature001.xml"></td>
+			</tr>
+			</table>
+
+
+      <center>
+        <input type="submit" name="getInfo" value="Calculate">
+      </center>
+      </font>
+
+    </form>
+  </td>
+</tr>
+</tbody></table>
+
+
+
+
+    </div>
+  </body>
+</html>

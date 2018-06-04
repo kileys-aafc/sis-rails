@@ -1,0 +1,17 @@
+<%for gg in @sgroup3_null_gg do%>
+ <h1><%=gg.englishname%> (<%=gg.englishcode%>)</h1>
+ <%=raw gg.englishtext%>
+ <%@gg =  gg.soilgreatgroup%>
+ <%@sgroup3_null_sg = Taxonomydetail.where('soilsubgroup is not null and soilorder = ? and soilgreatgroup = ?', @order3, @gg).order(:sortation)%>
+ <%for sg in @sgroup3_null_sg do%>
+  <section>
+  <h2><%=sg.englishname%> (<%=sg.englishcode%>)</h2>
+  <%=raw sg.englishtext%>
+	<p><a href="/cansis/soils/find.html?orders=<%=sg.soilorder%>&ggroups=<%=sg.soilgreatgroup%>&sgroups=<%=sg.soilsubgroup%>">List all known examples</a></p>
+  </section>
+ <%end%>
+<%end%>
+<p><em><strong>Note: Diagnostic horizons are underlined.</strong></em></p>
+<%if @order3 == 'O' then%>
+ <p><em><strong><sup>1</sup> Various mineral soil horizons.</strong></em></p>
+<%end%>

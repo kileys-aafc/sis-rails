@@ -1,0 +1,44 @@
+<% content_for :title do %>Soil Surveys for <%=@province.name_en%><%end%>
+<% content_for :date do %>2012-01-17<%end%>
+
+<h1>Soil Survey Reports for <%=@province.name_en%></h1>
+<%for ssclass in @ssclasses do %>
+<ul>
+<li><a href="#<%=ssclass.name%>"><%=ssclass.title_en%></a></li>
+</ul>
+<%end%>
+
+<%for ssclass in @ssclasses do %>
+<section>
+<a name="<%=ssclass.name%>"></a>
+<h2><%=ssclass.title_en%></h2>
+<%=raw ssclass.abstract_en%>
+<table class="table table-bordered">
+<caption class="blueBG alignCenter white"><strong><%ssclass.title_en%></strong></caption>
+<thead>
+<tr>
+	<th id="1rn">Report Number</th>
+	<th id="1ss">Soil Survey Report</th>
+	<th id="1vi">Vintage</th>
+	<th id="1sc">Scale</th>
+	<th id="1re">Report</th>
+	<th id="1da">Data</th>
+</tr>
+</thead>
+<tbody>
+
+<%for report in @reports do %>
+<%if report.sort_group == ssclass.name then%><tr>
+<th headers="1rn" id="<%=report.report_id%>"><%=report.report_id%></th>
+<td headers="1ss <%=report.report_id%>"><%=report.title_en%></td>
+<td headers="1vi <%=report.report_id%>"><%=report.vintage%></td>
+<td headers="1sc <%=report.report_id%>" class="alignRight"><%=report.scale.to_s.gsub(/(\d)(?=(\d\d\d)+(?!\d))/, "\\1,")%></td>
+<td headers="1re <%=report.report_id%>" class="alignCenter"><%if report.report_available == "Y" or report.map_available == "Y" then%><a href="/cansis/publications/surveys/<%=@prov%>/<%=report.report_id.downcase%>/index.html">view the report</a><%end%> </td>
+<td headers="1da <%=report.report_id%>"> <%if report.data_available == "Y" then%><a href="/cansis/nsdb/dss/v2/<%=@prov%>/<%=report.distribution_name%>.zip">download the data</a><%end%> </td>
+</tr>
+<%end%>
+<%end%>
+</tbody>
+</table>
+</section>
+<%end%>

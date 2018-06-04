@@ -1,0 +1,20 @@
+<% content_for :title do %>Printed Maps<%end%>
+<% content_for :date do %>2013-06-25<%end%>
+
+<h1>Printed Maps</h1>
+<p><abbr title="Canadian Soil Information Service">CanSIS</abbr> and its partners have printed thousands of maps about Canadian soils, landscapes, and climate.  Many of these maps have been scanned and are available here.</p>
+
+<%for group in @mapGroups do%>
+<section>
+<h2><%=group.title_en%></h2>
+<p><%= raw group.abstract_en%></p>
+<ul>
+  <%for set in @mapSets do%>
+  <%if group.mapgroup == set.mapgroup then %>
+  <li><a href="/cansis/publications/maps/<%=set.subdirectory%>/index.html"><%=set.title_en%></a>
+		<%if set.kml_index == "Y" then%> &#160; (<a href="/cansis/publications/maps/<%=set.subdirectory%>/index.kml">kml</a>)<%end%></li>
+  <%end%>
+  <%end%>
+</ul>
+</section>
+<%end%>

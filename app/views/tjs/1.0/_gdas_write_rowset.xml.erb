@@ -1,0 +1,7 @@
+<%for row in @rowsetArray do%><Row>
+ <K<%if @aid == "true" then%> aid="<%=@dataset.frameworkkey%>"<%end%>><%=eval("row[:#{@dataset.frameworkkey}]")%></K>
+<%for attname in @attributeNamesArray do%><%value=eval("row[:#{attname}]")%>
+ <V<%if @aid == "true" then%> aid="<%=attname%>"<%end%><%if @allAttributesHash[attname][:NullIdentifiers].include?(value) then%> null="true"<%end%>><%=value%></V>
+<%end%>
+</Row>
+<%end%>

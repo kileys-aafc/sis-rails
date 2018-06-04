@@ -1,0 +1,18 @@
+ <%if @sgroup3 == 'nil' %>
+<!-- display no subgroups-->
+ <%for gg in @sgroup3_null_gg do%>
+  <h1><%=gg.englishname%> (<%=gg.englishcode%>)</h1>
+  <%=raw gg.englishtext%>
+ <%end%>
+<%else%>
+<!-- list out the the requested subgroup-->
+ <%for sg in @requested_sg do%>
+  <h1><%=sg.englishname%> (<%=sg.englishcode%>)</h1>
+  <%=raw sg.englishtext%>
+ <%end%>
+ <p><em><strong>Note: Diagnostic horizons are underlined.</strong></em></p>
+ <%if @order3 == 'O' then%>
+  <p><em><sup>1</sup> Various mineral soil horizons.</em></p>
+ <%end%>
+ <p><a href="/cansis/soils/find.html?orders=<%=sg.soilorder%>&ggroups=<%=sg.soilgreatgroup%>&sgroups=<%=sg.soilsubgroup%>">List all known examples</a></p>
+<%end%>

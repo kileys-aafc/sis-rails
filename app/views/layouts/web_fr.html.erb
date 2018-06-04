@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 9]><html class="no-js lt-ie9" lang="fr" dir="ltr"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="fr" dir="ltr"><!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title><%= yield :title%></title>
+	<!-- Load closure template scripts -->
+	<script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/rn/cdts/compiled/soyutils.js"></script>
+	<script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/rn/cdts/compiled/wet-fr.js"></script>
+	<noscript>
+		<!-- Write closure fall-back static file -->
+		<%= render file: Rails.public_path.join("wet-v4.0.27", "refTop.html") %>
+	</noscript>
+	<!-- Write closure template -->
+	<script type="text/javascript">
+		document.write(wet.builder.refTop({
+		}));
+	</script>
+</head>
+<body vocab="http://schema.org/" typeof="WebPage">
+	<div id="def-top">
+		<!-- Write closure fall-back static file -->
+		<%= render file: Rails.public_path.join("wet-v4.0.27", "top-fr.html") %>
+	</div>
+	<!-- Write closure template -->
+	<script type="text/javascript">
+		var defTop = document.getElementById("def-top");
+		defTop.outerHTML = wet.builder.top({
+			cdnEnv: "prod",
+			lngLinks: [{
+				lang: "en",
+				href: "/cansis/<%=self.request.path[8..-1]%>",
+				text: "English"
+			}],
+			breadcrumbs: [{
+				title: "Accueil",
+				href: "http://www.agr.gc.ca/index_f.php"
+			},
+			{
+				title: "SISCan",
+				href: "/siscan/index.html"
+			},
+			<%for crumb in @breadcrumbsArray do%>
+				{title: "<%=crumb.title_fr%>",
+				href: "/<%=params[:rootdir]%>/<%=crumb.dir%>/<%=crumb.filename%>"
+			}, <%end%>
+			]
+		});
+	</script>
+	<div class="container">
+		<div class="row">
+			<main role="main" property="mainContentOfPage" <%if @columns != 1 then %> class="col-md-9 col-md-push-3"<%end%>>
+				<%=yield%>
+				<div id="def-preFooter">
+					<!-- Write closure fall-back static file -->
+					<%= render file: Rails.public_path.join("wet-v4.0.27", "preFooter-fr.html") %>
+				</div>
+				<!-- Write closure template -->
+				<script type="text/javascript">
+					var defPreFooter = document.getElementById("def-preFooter");
+					defPreFooter.outerHTML = wet.builder.preFooter({
+						dateModified: "<%=yield :date%>",
+						showShare: false,
+						showFeedback: "/siscan/contact.html"
+					});
+				</script>
+			</main>
+			<%if @columns != 1 then %>
+			<nav class="wb-sec col-md-3 col-md-pull-9" typeof="SiteNavigationElement" id="wb-sec" role="navigation">
+				<!-- Insert static fall-back -->
+				<%= render file: Rails.public_path.join("wet-v4.0.27", "secMenu-fr.html") %>
+			</nav>
+			<script type="text/javascript">
+				var secondarymenu = document.getElementById("wb-sec");
+				secondarymenu.innerHTML = wet.builder.secmenu({
+					sections: [{
+						sectionName: "Cartes", 
+						menuLinks: [{
+							href: "/siscan/publications/maps/index.html", 
+							text: "Cartes imprimées"
+						},{
+							href: "/siscan/publications/webmaps.html",
+							text: "Cartes interactives"
+						}]
+					},{
+						sectionName: "Données", 
+						menuLinks: [{
+							href: "/siscan/nsdb/ecostrat/index.html",
+							text: "Cadre écologique du Canada"
+						},{
+							href: "/siscan/nsdb/slc/index.html",
+							text: "Pédopaysages du Canada"
+						}, {
+							href: "/siscan/nsdb/cli/index.html",
+							text: "Inventaire des terres du Canada"
+						}, {
+							href: "/siscan/nsdb/dss/index.html",
+							text: "Données pédologiques"
+						}]
+					},{
+						sectionName: "Publications", 
+						menuLinks: [{
+							href: "/siscan/publications/surveys/index.html",
+							text: "Levés pédologiques"
+						},{
+							href: "/siscan/publications/manuals/index.html",
+							text: "Manuels de référence"
+						}]
+					},{
+						sectionName: "Plus d'aide", 
+						menuLinks: [{
+							href: "/siscan/images/index.html",
+							text: "Gallerie de photos"
+						},{
+							href: "/siscan/glossary/index.html",
+							text: "Glossaire"
+						},{
+							href: "/siscan/index-site.html",
+							text: "Plan du site"
+						},{
+							href: "/siscan/neuw.html",
+							text: "Quoi du neuf"
+						},{
+							href: "/siscan/faq.html",
+							text: "FAQ"
+						},{
+							href: "/siscan/contact.html",
+							text: "Contactez SISCan"
+						}]
+					}]
+				});
+			</script>
+		
+			<%end%>
+		</div>
+	</div>
+	<div id="def-footer">
+		<!-- Insert static fall-back -->
+		<%= render file: Rails.public_path.join("wet-v4.0.27", "footer-fr.html") %>
+	</div>
+	<!-- Write closure template -->
+	<script type="text/javascript">
+		var defFooter = document.getElementById("def-footer");
+		defFooter.outerHTML = wet.builder.footer({
+		});
+	</script>
+	<!-- Write closure template -->
+	<script type="text/javascript">
+		document.write(wet.builder.refFooter({
+		}));
+	</script>
+</body>
+</html>

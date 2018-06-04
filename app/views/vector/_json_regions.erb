@@ -1,0 +1,3 @@
+[<%for region in @regions do%>
+	"<%=region%>"<%if region != @regions[-1] then%>,<%end%><%end%>
+]

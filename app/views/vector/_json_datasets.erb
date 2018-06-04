@@ -1,0 +1,8 @@
+[<%for dataset in @datasets do%>
+	{
+		"dataset_name":"<%=dataset.dataset_name.split("_")[3..-1].join()%>",
+		"title_en":"<%=dataset.title_en%>",
+		"title_fr":"<%=dataset.title_fr%>",
+		"records_per_polygon":"<%=dataset.keyrelationship%>"
+	}<%if dataset.id != @datasets[-1].id then%>,<%end%><%end%>
+]

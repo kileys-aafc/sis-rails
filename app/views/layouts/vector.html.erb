@@ -1,0 +1,32 @@
+# encoding: iso-8859-1
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+	<title><%if params[:rootdir] == "cansis" then%>CanSIS Vector Data Service<%else%>Service de données vecteur de SISCan<%end%></title>
+  <%= stylesheet_link_tag 'scaffold' %>
+</head>
+<body>
+
+<section id="breadcrumb">
+<%if params[:rootdir] == "cansis" then%>
+<a href="/cansis/index.html">CanSIS</a> &gt;
+<a href="/cansis/services/index.html">Web Services</a> &gt; 
+<a href="/cansis/services/vector/wadl.xml">Vector Data</a>
+<%else%>
+<a href="/siscan/index.html">SISCan</a> &gt;
+<a href="/siscan/services/index.html">Services de web</a> &gt; 
+<a href="/siscan/services/vector/wadl.xml">Données vecteur</a>
+<%end%>
+</section>
+
+<h1>
+<%= yield :h1 %>
+</h1>
+
+<p style="color: green"><%= flash[:notice] %></p>
+
+<%= yield  %>
+
+</body>
+</html>

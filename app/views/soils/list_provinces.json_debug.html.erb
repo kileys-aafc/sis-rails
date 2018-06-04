@@ -1,0 +1,22 @@
+<h1>list_provinces() method</h1>
+
+<a href="/<%=params[:rootdir]%>/services/soils/wadl.xml">WADL file</a>
+
+<table border="1">
+	<tr>
+		<th>Links</th>
+		<th>JSON output - <a href="provinces.json">raw</a></th>
+	</tr>
+	<tr>
+		<td>
+<%for province in @provinces do%>
+<a href="/<%=params[:rootdir]%>/soils/<%=province.code.downcase%>/soilcodes.json?debug=on">soil codes for <%=province.name_en%></a><br/>
+<%end%>
+		</td>
+		<td>
+<pre>
+<%= render :partial => 'list_provinces' %>
+</pre>
+		</td>
+	</tr>
+</table>

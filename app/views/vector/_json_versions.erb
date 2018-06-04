@@ -1,0 +1,3 @@
+[<%for version in @versions do%>
+	["<%=version.framework_version%>","<%=version.title_en%>","<%=version.title_fr%>"]<%if version.id != @versions[-1].id then%>,<%end%><%end%>
+]

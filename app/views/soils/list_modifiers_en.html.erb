@@ -1,0 +1,11 @@
+<%region_name = Region.find_by_code(params[:province].upcase).name_en%>
+<% content_for :title do %>Modifiers for <%=region_name%> soil code <%=@modifiers[0].soil_code%> (<%=@modifiers[0].soilname%>)<%end%>
+<% content_for :date do %>2013-06-26<%end%>
+
+<h1>Modifiers for <%=region_name%> soil code <%=@modifiers[0].soil_code%> (<%=@modifiers[0].soilname%>)</h1>
+
+<ol>
+<%for modifier in @modifiers do%>
+<li><a href="/<%=params[:rootdir]%>/soils/<%=params[:province]%>/<%=modifier.soil_code%>/<%=modifier.modifier%>/profiles.html"><%=modifier.modifier%></a><br/></li>
+<%end%>
+</ol>

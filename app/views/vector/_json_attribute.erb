@@ -1,0 +1,8 @@
+	"attribute_name":"<%=@attribute.attribute_name%>",
+	"purpose":"<%=@attribute.purpose%>",
+	"title_en":"<%=@attribute.titleprefix_en%><%=@attribute.attributedescription.title_en%><%=@attribute.titlesuffix_en%>",
+	"title_fr":"<%=@attribute.titleprefix_fr%><%=@attribute.attributedescription.title_fr%><%=@attribute.titlesuffix_fr%>",
+	"description_en":<%=@attribute.attributedescription.abstract_en.to_json.html_safe%>,
+	"description_fr":<%=@attribute.attributedescription.abstract_fr.to_json.html_safe%>,
+	"kind":"<%=@attribute.attributedescription.kind%>",
+	"keyrelationship":"<%=@attribute.dataset.keyrelationship%>"

@@ -1,0 +1,23 @@
+{
+"DocumentType":"http://opengis.net/JSON/picklist",
+"Title":"List of Frameworks",
+"Description":"List if spatial frameworks available for this web application."
+"DependentResources": [
+	{
+	"Title":"List Versions",
+	"Description":"List available versions for a specified framework."
+	"UriTemplate","/vector/{framework}/versions.json",
+	}
+]
+"TemplateParameters": {
+	"framework":[ 
+		<%for framework in @frameworks do%>{
+		"Value":"<%=framework.framework%>",
+		"Title":{
+			"en":"<%=framework.title_en%>",
+			"fr":"<%=framework.title_fr%>"
+			}
+		}<%if framework.id != @frameworks[-1].id then%>,<%end%><%end%>
+	]
+}
+}

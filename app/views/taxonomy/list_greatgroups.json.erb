@@ -1,0 +1,10 @@
+[
+<%for greatgroup in @greatgroups do%>
+	{
+		"SoilGreatGroup":"<%=greatgroup.soilgreatgroup%>",
+		"SolGrandGroupe":"<%=greatgroup.solgrandgroupe%>",
+		"Name":"<%=greatgroup.englishname%>",
+		"Nom":"<%=greatgroup.frenchname%>"
+	}<%if greatgroup.soilgreatgroup != @greatgroups[-1].soilgreatgroup then%>,<%end%>
+<%end%>
+]

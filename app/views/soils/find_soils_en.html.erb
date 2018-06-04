@@ -1,0 +1,20 @@
+<% content_for :title do %>Soils<%end%>
+<% content_for :date do %>2013-09-09<%end%>
+
+<h1>Search results</h1>
+<%if !params[:provinces].blank? then%><p>Provinces = <%=params[:provinces]%></p><%end%>
+<%if !params[:orders].blank? then%><p>Soil Orders = <%=params[:orders]%></p><%end%>
+<%if !params[:ggroups].blank? then%><p>Soil Great Groups = <%=params[:ggroups]%></p><%end%>
+<%if !params[:sgroups].blank? then%><p>Soil SubGroups = <%=params[:sgroups]%></p><%end%>
+<%if !params[:names].blank? then%><p>Soil Names = <%=params[:names]%></p><%end%>
+<%if !params[:kinds].blank? then%><p>Kind = <%=params[:kinds]%></p><%end%>
+
+<%if @soils.size > 0 then %>
+<ol>
+<%for soil in @soils do%>
+	<li><a href="/<%=params[:rootdir]%>/soils/<%=soil[0..1].downcase%>/<%=soil[2..4]%>/<%=soil[5..9]%>/<%=soil[10]%>/description.html"><%=soil%></a></li>
+<%end%>
+</ol>
+<%else%>
+<p><em>There are no soils that match these search criteria.</em></p>
+<%end%>

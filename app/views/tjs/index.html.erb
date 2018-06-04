@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title>Table Joining Service, powered by MapAttributes</title>
+  </head>
+  <body>
+    <div id="page">
+      <div id="sidebar">
+      </div>
+
+      <div id="content">
+        <div id="header">
+          <h2>Table Joining Service version 1.0</h2>
+        </div>
+
+        <ul>
+      
+          <li>
+            <h3>GetCapabilities</h3>
+            <ul>
+              <li>returns en
+                <ul>
+                  <li><a href="service?service=TJS&AcceptVersions=1.0&request=GetCapabilities">GetCapabilities</a> no lang</li>
+                  <li><a href="service?service=TJS&AcceptVersions=1.0&request=GetCapabilities&AcceptLanguages=MUL">GetCapabilities</a> language=MUL</li>
+                  <li><a href="service?service=TJS&AcceptVersions=1.0&request=GetCapabilities&AcceptLanguages=en">GetCapabilities</a> language=en</li>
+                  <li><a href="service?service=TJS&AcceptVersions=1.0&request=GetCapabilities&AcceptLanguages=en,fr">GetCapabilities</a> language=en,fr</li>
+                </ul>
+              </li>
+              <li>returns fr
+                <ul>
+                  <li><a href="service?service=TJS&request=GetCapabilities&AcceptVersions=1.0&AcceptLanguages=fr">GetCapabilities</a> language=fr</li>
+                  <li><a href="service?service=TJS&request=GetCapabilities&AcceptVersions=1.0&AcceptLanguages=en-US,fr">GetCapabilities</a> language=en-US,fr</li>
+                  <li><a href="service?service=TJS&request=GetCapabilities&AcceptVersions=1.0&AcceptLanguages=fr,en">GetCapabilities</a> language=fr,en</li>
+                  <li><a href="service?service=TJS&request=GetCapabilities&AcceptVersions=1.0&AcceptLanguages=fr-CA">GetCapabilities</a> language=fr-CA</li> (not working)
+                </ul>
+              </li>
+            </ul>
+          </li>
+          
+          <li>
+            <h3>DescribeFrameworks</h3>
+            <ul>
+              <li><a href="service?service=TJS&request=DescribeFrameworks&version=1.0">DescribeFrameworks (all)</a> </li> 
+              <li><a href="service?service=TJS&request=DescribeFrameworks&version=1.0&XSL=/schemas/tjs/1.0/xsl/DescribeFrameworks_response.xsl">DescribeFrameworks (all with xsl)</a></li>
+              <li><a href="service?service=TJS&request=DescribeFrameworks&version=1.0&FrameworkURI=http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/v1">DescribeFrameworks (just Ecozones v1)</a></li>
+              <li><a href="service?service=TJS&request=DescribeFrameworks&version=1.0&AcceptLanguages=fr&FrameworkURI=http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/v1">DescribeFrameworks (just Ecozones)</a> language=fr</li>
+            </ul>
+          </li>
+          
+          <li>
+            <h3>DescribeDatasets</h3>
+            <ul>
+              <li><a href="service?service=TJS&request=DescribeDatasets&version=1.0">DescribeDatasets (all)</a></li>
+              <li><a href="service?service=TJS&request=DescribeDatasets&version=1.0&FrameworkURI=http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/v1">DescribeDatasets (just Ecozones v1)</a></li>
+              <li><a href="service?service=TJS&request=DescribeDatasets&version=1.0&AcceptLanguages=fr&FrameworkURI=http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/v1">DescribeDatasets (just Ecozones v1)</a> language=fr</li>
+              <li><a href="service?service=TJS&request=DescribeDatasets&version=1.0&FrameworkURI=http://sis.agr.gc.ca/cansis/nsdb/slc/v3.1.1">DescribeDatasets (just SLC 3.1.1)</a></li>
+              <li><a href="service?service=TJS&request=DescribeDatasets&version=1.0&FrameworkURI=http://sis.agr.gc.ca/cansis/nsdb/slc/v3.1.1&XSL=/schemas/tjs/1.0/xsl/DescribeDatasets_response.xsl">DescribeDatasets (just SLC 3.1.1) with XSL</a></li>
+              <li><a href="service?service=TJS&request=DescribeDatasets&version=1.0&FrameworkURI=http://sis.agr.gc.ca/cansis/nsdb/slc/v3.1.1&XSL=/schemas/tjs/1.0/xsl/DescribeDatasets_response_cansis_explore.xsl">DescribeDatasets (just SLC 3.1.1) with CanSIS explore XSL</a></li>
+            </ul>
+          </li>
+          
+          <li>
+            <h3>DescribeData</h3> 
+            <ul>
+        <li><a href="service?service=TJS&request=DescribeData&version=1.0&FrameworkURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fslc%2Fv3.1.1&DatasetURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fslc%2Fv3.1.1%2Fcomponent">DescribeData (SLC 3.1.1 component)</a></li>
+        <li><a href="service?service=TJS&request=DescribeData&version=1.0&FrameworkURI=http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/v1&DatasetURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1%2Fpermafrost">DescribeData (Ecozones 1 Permafrost)</a></li>
+				<li><a href="service?service=TJS&request=DescribeData&version=1.0&FrameworkURI=http://sis.agr.gc.ca/cansis/nsdb/ecostrat/zone/v1&DatasetURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1%2Fsurface_material">DescribeData (Ecozones 1 Surface Material)</a></li>
+        <li><a href="service?service=TJS&request=DescribeData&version=1.0&FrameworkURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fslc%2Fv3.1.1&DatasetURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fslc%2Fv3.1.1%2Fcomponent&XSL=%2Fschemas%2Ftjs%2F1.0%2Fxsl%2FDescribeData_response.xsl">DescribeData (SLC 3.1.1 component) with XSL</a></li>
+        <li><a href="service?service=TJS&request=DescribeData&version=1.0&FrameworkURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fslc%2Fv3.1.1&DatasetURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fslc%2Fv3.1.1%2Fcomponent&XSL=%2Fschemas%2Ftjs%2F1.0%2Fxsl%2FDescribeData_response.xsl">DescribeData (SLC 3.1.1 component - all attributes) with XSL</a></li>
+        <li><a href="service?service=TJS&request=DescribeData&version=1.0&FrameworkURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fslc%2Fv3.1.1&DatasetURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fslc%2Fv3.1.1%2Fcomponent&attributes=slope%2Cstone&XSL=%2Fschemas%2Ftjs%2F1.0%2Fxsl%2FDescribeData_response.xsl">DescribeData (SLC 3.1.1 component - slope, stone) with XSL</a></li>
+            </ul>
+          </li>
+          
+          <li>
+            <h3>GetData</h3>
+            <ul>
+              <li><a href="service?service=TJS&request=GetData&version=1.0&FrameworkURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fslc%2Fv3.1.1&DatasetURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fslc%2Fv3.1.1%2Fcomponent&Attributes=cmp%2Ckind">GetData (SLC 3.1.1 Component Table: CMP, KIND)</a> (SLOW) </li>
+              <li><a href="service?service=TJS&request=GetData&version=1.0&FrameworkURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1&DatasetURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1%2Fpermafrost&Attributes=cmp%2Cpermafrost">GetData (Ecozones 1 Permafrost: PERMAFROST)</a></li>
+              <li><a href="service?service=TJS&request=GetData&version=1.0&FrameworkURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1&DatasetURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1%2Fpermafrost&Attributes=cmp%2Cpercent%2Cpermafrost">GetData (including cmp,percent, permafrost)</a></li>
+              <li><a href="service?service=TJS&request=GetData&version=1.0&FrameworkURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1&DatasetURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1%2Fpermafrost&Attributes=cmp%2Cpercent%2Cpurplefrost">GetData (incorrect attribute name - should fail gracefully)</a>** NEED TO FIX **</li> 
+            </ul>
+          </li>
+
+          <li>
+            <h3>DescribeJoinAbilities</h3>
+            <ul>
+              <li><a href="service?service=TJS&request=DescribeJoinAbilities&version=1.0">DescribeJoinAbilities</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <h3>DescribeKey</h3>
+            <ul>
+              <li><a href="service?service=TJS&request=DescribeKey&version=1.0&FrameworkURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1">DescribeKey</a> (working - but should unique and sort key) </li>
+            </ul>
+          </li>
+
+          <li>
+            <h3>JoinData</h3>
+            <ul>
+              <li><a href="service?service=TJS&request=JoinData&version=1.0&GetDataURL=http%3A%2F%2Flocalhost%2Ftestnames.xml&FrameworkURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1&stylingURL=http://localhost%2Fpalettes%2Fca_all_ecozones_v1_names.xml">JoinData</a>(Ecozone Names with static xml) </li>
+              <li><a href="service?service=TJS&request=JoinData&version=1.0&GetDataURL=http%3A%2F%2Flocalhost%2Fschemas%2Ftjs%2F1.0%2Fexamples%2Fgetdata3_temperature.xml&FrameworkURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1&classificationURL=http://localhost%2Fclassify%2F1.0%2Ftemperature001.xml">JoinData</a>(Ecozone Temperature with static xml) </li>
+              <li><a href="service?service=TJS&request=JoinData&version=1.0&GetDataURL=http%3A%2F%2Flocalhost%2Ftjs%2Fserv%3Fservice%3DTJS%26version%3D1.0%26request%3DGetData%26FrameworkURI%3Dhttp%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1%26DatasetURI%3Dhttp%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1%2Fpopulation_1991%26Attributes%3Dtotpop_91&FrameworkURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1&stylingURL=http%3A%2F%2Flocalhost%2Fpalettes%2Fca_all_ecozones_v1_names.xml">JoinData</a>(Ecozone Names - need to fix up data description in gDatasets and gAttributes...and this URL) </li>
+              <li><a href="service?service=TJS&request=JoinData&version=1.0&GetDataURL=http%3A%2F%2Flocalhost%2Ftjs%2Fserv%3Fservice%3DTJS%26version%3D1.0%26request%3DGetData%26FrameworkURI%3Dhttp%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1%26DatasetURI%3Dhttp%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1%2Fpopulation_1991%26Attributes%3Dtotpop_91&FrameworkURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1&stylingURL=http%3A%2F%2Flocalhost%2Fpalettes%2Fca_all_ecozones_v1_names.xml">JoinData</a>(count, not converted to measure - right now white because palette is incorrect) </li>
+              <li><a href="service?service=TJS&request=JoinData&version=1.0&GetDataURL=http%3A%2F%2Flocalhost%2Ftjs%2Fserv%3Fservice%3DTJS%26version%3D1.0%26request%3DGetData%26FrameworkURI%3Dhttp%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1%26DatasetURI%3Dhttp%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1%2Fpermafrost%26Attributes%3Dcmp%2Cpermafrost&FrameworkURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1">JoinData</a> (returns error: Many, not One) </li>
+              <li><a href="service?service=TJS&request=JoinData&version=1.0&GetDataURL=http%3A%2F%2Flocalhost%2Ftjs%2Fserv%3Fservice%3DTJS%26version%3D1.0%26request%3DGetData%26FrameworkURI%3Dhttp%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1%26DatasetURI%3Dhttp%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1%2Ftemperature_1961-1990%26Attributes%3Dtmean_ann&FrameworkURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1&stylingURL=http%3A%2F%2Flocalhost%2Fpalettes%2Fblue_fuschia_ramp.xml">JoinData</a>(measure, no classification) </li>
+              <li><a href="service?service=TJS&request=JoinData&version=1.0&GetDataURL=http%3A%2F%2Flocalhost%2Ftjs%2Fserv%3Fservice%3DTJS%26version%3D1.0%26request%3DGetData%26FrameworkURI%3Dhttp%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1%26DatasetURI%3Dhttp%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1%2Ftemperature_1961-1990%26Attributes%3Dtmean_ann&FrameworkURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1&stylingURL=http%3A%2F%2Flocalhost%2Fpalettes%2Fblue_fuschia_ramp.xml&ClassificationURL=http%3A%2F%2Flocalhost%2Fclassify%2F1.0%2Ftemperature001.xml">JoinData</a>(measure, with classification) </li>
+            </ul>
+						<p>on metamapper.com</p>
+            <ul>
+              <li><a href="http://metamapper.com/tjs/service?service=TJS&request=JoinData&version=1.0&GetDataURL=http%3A%2F%2Fmetamapper.com%2FTJS%2Fserv%3Fservice%3DTJS%26version%3D1.0%26request%3DGetData%26FrameworkURI%3Dhttp%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1%26DatasetURI%3Dhttp%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1%2Ftemperature_1961-1990%26Attributes%3Dtmean_ann&FrameworkURI=http%3A%2F%2Fsis.agr.gc.ca%2Fcansis%2Fnsdb%2Fecostrat%2Fzone%2Fv1&stylingURL=http://metamapper.com%2Fpalettes%2Fblue_fuschia_ramp.xml">JoinData</a>(measure, seems to work) </li>
+            </ul>
+          </li>
+          <li>
+            <h3>Errors</h3>
+            <ul>
+              <li><a href="service?request=GetCapabilities&version=1.0">Missing Service</a></li>
+              <li><a href="service?service=TJS&version=1.0">Missing Request</a></li>
+            </ul>
+          </li>
+        </ul>
+
+
+        <div id="header">
+          <h2>Geographic Linkage Service version 0.10.2</h2>
+        </div>
+
+        <ul>
+          <li>
+            <h3>Frameworks</h3>
+            <ul>
+              <li><a href="service?service=TJS&version=0.10.2&request=DescribeFrameworks">DescribeFrameworks (all)</a></li>
+              <li><a href="service?service=TJS&version=0.10.2&request=DescribeFrameworks&xsl=/schemas/tjs/0.10.2/xsl/DescribeFrameworks_response.xsl">DescribeFrameworks (all)</a></li>
+            </ul>
+          </li>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<%content_for :h1 do%>list_framework_versions() method<%end%>
+
+<h2>Parameters</h2>
+<ol>
+	<li>framework: "<%=params[:framework]%>"</li>
+</ol>
+
+<h2>Results</h2>
+
+<p><%=@versions.size%> version<%if @versions.size > 1 then%>s<%end%> found.</p>
+
+<%for version in @versions do%>
+<table>
+<tr><td><a href="<%=version.framework_version%>/regions.html"><%=version.title_en%></a></td></tr>
+</table>
+<br/>
+<%end%>
+

@@ -1,0 +1,33 @@
+# encoding: iso-8859-1
+<% content_for :title do %>Illustrations de pédo-paysages<%end%>
+<% content_for :date do %>2013-06-25<%end%>
+
+<h1>Illustrations de pédo-paysages</h1>
+
+<p>Une série d'images qui illustrent les notions utilisées dans les cartes du <a href="/siscan/nsdb/slc/index.html">Pédo-paysages du Canada</a>.</p>
+
+<%for region in @allregions do%>
+<section>
+	<h2><%=region.fulltitle_fr%></h2>
+	<div class="row">
+		<div class="col-md-4">
+			<figure>
+				<a href="/siscan/images/<%=region.region_id%>/index.html" title="Images des Pédo-paysages du Canada pour <%=region.fulltitle_fr%>"><img src="http://sis.agr.gc.ca<%=region.picture_url%>"  alt="Images des Pédo-paysages du Canada pour <%=region.fulltitle_fr%>" class="image-left blockSpacerRight" /></a>
+			</figure>
+		</div>
+		<div class="col-md-4">
+			<p>
+				<%for factor in @regionHash[region.region_id] do%>
+				<a href="/siscan/images/<%=region.region_id%>/<%=factor.factor_id%>/index.html" title="<%=factor[:smalltitle_fr]%> in <%=region.fulltitle_fr%>"><%=factor[:smalltitle_fr]%></a><br /><br />
+				<%end%>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class ="col-md-6">
+			<a href="/siscan/images/<%=region.region_id%>/index.html">Sols et paysages associés</a>
+		</div>
+	</div>
+	<hr />
+</section>
+<%end%>

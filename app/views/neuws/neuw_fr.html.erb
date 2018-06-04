@@ -1,0 +1,45 @@
+# encoding: iso-8859-1
+<%months = {1=>"Janvier", 2=>"Février", 3=>"Mars", 4=>"Avril", 5=>"Mai", 6=>"Juin", 7=>"Juillet", 8=>"Août", 9=>"Septembre", 10=>"Octobre", 11=>"Novembre", 12=>"Décembre"}%>
+<% content_for :title do %>SISCan Quoi du Neuf<%end%>
+<% content_for :date do %><%=Time.now.strftime("%Y-%m-%d")%><%end%>
+
+<section>
+<h1 class="alignCenter">SISCan</h1>
+<h2 class="alignCenter">Quoi du Neuf <a href="/siscan/neuw.xml"><img src="/cansis/images/feed28x28.png" alt="Fils RSS" /></a></h2>
+
+<table class="table table-bordered">
+<thead>
+<tr>
+  <th id="ttl">Title</th> 
+  <th id="dte">Date</th>  
+</tr>  
+</thead>
+<tbody>
+<%for item in @neuws do%>
+<tr>
+  <th id="r<%=item.id%>" headers="dte"><a href="<%=item.url_fr%>"><%=item.title_fr%></a></th>
+  <td headers="ttl r<%=item.id%>" align="right"><%=months[item.created_at.month]%> <%=item.created_at.strftime("%Y")%></td>
+</tr>
+<%end%>
+</tbody>
+</table>
+
+<h2>Chronologie Historique du Site Web SISCan</h2>
+
+<table class="table table-bordered">
+<thead>
+<tr>
+  <th id="ttl">Title</th> 
+  <th id="dte">Date</th>  
+</tr>  
+</thead>
+<tbody>
+<%for item in @oldNeuws do%>
+<tr>
+  <th id="r<%=item.id%>" headers="dte"><a href="<%=item.url_fr%>"><%=item.title_fr%></a></th>
+  <td headers="ttl r<%=item.id%>" align="right"><%=months[item.created_at.month]%> <%=item.created_at.strftime("%Y")%></td>
+</tr>
+<%end%>
+</tbody>
+</table>
+</section>

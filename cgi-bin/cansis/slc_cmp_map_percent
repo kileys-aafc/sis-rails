@@ -1,0 +1,144 @@
+#!/usr/bin/perl
+#
+#
+
+require "ctime.pl";
+$Date = &ctime(time);
+
+if ($ENV{'REQUEST_METHOD'} eq "POST") {
+	$form = <STDIN>;
+} else { 
+	$form = $ENV{'QUERY_STRING'};
+}
+@pairs = split(/&/,$form);
+
+foreach $pair (@pairs)
+{
+	($name, $value) = split(/=/,$pair);
+
+	$value =~ s/\+/ /g;
+	
+	$value =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C", hex($1))/eg;	
+	$value =~ s/~!/ ~!/g;
+	$test{$name} .= $value;
+	
+
+}
+if ($test{GIS} eq "ARC/INFO") {
+print "Content-type: text/html\n\n";
+print "<HTML>\n";
+print "<HEAD>\n";
+print "<TITLE>Mapping Component Table Attributes: $test{ITEM} = $test{VALUE}</TITLE>\n";
+print "</HEAD>\n";
+print "<BODY>\n";
+print "<H1>Mapping Component Table attributes using ARC/INFO:<BR>Percentage distribution of $test{ITEM} = $test{VALUE}</H1>\n";
+print "<I>To map the percentage distribution of $test{ITEM} = $test{VALUE}, you need to</I><P>\n";
+print "<PRE>\n";
+print "/* summarize the contents of $test{ITEM} by polygon\n";
+print "\n";
+print "additem $test{SLC}.cmp $test{SLC}.cmp2 sl-$test{ITEM} 9 9 C\n";
+print "\n";
+print "&data ARC INFO\n";
+print "ARC\n";
+print "SELECT $test{SLC}.CMP2\n";
+print "CONCATENATE SL-$test{ITEM} FROM SL,$test{ITEM}\n";
+print "Q STOP\n";
+print "&END\n";
+print "\n";
+print "frequency $test{SLC}.cmp2 $test{SLC}.$test{ITEM}$test{VALUE}\n";
+print "sl-$test{ITEM}\n";
+print "sl\n";
+print "$test{ITEM}\n";
+print "end\n";
+print "percent\n";
+print "end\n";
+print "\n";
+print "/* reselect all the $test{ITEM} components with value '$test{VALUE}'\n";
+print "\n";
+print "&data ARC INFO\n";
+print "ARC\n";
+print "SELECT $test{SLC}.$test{ITEM}$test{VALUE}\n";
+print "RESEL $test{ITEM} = '$test{VALUE}'\n";
+print "NSEL\n";
+print "PURGE\n";
+print "Y\n";
+print "Q STOP\n";
+print "&END\n";
+print "\n";
+print "/* clean up files\n";
+print "\n";
+print "&data ARC INFO\n";
+print "ARC\n";
+print "SEL $test{SLC}.CMP2\n";
+print "DELETE $test{SLC}.CMP2\n";
+print "Y\n";
+print "Q STOP\n";
+print "&END\n";
+print "</PRE>\n";
+print "Now: relate the $test{SLC}.PAT to the new file $test{SLC}.$test{ITEM}$test{VALUE}, via SL, and map the PERCENT field</I>\n";
+print "<HR>These instructions were developed for ARC/INFO version 7.\n";
+print "<HR><ADDRESS>\n";
+print "<I>Source:  <A HREF=\"/cansis/citations/schut.html\">Peter Schut</A>\n";
+print "<BR>Contact: <A HREF=\"/cansis/org/head.html\">Head, CanSIS</A>\n";
+print "<BR>Updated:</I> 1996.06.04\n";
+print "<BR>Generated:</I> $Date\n";
+print "</ADDRESS>\n";
+print "</BODY>\n";
+print "</HTML>\n";
+} else { 
+print "Content-type: text/html\n\n";
+print "<HTML>\n";
+print "<HEAD>\n";
+print "<TITLE>Mapping Component Table Attributes: $test{ITEM} = $test{VALUE}</TITLE>\n";
+print "</HEAD>\n";
+print "<BODY>\n";
+print "<H1>Mapping Component Table attributes using ARCVIEW:<BR>Percent distribution of $test{ITEM} = $test{VALUE}</H1>\n";
+print "To map the percentage distribution of $test{ITEM} = $test{VALUE}, you need to<P>\n";
+print "<OL><LI>summarize the contents of $test{ITEM} by polygon\n";
+print "    <OL><LI><DT>Create a new view\n";
+print "            <DD><I>Views ; New</I>\n";
+print "        <LI><DT>Add the SLC coverage as a theme\n";
+print "            <DD><I>View ; Add Theme ; /disk3/prod/cs95.001/pec001</I>\n";
+print "        <LI><DT>Load the Component table\n";
+print "            <DD><I>Tables ; Add ; /disk3/prod/cs95.001/pec001/info ; slc.cmp</I>\n";
+print "        <LI><DT>Prepare a field to summarize $test{ITEM} by SLC polygon\n";
+print "            <DD><I><OL><LI>Table ; Start Editing\n";
+print "                       <LI>Edit ; Add Field ; sl-$test{ITEM} ; string ; 9 ; OK\n";
+print "                       <LI>highlight the new sl-$test{ITEM} field in the slc.cmp table\n";
+print "                       <LI>calculate the value to equal [Sl].asstring + [$test{ITEM}]\n";
+print "                   </OL></I>\n";
+print "        <LI><DT>summarize $test{ITEM} by SLC polygon in a new table\n";
+print "            <DD><I><OL><LI>highlight the sl-$test{ITEM} field\n";
+print "                       <LI>click the summarize button\n";
+print "                       <LI>Sl ; First ; Add\n";
+print "                       <LI>$test{ITEM} ; First ; Add\n";
+print "                       <LI>Percent ; Sum ; Add ; OK (<B>$test{ITEM}bySL</B>)\n";
+print "                   </OL></I>\n";
+print "    </OL><P>\n";
+print "    <LI>reselect the records with the appropriate $test{ITEM} value\n";
+print "    <OL><LI><DT>identify these records in $test{ITEM}bySL\n";
+print "            <DD><I><OL><LI>Use Query builder to select those records where first_$test{ITEM} = the value to be mapped\n";
+print "                   </OL></I>\n";
+print "        <LI><DT>create a file (export, then import) with these records\n";
+print "            <DD><I><OL><LI>File ; Export (<B>$test{ITEM}</B>)\n";
+print "                       <LI>Tables ; Add\n";
+print "                   </OL></I>\n";
+print "    </OL><P>\n";
+print "    <LI>map $test{ITEM}\n";
+print "    <OL><LI><DT>Join $test{ITEM} to the PAT\n";
+print "            <DD><I><OL><LI>Open the table of the active theme\n";
+print "                       <LI>Join $test{ITEM} to Attributes of the polygon coverage via first_sl=sl\n";
+print "                  </OL></I>\n";
+print "        <LI><DT>map percent\n";
+print "    </OL>\n";
+print "</OL>\n";
+print "<HR>These instructions were developed for ARCVIEW version 2.1\n";
+print "<HR><ADDRESS>\n";
+print "<I>Source:  <A HREF=\"/cansis/citations/schut.html\">Peter Schut</A>\n";
+print "<BR>Contact: <A HREF=\"/cansis/org/head.html\">Head, CanSIS</A>\n";
+print "<BR>Updated:</I> 1996.10.09\n";
+print "<BR>Generated:</I> $Date\n";
+print "</ADDRESS>\n";
+print "</BODY>\n";
+print "</HTML>\n";
+}

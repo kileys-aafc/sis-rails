@@ -1,0 +1,16 @@
+<h1>list_polygons() method</h1>
+
+<h2>Parameters</h2>
+<ol>
+	<li>framework: "<%=params[:framework]%>"</li>
+	<li>version: "<%=params[:version]%>"</li>
+	<li>region: "<%=params[:region]%>"</li>
+	<li>polygonset: "<%=params[:polygonset]%>"</li>
+</ol>
+
+<h2>Results</h2>
+<p><%=@polygonids.size%> polygon<%if @polygonids.size > 1 then%>s<%end%> found.</p>
+
+<%for polygon in @polygonids do%>
+<a href="../polygons/<%=polygon%>.kml"><%=polygon%></a><br/>
+<%end%>

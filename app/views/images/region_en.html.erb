@@ -1,0 +1,44 @@
+<% content_for :title do %>Photo Gallery<%end%>
+<% content_for :date do %>2013-06-25<%end%>
+
+<div class="alignCenter">
+<!--region selector-->
+<nav>
+<%for region in @allregions do%>
+  <%if region.region_id==@region.region_id then%>
+		<%=region.smalltitle_en%>
+  <%else%>
+		<a href="/<%=params[:rootdir]%>/images/<%=region.region_id%>/index.html"><%=region.smalltitle_en%></a>
+  <%end%>
+  <%if region.region_id!=@allregions[-1].region_id then%> | 
+  <%end%>
+<%end%>
+</nav>
+
+<h1>Soil Landscape Images for<br/><%=@region.inlinetitle_en%></h1>
+<!--landscape and soil images-->
+
+<%for image in @images do%>
+	<% if image.landscape != nil then%><% gimage = Gallery_image.where(:url=>image.landscape).first%>
+	<div class="span-3">
+		<figure>
+			<a href="<%=image.landscape%>.jpg"><img src="<%=image.landscape%>2.jpg" alt="View a larger version of this image (jpg).  (<%=gimage.title_en%>)" /></a><br/>
+			<figcaption><%=gimage.abstract_en%></figcaption>
+		</figure>
+	</div>
+	<%else%>
+	<div class="span-3">
+		<br />
+	</div>
+	<%end%>           
+	<% if image.soil != nil then%><% gimage = Gallery_image.where(:url=>image.soil).first%>
+	<div class="span-3">
+		<figure>
+			<a href="<%=image.soil%>.jpg"><img src="<%=image.soil%>2.jpg" alt="View a larger version of this image (jpg).  (<%=gimage.title_en%>)" /></a><br/>
+			<figcaption><%=gimage.abstract_en%></figcaption>
+		</figure>
+	</div>
+	<%end%>
+<%end%>
+
+</div>

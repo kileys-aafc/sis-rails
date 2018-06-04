@@ -1,0 +1,423 @@
+<% content_for :title do %>Vector data client<%end%>
+<% content_for :date do %>2013-07-02<%end%>
+<style>
+#versionInput { display: none; }
+#regionInput { display: none; }
+#listPolygonIdentifiersButton { display: none; }
+#datasetInput { display: none; }
+#attributeInput { display: none; }
+#listValuesButton { display: none; }
+#gdasInput { display: none; }
+#valueInput { display: none; }
+#styleInput { display: none; }
+th { text-align: right;}
+.vertAlign{
+    display: inline-block;
+    vertical-align:middle;
+}
+</style>
+<script type="text/javascript" src="/javascripts/jquery.js"></script>
+<script type="text/javascript" charset="utf-8">
+$( document ).ready (function() { 
+	$('#versionInput').hide();
+	$('#regionInput').hide();
+	$('#actionInput').hide();
+	$('#listPolygonIdentifiersButton').hide();
+	$('#datasetInput').hide();
+	$('#attributeInput').hide();
+	$('#valueInput').hide();
+	$('#formatInput').hide();
+	$('#go').hide();
+})
+versionsArray = [];
+regionsArray = [];
+datasetsArray = [];
+attributesArray = [];
+</script>
+
+<h1>Vector Data Client</h1>
+<p>This demonstration client facilitates the use of the <a href="/cansis/services/vector/wadl.xml">Vector Data Service</a>.</p>
+
+<form id="mapit" action="">
+	<table>
+		<tbody id="frameworkInput">
+			<tr>
+				<th width="100px">
+					<label for="framework">Spatial Framework:</label>
+				</th>
+				<td colspan="2">
+					<select name="framework_id" id="framework" onchange="changedFramework()">
+						<option value="tbd" select="selected">Select a framework...</option>
+						<option value="ecozones">Ecozones</option>
+						<option value="ecoprovinces">Ecoprovinces</option>
+						<option value="ecoregions">Ecoregions</option>
+						<option value="ecodistricts">Ecodistricts</option>
+						<option value="slc">Soil Landscapes (SLC)</option>
+						<option value="dss">Detailed Soil Surveys (DSS)</option>
+					</select>
+				</td>
+			</tr>
+		</tbody>
+<script type="text/javascript" charset="utf-8">
+function changedFramework(){
+	$('#versionInput').hide();
+	$('#regionInput').hide();
+	$('#actionInput').hide();
+	$('#listPolygonIdentifiersButton').hide();
+	$('#datasetInput').hide();
+	$('#attributeInput').hide();
+	$('#valueInput').hide();
+	$('#formatInput').hide();
+	$('#go').hide();
+	url = "/cansis/services/vector/" + $("select#framework").val() + "/versions.json"
+	$.getJSON(url,{}, function(versionsArray){
+		// console.log(versionsArray.length);
+		if (versionsArray.length == 1) {
+			$("select#version").hide();
+			$("select#version").html('<option value="' + versionsArray[0][0] + '">' + versionsArray[0][1] + '</option>');
+			$("div#one_version").html(versionsArray[0][1]);
+			$("div#one_version").show();
+			changedVersion();
+		} 
+		if (versionsArray.length > 1) {
+			var options = '<option value="tbd" select="selected">Select a version...</option>';
+			for (var i in versionsArray) {
+				options += '<option value="' + versionsArray[i][0] + '">' + versionsArray[i][1] + '</option>';
+			}
+			$("div#one_version").hide();
+			$("div#one_version").html('');
+			$("select#version").html(options);
+			$("select#version").show();
+		}
+		$('#version').attr("disabled", false);
+		$('#versionInput').show(250);
+	})
+}
+</script>
+		
+		<tbody id="versionInput">
+			<tr>
+				<th>
+					<label for="version">Version:</label>
+				</th>
+				<td colspan="2">
+					<div id="one_version"></div>
+					<select name="version_id" id="version" onchange="changedVersion()">
+					</select>
+				</td>
+			</tr>
+		</tbody>
+<script type="text/javascript" charset="utf-8">
+function changedVersion(){
+	$('#regionInput').hide();
+	$('#actionInput').hide();
+	$('#listPolygonIdentifiersButton').hide();
+	$('#datasetInput').hide();
+	$('#attributeInput').hide();
+	$('#valueInput').hide();
+	$('#formatInput').hide();
+	$('#go').hide();
+	url = "/cansis/services/vector/" + $("select#framework").val() + "/" + $("select#version").val() + "/regions.json";
+	$.getJSON(url,{}, function(regionsArray){
+			if (regionsArray.length == 1) {
+				$("select#region").hide();
+				$("select#region").html('<option value="' + regionsArray[0] + '">' + regionsArray[0] + '</option>');
+				$("div#one_region").html(regionsArray[0]);
+				$("div#one_region").show();
+				changedRegion();
+			} 
+			if (regionsArray.length > 1) {
+				var options = '<option value="tbd" select="selected">Select a region...</option>';
+				for (var i in regionsArray) {
+					options += '<option value="' + regionsArray[i] + '">' + regionsArray[i] + '</option>';
+				}
+				$("div#one_region").hide();
+				$("div#one_region").html('');
+				$("select#region").html(options);
+				$("select#region").show();
+			}
+		$('#region').attr("disabled", false);
+		$('#regionInput').show(250);
+	})
+}
+</script>
+
+		<tbody id="regionInput">
+			<tr>
+				<th>
+					<label for="region">Geographic Region:</label>
+				</th>
+				<td colspan="2">
+					<div id="one_region"></div>
+					<select name="region_id" id="region"  onchange="changedRegion()">
+					</select>
+				</td>
+			</tr>
+		</tbody>
+<script type="text/javascript" charset="utf-8">
+function changedRegion(){
+	$('#actionInput').hide();
+	$('#listPolygonIdentifiersButton').hide();
+	$('#datasetInput').hide();
+	$('#attributeInput').hide();
+	$('#valueInput').hide();
+	$('#formatInput').hide();
+	$('#go').hide();
+	if ($("select#region").val() != "tbd") {
+		var options = '<option value="tbd" select="selected">Choose an action...</option>';
+		options += '<option value="polyids">List polygon identifiers</option>';
+		options += '<option value="data">Display Data</option>';
+		$("select#action").html(options);
+		$('#actionInput').show(250);
+	}
+}
+</script>
+
+		<tbody id="actionInput">
+			<tr>
+				<th>
+					<label for="action">Action:</label>
+				</th>
+				<td colspan="2">
+					<div class="vertAlign">
+						<select name="action" id="action" onchange="changedAction()">
+						</select>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+<script type="text/javascript" charset="utf-8">
+function changedAction(){
+	$('#listPolygonIdentifiersButton').hide();
+	$('#datasetInput').hide();
+	$('#attributeInput').hide();
+	$('#valueInput').hide();
+	$('#formatInput').hide();
+	$('#go').hide();
+	if ($("select#action").val() == "polyids") {
+		$('#list_polyids_format').attr("disabled", false);
+		$('#listPolygonIdentifiersButton').show(250);
+	} 
+	if ($("select#action").val() == "data") {
+		url = "/cansis/services/vector/" + $("select#framework").val() + "/" + $("select#version").val() + "/" + $("select#region").val() + "/datasets.json";
+		$.getJSON(url,{}, function(json){
+			var options = '<option value="tbd" select="selected">Select a dataset...</option>';
+			for (var i in json) {
+				options+= '<option value="' + json[i].dataset_name + '">' + json[i].title_en +"</option>";
+			}
+			$('#dataset').attr("disabled", false);
+			$("select#dataset").html(options);
+			$('#datasetInput').show(250);
+		})
+	} 
+}
+</script>
+
+		<tbody id="listPolygonIdentifiersButton">
+			<tr>
+				<th></th>
+				<td>
+					<div class="vertAlign">
+						Show identifiers as 
+						<select name="list_polyids_format" id="list_polyids_format">
+							<option value="json" select="selected">JSON</option>
+							<option value="html">HTML</option>
+						</select>
+					</div>
+					<div class="vertAlign">
+						<input type="button" value="Go" onclick="javascript:doListPolygonIds();" />
+					</div>
+				</td>
+			</tr>
+		</tbody>
+<script type="text/javascript">
+function doListPolygonIds() {
+  var theForm=document.getElementById("mapit");
+	theForm.action = "/cansis/services/vector/"+$("select#framework").val()+"/"+$("select#version").val()+"/"+$("select#region").val()+"/polygonids."+$("select#list_polyids_format").val();
+	$(':input').prop('disabled', true);
+  theForm.submit();
+	// make sure the form can still be edited
+	$(':input').prop('disabled', false);
+}
+</script>
+
+		<tbody id="datasetInput">
+			<tr>
+				<th>
+					<label for="dataset">Dataset:</label>
+				</th>
+				<td>
+					<select name="dataset" id="dataset" onchange="changedDataset()">
+					</select>
+				</td>
+			</tr>
+		</tbody>
+<script type="text/javascript" charset="utf-8">
+function changedDataset(){
+	$('#attributeInput').hide();
+	$('#valueInput').hide();
+	$('#formatInput').hide();
+	$('#go').hide();
+	url = "/cansis/services/vector/" + $("select#framework").val() + "/" + $("select#version").val() + "/" + $("select#region").val() + "/" + $("select#dataset").val() + "/attributes.json";
+	$.getJSON(url,{}, function(attributesArrayRaw){
+		//console.log("TEST GOT TO HERE");
+		attributesArray = [];
+		attributesArrayRaw.forEach(function(attribute){
+			if (attribute.purpose == "Attribute") {
+				attributesArray.push(attribute);
+			}
+		})
+		console.log(attributesArray);
+		for (var i in attributesArray) {
+			options += '<option value="' + attributesArray[i].attribute_name + '">' + attributesArray[i].title_en + '</option>';
+		}
+		if (attributesArray.length == 1) {
+			$("select#attribute").hide();
+			$("select#attribute").html('<option value="' + attributesArray[0].attribute_name + '">' + attributesArray[0].title_en + '</option>');
+			$("div#one_attribute").html(attributesArray[0].title_en);
+			$("div#one_attribute").show();
+			changedAttribute();
+		} 
+		if (attributesArray.length > 1) {
+			var options = '<option value="tbd" select="selected">Select an attribute...</option>';
+			for (var i in attributesArray) {
+				options += '<option value="' + attributesArray[i].attribute_name + '">' + attributesArray[i].title_en + '</option>';
+			}
+			$("div#one_attribute").hide();
+			$("div#one_attribute").html('');
+			$("select#attribute").html(options);
+			$("select#attribute").show();
+		}
+		$('#attribute').attr("disabled", false);
+		$('#attributeInput').show(250);
+	})
+}
+</script>
+
+		<tbody id="attributeInput">
+			<tr>
+				<th>
+					<label for="attribute">Attribute:</label>
+				</th>
+				<td>
+					<div id="one_attribute"></div>
+					<select name="attribute" id="attribute" onchange="changedAttribute()">
+					</select>
+				</td>
+			</tr>
+		</tbody>
+<script type="text/javascript">
+function changedAttribute() {
+	$('#valueInput').hide();
+	$('select#show_data_format').val('Select a value...');
+	$('#formatInput').hide();
+	$('#go').hide();
+	url = "/cansis/services/vector/" + $("select#framework").val() + "/" + $("select#version").val() + "/" + $("select#region").val() + "/" + $("select#dataset").val() + "/" + $("select#attribute").val() + "/description.json";
+	$.getJSON(url,{}, function(attribute) {
+		if (attribute.kind == "Nominal" || attribute.kind =="Ordinal") { 
+			$('#value').attr("disabled", false);
+			var options = '<option value="tbd" select="selected">Select a value...</option>';
+			if (attribute.keyrelationship == "many") { 
+				options += '<option value="dominant">DOMINANT</option>';
+			}
+			attribute.values.forEach( function(value) {
+				options += '<option value="' + value.identifier + '">' + value.title_en + '</option>';
+			})
+			$("select#value").html(options);
+			$('#valueInput').show(250);
+		}
+		else {
+			$('#value').attr("disabled", true);
+			$('#show_data_format').attr("disabled", false);
+			$('#formatInput').show(250);
+		}
+	})
+}
+</script>
+<tbody id="valueInput">
+	<tr>
+		<th>
+			<label for="value">Value:</label>
+		</th>
+		<td>
+			<div class="vertAlign"> 
+				<select name="value" id="value" onchange="changedValue()">
+				</select>
+			</div>
+		</td>
+	</tr>
+</tbody>
+<script type="text/javascript">
+function changedValue() {
+	$('#show_data_format').attr("disabled", false);
+	$('#formatInput').show(250);
+}
+</script>
+<tbody id="formatInput">
+	<tr>
+		<th>
+			<label for="value">Output:</label>
+		</th>
+		<td>
+			<div class="vertAlign"> 
+				<select name="show_data_format" id="show_data_format" onchange="changedShowDataFormat()">
+					<option value="tbd" select="selected">Select an output...</option>
+					<option value="kml">KML (map)</option>
+					<option value="xml">GDAS (xml)</option>
+					<option value="csv">CSV (spreadsheet)</option>
+				</select>
+			</div>
+		</td>
+	</tr>
+</tbody>
+
+<script type="text/javascript">
+function changedShowDataFormat() {
+	if ($("select#show_data_format").val() == "kml")  {
+		$('input#gotoit').attr("value", "GET MAP");
+	}
+	else {
+		$('input#gotoit').attr("value", "GET DATA");
+	}
+		$('#gotoit').attr("disabled", false);
+		$('#go').show(250);
+}
+</script>
+
+
+<tbody id="go">
+	<tr>
+		<th></th>
+		<td>
+			<div class="vertAlign">
+				<input id="gotoit" type="button" value="Go" onclick="doShowData()" />
+			</div>
+		</td>
+	</tr>
+</tbody>
+<script type="text/javascript">
+function doShowData() {
+// STEP 4a: 
+	$("#mapit").attr("action", "/cansis/services/vector/"+$("select#framework").val()+"/"+$("select#version").val()+"/"+$("select#region").val()+"/show."+$("select#show_data_format").val() );
+	// control contents of query string
+	//$(':input').prop('disabled', true);
+	$('#framework').attr("disabled", true);
+	$('#version').attr("disabled", true);
+	$('#region').attr("disabled", true);
+	$('#show_data_format').attr("disabled", true);
+	$('#list_polyids_format').attr("disabled", true);
+	$('#action').attr("disabled", true);
+  $("#mapit").submit();
+	// make sure the form can still be edited
+	//$(':input').prop('disabled', false);
+	$('#framework').attr("disabled", false);
+	$('#version').attr("disabled", false);
+	$('#region').attr("disabled", false);
+	$('#show_data_format').attr("disabled", false);
+	$('#list_poly_ids_format').attr("disabled", false);
+	$('#action').attr("disabled", false);
+}
+</script>
+
+	</table>
+</form>

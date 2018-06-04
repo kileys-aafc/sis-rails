@@ -1,0 +1,91 @@
+# TJS service config file.  
+#
+# Edit the example contents as appropriate.  Note that the field names and indentation are important!!!
+# Just edit the content after the colon (:).
+# In the Languages section, add language codes as desired (e.g. en-CA) and fill in contents
+
+OperationsMetadata:
+  HTTP:
+    Get: /cansis/services/tjs
+    Post: /cansis/services/tjs
+  Versions: 1.0
+  GetData:
+    GeolinkidsLimit: 1000
+    AttributeLimit: 1
+  JoinData:
+    AttributeLimit: 1
+
+DefaultLanguage: en
+
+Languages:
+  en:
+    ServiceIdentification:
+      Title: CanSIS TJS server
+      Abstract: CanSIS - Table Joining Service.
+      Keywords: 
+       - TJS
+       - GDAS
+      Fees: none
+      AccessConstraints: none
+    ServiceProvider:
+      ProviderName: Canadian Soil Information Service
+      ProviderSite: http://sis.agr.gc.ca
+      ServiceContact:
+        IndividualName: Peter Schut
+        PositionName: Head, CanSIS
+        ContactInfo:
+          Phone:
+            Voice: +1 613 759-1874
+            Facsimile: +1 613 759-1937
+          Address:
+            DeliveryPoint: 960 Carling Ave
+            City: Ottawa
+            AdministrativeArea: ON
+            PostalCode: K1A 0C6
+            Country: Canada
+            ElectronicMailAddress: peter.schut@agr.gc.ca
+  fr:
+    ServiceIdentification:
+      Title: SIScan TJS
+      Abstract: SISCan - Service pour joindre des tables SIG.
+      Keywords: 
+       - TJS
+       - GDAS
+      Fees: aucun
+      AccessConstraints: aucun
+    ServiceProvider:
+      ProviderName: Service d'information sur les sols du Canada
+      ProviderSite: http://sis.agr.gc.ca
+      ServiceContact:
+        IndividualName: Peter Schut
+        PositionName: Chef, SISCan
+        ContactInfo:
+          Phone:
+            Voice: +1 613 759-1874
+            Facsimile: +1 613 759-1937
+          Address:
+            DeliveryPoint: 960 Carling Ave
+            City: Ottawa
+            AdministrativeArea: ON
+            PostalCode: K1A 0C6
+            Country: Canada
+            ElectronicMailAddress: peter.schut@agr.gc.ca
+
+OutputMechanisms:
+  WMS:
+    Title:
+      en: Web Map Server v1.1.1
+      fr: Web Map Server v1.1.1
+    Abstract:
+      en: Currently unavailable.  The OpenGIS Web Map Service Interface Standard (WMS) provides a simple HTTP interface for requesting geo-registered map images from one or more distributed geospatial databases. A WMS request defines the geographic layer(s) and area of interest to be processed. The response to the request is one or more geo-registered map images (returned as JPEG, PNG, etc) that can be displayed in a browser application. The interface also supports the ability to specify whether the returned images should be transparent so that layers from multiple servers can be combined or not.
+      fr: Pas disponible a ce momente.
+    Reference: http://schemas.opengis.net/wms/1.1.1/
+  shapefile:
+    Title: 
+      en: ESRI shapefile
+      fr: ESRI shapefile
+    Abstract: 
+      en: ESRI shapefile currently unavailable
+      fr: ESRI shapefile n'est pas disponible a ce momente
+    Reference: http://en.wikipedia.org/wiki/Shapefile
+

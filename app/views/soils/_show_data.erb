@@ -1,0 +1,9 @@
+{<%for nameColumn in @nameColumns do%>
+	"<%=nameColumn%>":"<%=eval("@nameData.#{nameColumn}")%>",<%end%>
+	"Layers":
+		[<%for layer in @layerData do%>
+			{<%for layerColumn in @layerColumns do%>
+				"<%=layerColumn%>":"<%=eval("layer.#{layerColumn}")%>"<%if layerColumn != @layerColumns.last then%>,<%end%><%end%>
+			}<%if layer.id != @layerData[-1].id then%>,<%end%><%end%>
+		]
+}

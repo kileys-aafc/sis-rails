@@ -1,0 +1,19 @@
+<h1>list_datasets() method</h1>
+
+<h2>Parameters</h2>
+<ol>
+	<li>framework: "<%=params[:framework]%>"</li>
+	<li>version: "<%=params[:version]%>"</li>
+	<li>region: "<%=params[:region]%>"</li>
+</ol>
+
+<h2>Results</h2>
+<p><%=@datasets.size%> dataset<%if @datasets.size > 1 then%>s<%end%> found.</p>
+
+<ul data-role="listview" data-inset="true">
+	<%for dataset in @datasets do%>
+	<li>
+		<a href="<%=dataset.dataset_name.split("_")[3]%>/attributes.html"><%=dataset.title_en%></a>
+	</li>
+	<%end%>
+</ul>

@@ -1,0 +1,67 @@
+# encoding: iso-8859-1
+<% content_for :title do %><%= @dataset.title_fr%><%end%>
+<% content_for :date do %>2013-06-25<%end%>
+
+<h1><%= @dataset.title_fr%></h1>
+
+<section>
+<h2>Nom du fichier</h2>
+<p><em><%= @dataset.dataset_name%></em></p>
+</section>
+
+<section>
+<h2>Description</h2>
+<%= raw @dataset.abstract_fr%>
+</section>
+
+<section>
+<h2>Contenu</h2>
+<div class="row">
+<div class="col-md-6">
+<table class="table table-bordered">
+<caption class="blueBG alignCenter white"><strong>Contenu de <%= @dataset.dataset_name%></strong></caption>
+ <thead>
+	<tr>
+		<th scope="col">Champ</th>
+		<th scope="col">Nom</th>
+		<th scope="col">Type</th>
+		<th scope="col">Épaisseur</th>
+		<th scope="col">Description</th>
+	</tr>
+ </thead>
+ <tbody>
+	<%for field in @attributes do%>
+	<tr>
+		<td><%=field.sortation.to_i%></td>
+		<td><a href="<%=field.attribute_name%>.html"><%=field.attributename_fr.upcase%></a></td>
+		<td><%=case field.datatype when "string" then "chaîne" when "integer" then "entier relatif" when "float" then "décimal" when "decimal" then "décimal" when "binary" then "binaire" end%></td>
+		<td class="center"><%=field.length%></td>
+		<td><%=field.titleprefix_fr%><%=field.attributedescription.title_fr%><%=field.titlesuffix_fr%></td>
+	</tr>
+	<%end%>
+	</tbody>
+	</table>
+</div>
+</div>
+</section>
+
+<%if @dataset.relationships_fr != "n/a" then%>
+<section>
+<h2>Mises en relation</h2>
+<%= raw @dataset.relationships_fr%>
+</section>
+<%end%>
+
+<%if @dataset.limitations_fr != "n/a" then%>
+<section>
+	<h2>Limites</h2>
+	<%= raw @dataset.limitations_fr%>
+</section>
+<%end%>
+
+<%if @dataset.origin_fr != "n/a" then%>
+<section>
+	<h2>Origine</h2>
+	<%= raw @dataset.origin_fr%>
+</section>
+<%end%>

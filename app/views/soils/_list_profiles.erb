@@ -1,0 +1,3 @@
+[<%for profile in @profiles do%>
+	"<%=profile.profile%>"<%if profile.id != @profiles[-1].id then%>,<%end%><%end%>
+]

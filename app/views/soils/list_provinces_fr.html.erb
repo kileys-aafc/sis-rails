@@ -1,0 +1,13 @@
+# encoding: iso-8859-1
+<% content_for :title do %>Index des données pour les sols et les couches pour le Canada<%end%>
+<% content_for :date do %>2013-06-26<%end%>
+
+<h1>Données par nom et couche de sol</h1>
+
+<ul>
+<%for province in @provinces do%>
+	<li><a href="/<%=params[:rootdir]%>/soils/<%=province.code.downcase%>/soils.html">Sols <%=province.possessive_fr%></a></li>
+<%end%>
+</ul>
+
+<p><a href="/siscan/nsdb/soil/v2/download.html">Télécharger les tables de nom et couche de sol</a></p>

@@ -1,0 +1,29 @@
+<% content_for :title do %><%=@report.title_en%><%end%>
+<% content_for :date do %>2013-06-25<%end%>
+
+<div class="alignCenter">
+
+<h1><%=@report.title_en%></h1>
+
+<%= render :partial=>"home/archived_en"%>
+
+<%if @report.language_report=="F" then%>
+  <p>This report is only available in <a href="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/index.html">French</a>, in accordance with policies in effect at the time and place of publication.</p>
+<%else%>
+  <%if @report.report_unusual == "Y" then%>
+    <a href="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_link%>"><img src="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>_report_thumb.jpg" alt="View the <%=@report.title_en%> (PDF Format)" /></a><br />
+  <%else%>
+    <%if @report.report_available == "Y" and @report.volumes == 1 then%><a href="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>_report.pdf"><img src="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>_report_thumb.jpg" alt="View the <%=@report.title_en%> (PDF Format)" /></a><br /><%end%>
+    <%if @report.report_available == "Y" and @report.volumes > 1 then%><%for volume in 1..@report.volumes do%><a href="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>-v<%=volume%>_report.pdf"><img src="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>-v<%=volume%>_report_thumb.jpg" alt="View the <%=@report.title_en%> (PDF Format)" /></a><br />
+    <%end%><%end%>
+  <%end%>
+<%end%>
+<%if @report.language_map!="F" then%>
+  <%for map in @maps do %><section>
+  <h2><%=map.title_en%></h2>
+  <a href="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=map.mapname%>.zip"><img src="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=map.mapname%>_thumb.jpg" alt="View the map:  <%=map.title_en%> (JPG Format)" /></a><br />
+	</section>
+  <%end%>
+<%end%>
+
+</div>
