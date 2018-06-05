@@ -1,2 +1,2 @@
 # sis-rails
-CanSIS rails app
+CanSIS dev rails app
