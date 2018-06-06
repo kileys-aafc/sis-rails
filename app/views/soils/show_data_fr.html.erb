@@ -8,7 +8,7 @@
 <div class="row">
 <div class="col-md-12">
 <table class="table table-bordered">
-<caption class="blueBG alignCenter white"><strong>Caractï¿½ristiques gï¿½nï¿½rale</strong></caption>
+<caption class="blueBG alignCenter white"><strong>Caractéristiques générale</strong></caption>
 	<tr>
 		<th class="alignTop"><a href="/siscan/nsdb/soil/v2/snt/s_group3.html">Classification</a></th>
 		<td><strong><%=@nameData.s_group3%>.<%=@nameData.g_group3%></strong><p><a href="/siscan/taxa/cssc3/<%=@nameData.order3%>/<%=@nameData.g_group3%>/<%=@nameData.s_group3%>/index.html"><%=raw Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/s_group3", :valuegroup=>@nameData.g_group3, :identifier=>@nameData.s_group3}).title_fr%></a></p></td>
@@ -18,11 +18,11 @@
 		<td><%profile = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/slc/v3.0/component/lu", :identifier=>@nameData.profile})%><strong><%=profile.title_fr%></strong><%= raw profile.abstract_fr%></td>
 	</tr>
 	<tr>
-		<th class="alignTop"><a href="/siscan/nsdb/soil/v2/snt/kind.html">Type de matï¿½riel de surface </a></th>
+		<th class="alignTop"><a href="/siscan/nsdb/soil/v2/snt/kind.html">Type de matériel de surface </a></th>
 		<td><%kind = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/kind", :identifier=>@nameData.kind})%><strong><%=kind.title_fr%></strong><%= raw kind.abstract_fr%></td>
 	</tr>
 	<tr>
-		<th class="alignTop"><a href="/siscan/nsdb/soil/v2/snt/watertbl.html">Caractï¿½ristiques de la nappe phrï¿½atique</a></th>
+		<th class="alignTop"><a href="/siscan/nsdb/soil/v2/snt/watertbl.html">Caractéristiques de la nappe phréatique</a></th>
 		<td><%watertbl = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/watertbl", :identifier=>@nameData.watertbl})%><strong><%=watertbl.title_fr%></strong><%= raw watertbl.abstract_fr%></td>
 	</tr>
 	<tr>
@@ -45,21 +45,21 @@
 <div class="row">
 <div class="col-md-12">
 <table class="table table-bordered">
-<caption class="blueBG alignCenter white"><strong>Matï¿½riau originel</strong></caption>
+<caption class="blueBG alignCenter white"><strong>Matériau originel</strong></caption>
 <thead>
 	<tr>
 <%if @nameData.mdep2 != "-" then%>
 		<th class="alignCenter"></th>
 <%end%>
-		<th scope="col" class="alignCenter"><a href="/siscan/nsdb/soil/v2/snt/mdep1.html">Mode de dï¿½pï¿½t</a></th>
+		<th scope="col" class="alignCenter"><a href="/siscan/nsdb/soil/v2/snt/mdep1.html">Mode de dépôt</a></th>
 		<th scope="col" class="alignCenter"><a href="/siscan/nsdb/soil/v2/snt/pmtex1.html">Texture</a></th>
-		<th scope="col" class="alignCenter"><a href="/siscan/nsdb/soil/v2/snt/pmchem1.html">Propriï¿½tï¿½ chimique</a></th>
+		<th scope="col" class="alignCenter"><a href="/siscan/nsdb/soil/v2/snt/pmchem1.html">Propriété chimique</a></th>
 	</tr>
 </thead>
 <tbody>
 	<tr>
 <%if @nameData.mdep2 != "-" then%>
-		<th scope="row" class="alignTop">le plus ï¿½levï¿½</th>
+		<th scope="row" class="alignTop">le plus élevé</th>
 <%end%>
 		<td class="alignTop"><%mdep = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/mdep", :identifier=>@nameData.mdep1})%><strong><%=mdep.title_fr%></strong><%=raw mdep.abstract_fr%></td>
 		<td class="alignTop"><%pmtex = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/pmtex", :identifier=>@nameData.pmtex1})%><strong><%=pmtex.title_fr%></strong><%=raw pmtex.abstract_fr%></td>
@@ -70,7 +70,7 @@
 <%if @nameData.mdep3 == "-" then%>
 		<th scope="row" class="alignTop">au-dessous</th>
 <%else%>
-		<th scope="row" class="alignTop">intermï¿½diaire</th>
+		<th scope="row" class="alignTop">intermédiaire</th>
 <%end%>
 		<td class="alignTop"><%mdep = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/mdep", :identifier=>@nameData.mdep2})%><strong><%=mdep.title_fr%></strong><%=raw mdep.abstract_fr%></td>
 		<td class="alignTop"><%pmtex = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/pmtex", :identifier=>@nameData.pmtex2})%><strong><%=pmtex.title_fr%></strong><%=raw pmtex.abstract_fr%></td>
@@ -97,19 +97,19 @@
 <div class="col-md-12">
 <div class="table-responsive">
 <table class="table table-bordered table-responsive">
-<caption class="blueBG alignCenter white"><strong>Caractï¿½ristiques de les couches de sol</strong></caption>
+<caption class="blueBG alignCenter white"><strong>Caractéristiques de les couches de sol</strong></caption>
 <thead>
 <tr>
 	<th scope="colgroup" colspan="3"></th>
 	<th scope="colgroup" colspan="4">Classification de couche</th>
-	<th scope="colgroup" colspan="10">Caractï¿½ristiques physiques</th>
-	<th scope="colgroup" colspan="6">Caractï¿½ristiques chimique</th>
-	<th scope="colgroup" colspan="5">Caractï¿½ristiques de l'eau</th>
+	<th scope="colgroup" colspan="10">Caractéristiques physiques</th>
+	<th scope="colgroup" colspan="6">Caractéristiques chimique</th>
+	<th scope="colgroup" colspan="5">Caractéristiques de l'eau</th>
 </tr>
 <tr>
-	<th scope="col"><a href="/siscan/nsdb/soil/v2/slt/layer_no.html">numï¿½ro de couche</a></th>
-	<th scope="col"><a href="/siscan/nsdb/soil/v2/slt/udepth.html">profondeur<br/>supï¿½rieure</a></th>
-	<th scope="col"><a href="/siscan/nsdb/soil/v2/slt/ldepth.html">profondeur<br/>infï¿½rieur</a></th>
+	<th scope="col"><a href="/siscan/nsdb/soil/v2/slt/layer_no.html">numéro de couche</a></th>
+	<th scope="col"><a href="/siscan/nsdb/soil/v2/slt/udepth.html">profondeur<br/>supérieure</a></th>
+	<th scope="col"><a href="/siscan/nsdb/soil/v2/slt/ldepth.html">profondeur<br/>inférieur</a></th>
 	<th scope="col"><a href="/siscan/nsdb/soil/v2/slt/hzn_lit.html">hzn_lit</a></th>
 	<th scope="col"><a href="/siscan/nsdb/soil/v2/slt/hzn_mas.html">hzn_mas</a></th>
 	<th scope="col"><a href="/siscan/nsdb/soil/v2/slt/hzn_suf.html">hzn_suf</a></th>
