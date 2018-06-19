@@ -17,7 +17,7 @@
     <%if @report.report_available == "Y" and @report.volumes > 1 then%>
       <%for volume in 1..@report.volumes do%>
         <%if !File.exist?("/cansis/publications/surveys/"+@prov+"/"+@report.report_id+"/"+@report.report_id+"-v"+volume.to_s+"_report.pdf") then%>
-          <%=puts "TEST:"+"/cansis/publications/surveys/"+@prov+"/"+@report.report_id+"/"+@report.report_id+"-v"+volume.to_s+"_report.pdf"%>
+          <%="TEST:"+"/cansis/publications/surveys/"+@prov+"/"+@report.report_id+"/"+@report.report_id+"-v"+volume.to_s+"_report.pdf"%>
           <a href="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>-v<%=volume%>_report.pdf"><img src="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>-v<%=volume%>_report_thumb.jpg" alt="View the <%=@report.title_en%> (PDF Format)" /></a><br />
           <%else next%>
         <%end%>  
