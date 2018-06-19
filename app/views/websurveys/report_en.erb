@@ -16,7 +16,7 @@
     <%if @report.report_available == "Y" and @report.volumes == 1 then%><a href="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>_report.pdf"><img src="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>_report_thumb.jpg" alt="View the <%=@report.title_en%> (PDF Format)" /></a><br /><%end%>
     <%if @report.report_available == "Y" and @report.volumes > 1 then%>
       <%for volume in 1..@report.volumes do%>
-        <%if File.exist?("/cansis/publications/surveys/"+@prov+"/"+@report.report_id+"/"+@report.report_id+"-v"+@report.volume+"_report.pdf") then%>
+        <%if File.exist?("/cansis/publications/surveys/"+@prov+"/"+@report.report_id+"/"+@report.report_id+"-v"+volume+"_report.pdf") then%>
           <a href="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>-v<%=volume%>_report.pdf"><img src="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>-v<%=volume%>_report_thumb.jpg" alt="View the <%=@report.title_en%> (PDF Format)" /></a><br />
           <%else next%>
         <%end%>  
