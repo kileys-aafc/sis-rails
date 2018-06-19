@@ -9,13 +9,17 @@
 <%= render :partial=>"home/archived_fr"%>
 
 <%if @report.language_report=="E" then%>
-  <p>Ce rapport est uniquement disponible en <a href="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/index.html">anglais</a>, en conformité avec les politiques en vigueur à l'époque et le lieu de publication.</p>
+  <p>Ce rapport est uniquement disponible en <a href="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/index.html">anglais</a>, en conformitï¿½ avec les politiques en vigueur ï¿½ l'ï¿½poque et le lieu de publication.</p>
 <%else%>
   <%if @report.report_unusual == "Y" then%>
     <a href="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_link%>"><img src="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>_report_thumb.jpg" alt="Voir le <%=@report.title_fr%> (Format PDF)" /></a><br />
   <%else%>
     <%if @report.report_available == "Y"  and @report.volumes == 1 then%><a href="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>_report.pdf"><img src="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>_report_thumb.jpg" alt="Voir le <%=@report.title_fr%> (Format PDF)" /></a><br /><%end%>
-    <%if @report.report_available == "Y" and @report.volumes > 1 then%><%for volume in 1..@report.volumes do%><a href="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>-v<%=volume%>_report.pdf"><img src="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>-v<%=volume%>_report_thumb.jpg" alt="Voir le <%=@report.title_fr%> (Format PDF)" /></a><br />
+    <%if @report.report_available == "Y" and @report.volumes > 1 then%><%for volume in 1..@report.volumes do%>
+      <%if File.exist?(Rails.root.to_s+"/public/siscan/publications/surveys/"+@prov+"/"+@report.report_id+"/"+@report.report_id+"-v"+volume.to_s+"_report.pdf") == true then%>
+		    <a href="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>-v<%=volume%>_report.pdf"><img src="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>-v<%=volume%>_report_thumb.jpg" alt="Voir le <%=@report.title_fr%> (Format PDF)" /></a><br />
+			<%else next%>
+    <%end%>
     <%end%><%end%>
   <%end%>
 <%end%>
