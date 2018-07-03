@@ -55,7 +55,7 @@ class TaxonomyController < ApplicationController
 	end
 
 	def show_order
-		@order3details = Taxonomydetail.where(:soilgreatgroup=>nil OR :soilgreatgroup=>'-' ).where(:soilorder=>params[:order3]).first
+		@order3details = Taxonomydetail.where(:soilgreatgroup=>nil OR :soilgreatgroup=> "-" ).where(:soilorder=>params[:order3]).first
 		@ggroup3_null_gg = Taxonomydetail.where('soilorder = ? and soilgreatgroup is not null and soilsubgroup is null', @order3).order(:sortation)
 		case params[:format]
 			when "html" then render "show_order_page_#{@lang}.html", :layout=> "web_#{@lang}"
