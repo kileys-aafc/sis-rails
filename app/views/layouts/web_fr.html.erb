@@ -61,7 +61,7 @@
 					defPreFooter.outerHTML = wet.builder.preFooter({
 						dateModified: "<%=yield :date%>",
 						showShare: false,
-						showFeedback: "/siscan/contact.html"
+						showFeedback: <%if request.env['PATH_INFO'] != "/siscan/contact.html"%>"/siscan/contact.html"<%else%>false<%end%>
 					});
 				</script>
 			</main>
