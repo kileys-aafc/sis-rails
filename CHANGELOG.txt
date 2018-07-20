@@ -1,0 +1,33 @@
+v2.0 - (May, 2018):
+
+- updated site to use CDTS
+- updated to latest version of WET (static backup using v?)
+- added new CanSIS index page
+- updated What's New page
+- updated Contact page
+- fixed multiple HTML errors/broken links
+
+v2.1 - (July 24, 2018)
+
+- Added "Submit Feedback" button to contact page
+- Updated contact page telephone number to toll-free AAFC Programs and Services number
+- Fixed over 25,000 broken links (~250 remaining)
+
+- Added missing files:
+	- waterloo_20k.zip 
+	- waterloo_20k_extension.zip 
+	- cli_map.jpg 
+	- cli_1m_fis_quebec.jpg 
+	- mbd86_map.zip 
+	- nb9_4_map_thumb.jpg 
+	- sktf_map.zip 
+	- cli_250k_for_92p_se.jpg
+	- cli_250k_for_92p_se.pdf
+	- cli_250k_for_92p_sw.jpg
+	- cli_250k_for_92p_sw.pdf
+
+Rails:
+	- added updated neuws_controller.rb (missed in 2.0)
+	- updated taxonomy_controller.rb to fix a bug with "-" values in soilgreatgroups/subgroups
+	- updated report_en.erb and report_fr.erb websurvey views (no longer displays missing soil surveys)
+	- updated web_en.erb and web_fr.erb layouts to remove "Report an issue on this page" button on Contact page
