@@ -6,15 +6,22 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta charset="utf-8">
 
-
 	<title><%= yield :title%></title>
 	<meta content="width=device-width,initial-scale=1" name="viewport">
+	<meta name="description" content="Canadian soil information">
+	<meta name="dc.creator" content="Government of Canada, Agriculture and Agri-Food Canada">
+	<meta name="dc.title" content="Canadian Soil Information Service">
+	<meta name="dc.issued" title="W3CDTF" content="2013-12-13">
+	<meta name="dc.modified" title="W3CDTF" content="2015-04-09">
+	<meta name="dc.subject" content="Soil information">
+	<meta name="dc.language" title="ISO639-2" content="eng">
+
 	<!-- Load closure template scripts -->
 	<script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/rn/cdts/compiled/soyutils.js"></script>
 	<script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/rn/cdts/compiled/wet-en.js"></script>
 	<noscript>
 		<!-- Write closure fall-back static file -->
-		 <%= render file: Rails.public_path.join("wet-v4.0.27", "refTop.html") %>
+		<%= render file: Rails.public_path.join("wet-v4.0.27", "refTop.html") %>
 	</noscript>
 	<!-- Write closure template -->
 	<script type="text/javascript">
@@ -55,7 +62,7 @@
 
 	<div class="container">
 		<div class="row">
-			<main role="main" property="mainContentOfPage" <%if @columns != 1 then %> class="col-md-9 col-md-push-3"<%end%>>
+			<main role="main" property="mainContentOfPage" typeof="WebPageElement" <%if @columns != 1 then %> class="col-md-9 col-md-push-3"<%end%>>
 				<%=yield%>
 				<div id="def-preFooter">
 					<!-- Write closure fall-back static file -->
