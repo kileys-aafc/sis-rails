@@ -2,5 +2,5 @@
 <% content_for :date do %><%=@webpage.date_fr %><%end%>
 
 <%if @webpage.h1_fr !='' then %><h1><%= @webpage.h1_fr %></h1><%end%>
-<%if request.fullpath[0..28]=="/siscan/publications/manuals/" then %><%= render :partial=>"home/archived_fr"%><%end%>
+<!-- Archive Banner <%if request.fullpath[0..28]=="/siscan/publications/manuals/" then %><%= render :partial=>"home/archived_fr"%><%end%> -->
 <%=raw @webpage.content_fr %>
