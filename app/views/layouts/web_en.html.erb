@@ -61,6 +61,7 @@
 	</script>
 
 	<main role="main" property="mainContentOfPage" typeof="WebPageElement" <%if @columns != 1 then %> class="col-md-9 col-md-push-3"<%end%>>
+	<div class="container">	
 		<%=yield%>
 		<div id="def-preFooter">
 			<!-- Write closure fall-back static file -->
@@ -78,6 +79,7 @@
 		</script>
 
 	</main>
+	</div>
 	<%if @columns != 1 then %>
 	<nav class="wb-sec col-md-3 col-md-pull-9" typeof="SiteNavigationElement" id="wb-sec" role="navigation">
 		<!-- Insert static fall-back -->
