@@ -7,9 +7,9 @@
 <div class="row">
 <div class="col-md-12">
 <table class="table table-bordered">
-<caption class="blueBG alignCenter white"><strong>General Characteristics</strong></caption>
+<caption class=""><strong>General Characteristics</strong></caption>
 	<tr>
-		<th class="alignTop"><a href="/cansis/nsdb/soil/v2/snt/s_group3.html">Classification</a></th>
+		<th class=""><a href="/cansis/nsdb/soil/v2/snt/s_group3.html">Classification</a></th>
 		<td><strong><%=@nameData.s_group3%>.<%=@nameData.g_group3%></strong><p><a href="/cansis/taxa/cssc3/<%=@nameData.order3%>/<%=@nameData.g_group3%>/<%=@nameData.s_group3%>/index.html"><%=raw Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/s_group3", :valuegroup=>@nameData.g_group3, :identifier=>@nameData.s_group3}).title_en%></a></p></td>
 	</tr>
 	<tr>
