@@ -60,95 +60,93 @@
 		});
 	</script>
 
-	<div class="container">
-		<div class="row">
-			<main role="main" property="mainContentOfPage" typeof="WebPageElement" <%if @columns != 1 then %> class="col-md-9 col-md-push-3"<%end%>>
-				<%=yield%>
-				<div id="def-preFooter">
-					<!-- Write closure fall-back static file -->
-					<%= render file: Rails.public_path.join("wet-v4.0.27", "preFooter-en.html")%>
-				</div>
-				<!-- Write closure template -->
-								
-				<script type="text/javascript">
-					var defPreFooter = document.getElementById("def-preFooter");
-					defPreFooter.outerHTML = wet.builder.preFooter({
-						dateModified: "<%=yield :date%>",
-						showShare: false,
-						showFeedback: <%if request.env['PATH_INFO'] != "/cansis/contact.html"%>"/cansis/contact.html"<%else%>false<%end%>
-					});
-				</script>
-	
-			</main>
-			<%if @columns != 1 then %>
-			<nav class="wb-sec col-md-3 col-md-pull-9" typeof="SiteNavigationElement" id="wb-sec" role="navigation">
-				<!-- Insert static fall-back -->
-				<%= render file: Rails.public_path.join("wet-v4.0.27", "secMenu-en.html") %>
-			</nav>
-			<script type="text/javascript">
-				var secondarymenu = document.getElementById("wb-sec");
-				secondarymenu.innerHTML = wet.builder.secmenu({
-					sections: [{
-						sectionName: "Maps", 
-						menuLinks: [{
-							href: "/cansis/publications/maps/index.html", 
-							text: "Printed maps"
-						},{
-							href: "/cansis/publications/webmaps.html",
-							text: "Web maps"
-						}]
-					},{
-						sectionName: "Data", 
-						menuLinks: [{
-							href: "/cansis/nsdb/ecostrat/index.html",
-							text: "Ecological Framework"
-						},{
-							href: "/cansis/nsdb/slc/index.html",
-							text: "Soil Landscapes of Canada"
-						}, {
-							href: "/cansis/nsdb/cli/index.html",
-							text: "Canada Land Inventory"
-						}, {
-							href: "/cansis/nsdb/dss/index.html",
-							text: "Soil Survey Data"
-						}]
-					},{
-						sectionName: "Publications", 
-						menuLinks: [{
-							href: "/cansis/publications/surveys/index.html",
-							text: "Soil Survey Reports"
-						},{
-							href: "/cansis/publications/manuals/index.html",
-							text: "Reference Manuals"
-						}]
-					},{
-						sectionName: "More", 
-						menuLinks: [{
-							href: "/cansis/images/index.html",
-							text: "Photo Gallery"
-						},{
-							href: "/cansis/glossary/index.html",
-							text: "Glossary"
-						},{
-							href: "/cansis/index-site.html",
-							text: "Site Map"
-						},{
-							href: "/cansis/neuw.html",
-							text: "What's New"
-						},{
-							href: "/cansis/faq.html",
-							text: "FAQ"
-						},{
-							href: "/cansis/contact.html",
-							text: "Contact CanSIS"
-						}]
-					}]
-				});
-			</script>
-		
-		<%end%>
+	<main role="main" property="mainContentOfPage" typeof="WebPageElement" <%if @columns != 1 then %> class="col-md-9 col-md-push-3"<%end%>>
+		<%=yield%>
+		<div id="def-preFooter">
+			<!-- Write closure fall-back static file -->
+			<%= render file: Rails.public_path.join("wet-v4.0.27", "preFooter-en.html")%>
 		</div>
-	</div>
+		<!-- Write closure template -->
+						
+		<script type="text/javascript">
+			var defPreFooter = document.getElementById("def-preFooter");
+			defPreFooter.outerHTML = wet.builder.preFooter({
+				dateModified: "<%=yield :date%>",
+				showShare: false,
+				showFeedback: <%if request.env['PATH_INFO'] != "/cansis/contact.html"%>"/cansis/contact.html"<%else%>false<%end%>
+			});
+		</script>
+
+	</main>
+	<%if @columns != 1 then %>
+	<nav class="wb-sec col-md-3 col-md-pull-9" typeof="SiteNavigationElement" id="wb-sec" role="navigation">
+		<!-- Insert static fall-back -->
+		<%= render file: Rails.public_path.join("wet-v4.0.27", "secMenu-en.html") %>
+	</nav>
+	<script type="text/javascript">
+		var secondarymenu = document.getElementById("wb-sec");
+		secondarymenu.innerHTML = wet.builder.secmenu({
+			sections: [{
+				sectionName: "Maps", 
+				menuLinks: [{
+					href: "/cansis/publications/maps/index.html", 
+					text: "Printed maps"
+				},{
+					href: "/cansis/publications/webmaps.html",
+					text: "Web maps"
+				}]
+			},{
+				sectionName: "Data", 
+				menuLinks: [{
+					href: "/cansis/nsdb/ecostrat/index.html",
+					text: "Ecological Framework"
+				},{
+					href: "/cansis/nsdb/slc/index.html",
+					text: "Soil Landscapes of Canada"
+				}, {
+					href: "/cansis/nsdb/cli/index.html",
+					text: "Canada Land Inventory"
+				}, {
+					href: "/cansis/nsdb/dss/index.html",
+					text: "Soil Survey Data"
+				}]
+			},{
+				sectionName: "Publications", 
+				menuLinks: [{
+					href: "/cansis/publications/surveys/index.html",
+					text: "Soil Survey Reports"
+				},{
+					href: "/cansis/publications/manuals/index.html",
+					text: "Reference Manuals"
+				}]
+			},{
+				sectionName: "More", 
+				menuLinks: [{
+					href: "/cansis/images/index.html",
+					text: "Photo Gallery"
+				},{
+					href: "/cansis/glossary/index.html",
+					text: "Glossary"
+				},{
+					href: "/cansis/index-site.html",
+					text: "Site Map"
+				},{
+					href: "/cansis/neuw.html",
+					text: "What's New"
+				},{
+					href: "/cansis/faq.html",
+					text: "FAQ"
+				},{
+					href: "/cansis/contact.html",
+					text: "Contact CanSIS"
+				}]
+			}]
+		});
+	</script>
+
+<%end%>
+		
+	
 	
 	<div id="def-footer">
 		<!-- Insert static fall-back -->
