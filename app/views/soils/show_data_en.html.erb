@@ -1,183 +1,360 @@
-<% content_for :title do %>Soil Description for <%=@nameData.soil_id%><%end%>
-<% content_for :date do %>2013-06-26<%end%>
+<% content_for :title do %>Soil Description for <%=@nameData.soil_id%><%end%> <%
+content_for :date do %>2019-09-09<%end%>
 
 <h1>Description of soil <%=@nameData.soil_id%> (<%=@nameData.soilname%>)</h1>
 
 <section>
-<div class="row">
-<div class="col-md-12">
-<table class="table table-bordered">
-<caption class="blueBG alignCenter white"><strong>General Characteristics</strong></caption>
-	<tr>
-		<th class="alignTop"><a href="/cansis/nsdb/soil/v2/snt/s_group3.html">Classification</a></th>
-		<td><strong><%=@nameData.s_group3%>.<%=@nameData.g_group3%></strong><p><a href="/cansis/taxa/cssc3/<%=@nameData.order3%>/<%=@nameData.g_group3%>/<%=@nameData.s_group3%>/index.html"><%=raw Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/s_group3", :valuegroup=>@nameData.g_group3, :identifier=>@nameData.s_group3}).title_en%></a></p></td>
-	</tr>
-	<tr>
-		<th class="alignTop"><a href="/cansis/nsdb/soil/v2/snt/profile.html">Profile</a></th>
-		<td><%profile = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/slc/v3.0/component/lu", :identifier=>@nameData.profile})%><strong><%=profile.title_en%></strong><%= raw profile.abstract_en%></td>
-	</tr>
-	<tr>
-		<th class="alignTop"><a href="/cansis/nsdb/soil/v2/snt/kind.html">Kind of material</a></th>
-		<td><%kind = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/kind", :identifier=>@nameData.kind})%><strong><%=kind.title_en%></strong><%= raw kind.abstract_en%></td>
-	</tr>
-	<tr>
-		<th class="alignTop"><a href="/cansis/nsdb/soil/v2/snt/watertbl.html">Water table</a></th>
-		<td><%watertbl = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/watertbl", :identifier=>@nameData.watertbl})%><strong><%=watertbl.title_en%></strong><%= raw watertbl.abstract_en%></td>
-	</tr>
-	<tr>
-		<th class="alignTop"><a href="/cansis/nsdb/soil/v2/snt/rootrestri.html">Root restrictions</a></th>
-		<td><%rootrestri = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/rootrestri", :identifier=>@nameData.rootrestri})%><strong><%=rootrestri.title_en%></strong><%= raw rootrestri.abstract_en%></td>
-	</tr>
-	<tr>
-		<th class="alignTop"><a href="/cansis/nsdb/soil/v2/snt/restr_type.html">Type of root restricting layer</a></th>
-		<td><%restr_type = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/restr_type", :identifier=>@nameData.restr_type})%><strong><%=restr_type.title_en%></strong><%= raw restr_type.abstract_en%></td>
-	</tr>
-	<tr>
-		<th class="alignTop"><a href="/cansis/nsdb/soil/v2/snt/drainage.html">Drainage</a></th>
-		<td><%drainage = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/drainage", :identifier=>@nameData.drainage})%><strong><%=drainage.title_en%></strong><%= raw drainage.abstract_en%></td>
-	</tr>
-</table>
-</div>
-</div>
-<br />
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-bordered mt-3">
+				<caption class="">
+					<strong>General Characteristics</strong>
+				</caption>
+				<tr>
+					<th>
+						<a href="/cansis/nsdb/soil/v2/snt/s_group3.html">Classification</a>
+					</th>
+					<td>
+						<strong><%=@nameData.s_group3%>.<%=@nameData.g_group3%></strong>
+						<p>
+							<a
+								href="/cansis/taxa/cssc3/<%=@nameData.order3%>/<%=@nameData.g_group3%>/<%=@nameData.s_group3%>/index.html"
+								><%=raw Datavalue.find(:first,
+								:conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/s_group3",
+								:valuegroup=>@nameData.g_group3,
+								:identifier=>@nameData.s_group3}).title_en%></a
+							>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<th class="alignTop">
+						<a href="/cansis/nsdb/soil/v2/snt/profile.html">Profile</a>
+					</th>
+					<td>
+						<%profile = Datavalue.find(:first,
+						:conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/slc/v3.0/component/lu",
+						:identifier=>@nameData.profile})%><strong><%=profile.title_en%></strong><%=
+						raw profile.abstract_en%>
+					</td>
+				</tr>
+				<tr>
+					<th class="alignTop">
+						<a href="/cansis/nsdb/soil/v2/snt/kind.html">Kind of material</a>
+					</th>
+					<td>
+						<%kind = Datavalue.find(:first,
+						:conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/kind",
+						:identifier=>@nameData.kind})%><strong><%=kind.title_en%></strong><%=
+						raw kind.abstract_en%>
+					</td>
+				</tr>
+				<tr>
+					<th class="alignTop">
+						<a href="/cansis/nsdb/soil/v2/snt/watertbl.html">Water table</a>
+					</th>
+					<td>
+						<%watertbl = Datavalue.find(:first,
+						:conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/watertbl",
+						:identifier=>@nameData.watertbl})%><strong><%=watertbl.title_en%></strong><%=
+						raw watertbl.abstract_en%>
+					</td>
+				</tr>
+				<tr>
+					<th class="alignTop">
+						<a href="/cansis/nsdb/soil/v2/snt/rootrestri.html"
+							>Root restrictions</a
+						>
+					</th>
+					<td>
+						<%rootrestri = Datavalue.find(:first,
+						:conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/rootrestri",
+						:identifier=>@nameData.rootrestri})%><strong><%=rootrestri.title_en%></strong><%=
+						raw rootrestri.abstract_en%>
+					</td>
+				</tr>
+				<tr>
+					<th class="alignTop">
+						<a href="/cansis/nsdb/soil/v2/snt/restr_type.html"
+							>Type of root restricting layer</a
+						>
+					</th>
+					<td>
+						<%restr_type = Datavalue.find(:first,
+						:conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/restr_type",
+						:identifier=>@nameData.restr_type})%><strong><%=restr_type.title_en%></strong><%=
+						raw restr_type.abstract_en%>
+					</td>
+				</tr>
+				<tr>
+					<th class="alignTop">
+						<a href="/cansis/nsdb/soil/v2/snt/drainage.html">Drainage</a>
+					</th>
+					<td>
+						<%drainage = Datavalue.find(:first,
+						:conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/drainage",
+						:identifier=>@nameData.drainage})%><strong><%=drainage.title_en%></strong><%=
+						raw drainage.abstract_en%>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<br />
 
-<div class="row">
-<div class="col-md-12">
-<table class="table table-bordered">
-<caption class="blueBG alignCenter white"><strong>Parent Materials</strong></caption>
-<thead>
-	<tr>
-<%if @nameData.mdep2 != "-" then%>
-		<th id="1p" class="alignCenter"></th>
-<%end%>
-		<th id="1md" class="alignCenter"><a href="/cansis/nsdb/soil/v2/snt/mdep1.html">Mode of Deposition</a></th>
-		<th id="1tx" class="alignCenter"><a href="/cansis/nsdb/soil/v2/snt/pmtex1.html">Texture</a></th>
-		<th id="1ch" class="alignCenter"><a href="/cansis/nsdb/soil/v2/snt/pmchem1.html">Chemical properties</a></th>
-	</tr>
-</thead>
-<tbody>
-	<tr>
-<%if @nameData.mdep2 != "-" then%>
-		<th headers="1p" id="1m" class="alignTop">Uppermost</th>
-<%end%>
-		<td headers="1md 1m" class="alignTop"><%mdep = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/mdep", :identifier=>@nameData.mdep1})%><strong><%=mdep.title_en%></strong><%=raw mdep.abstract_en%></td>
-		<td headers="1tx 1m" class="alignTop"><%pmtex = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/pmtex", :identifier=>@nameData.pmtex1})%><strong><%=pmtex.title_en%></strong><%=raw pmtex.abstract_en%></td>
-		<td headers="1ch 1m" class="alignTop"><%pmchem = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v2/snt/pmchem", :identifier=>@nameData.pmchem1})%><strong><%=pmchem.title_en%></strong><%=raw pmchem.abstract_en%></td>
-	</tr>
-<%if @nameData.mdep2 != "-" then%>
-	<tr>
-<%if @nameData.mdep3 == "-" then%>
-		<th headers="1p" id="2m" class="alignTop">Below</th>
-<%else%>
-		<th headers="1p" id="2m" class="alignTop">Middle</th>
-<%end%>
-		<td headers="1md 2m" class="alignTop"><%mdep = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/mdep", :identifier=>@nameData.mdep2})%><strong><%=mdep.title_en%></strong><%=raw mdep.abstract_en%></td>
-		<td headers="1tx 2m" class="alignTop"><%pmtex = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/pmtex", :identifier=>@nameData.pmtex2})%><strong><%=pmtex.title_en%></strong><%=raw pmtex.abstract_en%></td>
-		<td headers="1ch 2m" class="alignTop"><%pmchem = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v2/snt/pmchem", :identifier=>@nameData.pmchem2})%><strong><%=pmchem.title_en%></strong><%=raw pmchem.abstract_en%></td>
-	</tr>
-	<%if @nameData.mdep3 != "-" then%>
-	<tr>
-		<th headers="1p" id="3m" class="alignTop">Lowest</th>
-		<td headers="1md 3m" class="alignTop"><%mdep = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/mdep", :identifier=>@nameData.mdep3})%><strong><%=mdep.title_en%></strong><%=raw mdep.abstract_en%></td>
-		<td headers="1tx 3m" class="alignTop"><%pmtex = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/pmtex", :identifier=>@nameData.pmtex3})%><strong><%=pmtex.title_en%></strong><%=raw pmtex.abstract_en%></td>
-		<td headers="1ch 3m" class="alignTop"><%pmchem = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v2/snt/pmchem", :identifier=>@nameData.pmchem3})%><strong><%=pmchem.title_en%></strong><%=raw pmchem.abstract_en%></td>
-	</tr>
-	<%end%>
-<%end%>
-</tbody>
-</table>
-</div>
-</div>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-bordered">
+				<caption class="blueBG alignCenter white">
+					<strong>Parent Materials</strong>
+				</caption>
+				<thead>
+					<tr>
+						<%if @nameData.mdep2 != "-" then%>
+						<th id="1p" class="alignCenter"></th>
+						<%end%>
+						<th id="1md" class="alignCenter">
+							<a href="/cansis/nsdb/soil/v2/snt/mdep1.html"
+								>Mode of Deposition</a
+							>
+						</th>
+						<th id="1tx" class="alignCenter">
+							<a href="/cansis/nsdb/soil/v2/snt/pmtex1.html">Texture</a>
+						</th>
+						<th id="1ch" class="alignCenter">
+							<a href="/cansis/nsdb/soil/v2/snt/pmchem1.html"
+								>Chemical properties</a
+							>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<%if @nameData.mdep2 != "-" then%>
+						<th headers="1p" id="1m" class="alignTop">Uppermost</th>
+						<%end%>
+						<td headers="1md 1m" class="alignTop">
+							<%mdep = Datavalue.find(:first,
+							:conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/mdep",
+							:identifier=>@nameData.mdep1})%><strong><%=mdep.title_en%></strong><%=raw
+							mdep.abstract_en%>
+						</td>
+						<td headers="1tx 1m" class="alignTop">
+							<%pmtex = Datavalue.find(:first,
+							:conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/pmtex",
+							:identifier=>@nameData.pmtex1})%><strong><%=pmtex.title_en%></strong><%=raw
+							pmtex.abstract_en%>
+						</td>
+						<td headers="1ch 1m" class="alignTop">
+							<%pmchem = Datavalue.find(:first,
+							:conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v2/snt/pmchem",
+							:identifier=>@nameData.pmchem1})%><strong><%=pmchem.title_en%></strong><%=raw
+							pmchem.abstract_en%>
+						</td>
+					</tr>
+					<%if @nameData.mdep2 != "-" then%>
+					<tr>
+						<%if @nameData.mdep3 == "-" then%>
+						<th headers="1p" id="2m" class="alignTop">Below</th>
+						<%else%>
+						<th headers="1p" id="2m" class="alignTop">Middle</th>
+						<%end%>
+						<td headers="1md 2m" class="alignTop">
+							<%mdep = Datavalue.find(:first,
+							:conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/mdep",
+							:identifier=>@nameData.mdep2})%><strong><%=mdep.title_en%></strong><%=raw
+							mdep.abstract_en%>
+						</td>
+						<td headers="1tx 2m" class="alignTop">
+							<%pmtex = Datavalue.find(:first,
+							:conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/pmtex",
+							:identifier=>@nameData.pmtex2})%><strong><%=pmtex.title_en%></strong><%=raw
+							pmtex.abstract_en%>
+						</td>
+						<td headers="1ch 2m" class="alignTop">
+							<%pmchem = Datavalue.find(:first,
+							:conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v2/snt/pmchem",
+							:identifier=>@nameData.pmchem2})%><strong><%=pmchem.title_en%></strong><%=raw
+							pmchem.abstract_en%>
+						</td>
+					</tr>
+					<%if @nameData.mdep3 != "-" then%>
+					<tr>
+						<th headers="1p" id="3m" class="alignTop">Lowest</th>
+						<td headers="1md 3m" class="alignTop">
+							<%mdep = Datavalue.find(:first,
+							:conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/mdep",
+							:identifier=>@nameData.mdep3})%><strong><%=mdep.title_en%></strong><%=raw
+							mdep.abstract_en%>
+						</td>
+						<td headers="1tx 3m" class="alignTop">
+							<%pmtex = Datavalue.find(:first,
+							:conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/pmtex",
+							:identifier=>@nameData.pmtex3})%><strong><%=pmtex.title_en%></strong><%=raw
+							pmtex.abstract_en%>
+						</td>
+						<td headers="1ch 3m" class="alignTop">
+							<%pmchem = Datavalue.find(:first,
+							:conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v2/snt/pmchem",
+							:identifier=>@nameData.pmchem3})%><strong><%=pmchem.title_en%></strong><%=raw
+							pmchem.abstract_en%>
+						</td>
+					</tr>
+					<%end%> <%end%>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </section>
 <br />
 
 <section>
-<div class="row">
-<div class="col-md-12">
-<div class="table-responsive">
-<table class="table table-bordered table-responsive">
-<caption class="blueBG alignCenter white"><strong>Soil Layer Characteristics</strong></caption>
-<thead>
-<tr>
-	<th scope="colgroup" colspan="3"></th>
-	<th scope="colgroup" colspan="4">Classification</th>
-	<th scope="colgroup" colspan="10">Physical</th>
-	<th scope="colgroup" colspan="6">Chemical</th>
-	<th scope="colgroup" colspan="5">Water</th>
-</tr>
-<tr>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/layer_no.html">Layer Number</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/udepth.html">Upper<br/>depth</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/ldepth.html">Lower<br/>depth</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/hzn_lit.html">hzn_lit</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/hzn_mas.html">hzn_mas</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/hzn_suf.html">hzn_suf</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/hzn_mod.html">hzn_mod</a></th>
+	<div class="row">
+		<div class="col-md-12">
+			<caption class="">
+				<strong>Soil Layer Characteristics</strong>
+			</caption>
+			<table class="table table-bordered table-responsive">
+				<thead>
+					<tr>
+						<th scope="colgroup" colspan="3"></th>
+						<th scope="colgroup" colspan="4">Classification</th>
+						<th scope="colgroup" colspan="10">Physical</th>
+						<th scope="colgroup" colspan="6">Chemical</th>
+						<th scope="colgroup" colspan="5">Water</th>
+					</tr>
+					<tr>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/layer_no.html">Layer Number</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/udepth.html"
+								>Upper<br />depth</a
+							>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/ldepth.html"
+								>Lower<br />depth</a
+							>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/hzn_lit.html">hzn_lit</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/hzn_mas.html">hzn_mas</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/hzn_suf.html">hzn_suf</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/hzn_mod.html">hzn_mod</a>
+						</th>
 
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/bd.html">bd</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/cofrag.html">cofrag</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/tsand.html">tsand</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/tsilt.html">tsilt</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/tclay.html">tclay</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/domsand.html">domsand</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/vfsand.html">vfsand</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/orgcarb.html">orgcarb</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/vonpost.html">vonpost</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/wood.html">wood</a></th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/bd.html">bd</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/cofrag.html">cofrag</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/tsand.html">tsand</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/tsilt.html">tsilt</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/tclay.html">tclay</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/domsand.html">domsand</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/vfsand.html">vfsand</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/orgcarb.html">orgcarb</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/vonpost.html">vonpost</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/wood.html">wood</a>
+						</th>
 
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/phca.html">phca</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/ph2.html">ph2</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/bases.html">bases</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/caco3.html">caco3</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/cec.html">cec</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/ec.html">ec</a></th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/phca.html">phca</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/ph2.html">ph2</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/bases.html">bases</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/caco3.html">caco3</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/cec.html">cec</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/ec.html">ec</a>
+						</th>
 
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/ksat.html">ksat</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/kp0.html">kp0</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/kp10.html">kp10</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/kp33.html">kp33</a></th>
-	<th scope="col"><a href="/cansis/nsdb/soil/v2/slt/kp1500.html">kp1500</a></th>
-</tr>
-</thead>
-<tbody>
-<%for layer in @layerData do%>
-<tr>
-	<th scope="row" class="alignCenter"><%=layer.layer_no%></th>
-	<td class="alignRight"><%=layer.udepth%></td>
-	<td class="alignRight"><%=layer.ldepth%></td>
-	<td class="alignCenter"><%=layer.hzn_lit%></td>
-	<td class="alignCenter"><%=layer.hzn_mas%></td>
-	<td class="alignCenter"><%=layer.hzn_suf%></td>
-	<td class="alignCenter"><%=layer.hzn_mod%></td>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/ksat.html">ksat</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/kp0.html">kp0</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/kp10.html">kp10</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/kp33.html">kp33</a>
+						</th>
+						<th scope="col">
+							<a href="/cansis/nsdb/soil/v2/slt/kp1500.html">kp1500</a>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%for layer in @layerData do%>
+					<tr>
+						<th scope="row" class="alignCenter"><%=layer.layer_no%></th>
+						<td class="alignRight"><%=layer.udepth%></td>
+						<td class="alignRight"><%=layer.ldepth%></td>
+						<td class="alignCenter"><%=layer.hzn_lit%></td>
+						<td class="alignCenter"><%=layer.hzn_mas%></td>
+						<td class="alignCenter"><%=layer.hzn_suf%></td>
+						<td class="alignCenter"><%=layer.hzn_mod%></td>
 
-	<td class="alignRight"><%=layer.bd%></td>
-	<td class="alignRight"><%=layer.cofrag%></td>
-	<td class="alignRight"><%=layer.tsand%></td>
-	<td class="alignRight"><%=layer.tsilt%></td>
-	<td class="alignRight"><%=layer.tclay%></td>
-	<td class="alignCenter"><%=layer.domsand%></td>
-	<td class="alignRight"><%=layer.vfsand%></td>
-	<td class="alignRight"><%=layer.orgcarb%></td>
-	<td class="alignRight"><%=layer.vonpost%></td>
-	<td class="alignRight"><%=layer.wood%></td>
+						<td class="alignRight"><%=layer.bd%></td>
+						<td class="alignRight"><%=layer.cofrag%></td>
+						<td class="alignRight"><%=layer.tsand%></td>
+						<td class="alignRight"><%=layer.tsilt%></td>
+						<td class="alignRight"><%=layer.tclay%></td>
+						<td class="alignCenter"><%=layer.domsand%></td>
+						<td class="alignRight"><%=layer.vfsand%></td>
+						<td class="alignRight"><%=layer.orgcarb%></td>
+						<td class="alignRight"><%=layer.vonpost%></td>
+						<td class="alignRight"><%=layer.wood%></td>
 
-	<td class="alignRight"><%=layer.phca%></td>
-	<td class="alignRight"><%=layer.ph2%></td>
-	<td class="alignRight"><%=layer.bases%></td>
-	<td class="alignRight"><%=layer.caco3%></td>
-	<td class="alignRight"><%=layer.cec%></td>
-	<td class="alignRight"><%=layer.ec%></td>
+						<td class="alignRight"><%=layer.phca%></td>
+						<td class="alignRight"><%=layer.ph2%></td>
+						<td class="alignRight"><%=layer.bases%></td>
+						<td class="alignRight"><%=layer.caco3%></td>
+						<td class="alignRight"><%=layer.cec%></td>
+						<td class="alignRight"><%=layer.ec%></td>
 
-	<td class="alignRight"><%=layer.ksat%></td>
-	<td class="alignRight"><%=layer.kp0%></td>
-	<td class="alignRight"><%=layer.kp10%></td>
-	<td class="alignRight"><%=layer.kp33%></td>
-	<td class="alignRight"><%=layer.kp1500%></td>
-</tr>
-<%end%>
-</tbody>
-</table>
-</div>
-</div>
-</div>
+						<td class="alignRight"><%=layer.ksat%></td>
+						<td class="alignRight"><%=layer.kp0%></td>
+						<td class="alignRight"><%=layer.kp10%></td>
+						<td class="alignRight"><%=layer.kp33%></td>
+						<td class="alignRight"><%=layer.kp1500%></td>
+					</tr>
+					<%end%>
+				</tbody>
+			</table>
+		</div>
+	</div>
 </section>
