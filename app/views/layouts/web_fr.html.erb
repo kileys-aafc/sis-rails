@@ -59,93 +59,92 @@
 			]
 		});
 	</script>
-	<div class="container">
-		<div class="row">
-			<main role="main" property="mainContentOfPage" typeof="WebPageElement" <%if @columns != 1 then %> class="col-md-9 col-md-push-3"<%end%>>
-				<%=yield%>
-				<div id="def-preFooter">
-					<!-- Write closure fall-back static file -->
-					<%= render file: Rails.public_path.join("wet-v4.0.27", "preFooter-fr.html") %>
-				</div>
-				<!-- Write closure template -->
-				<script type="text/javascript">
-					var defPreFooter = document.getElementById("def-preFooter");
-					defPreFooter.outerHTML = wet.builder.preFooter({
-						dateModified: "<%=yield :date%>",
-						showShare: false,
-						showFeedback: <%if request.env['PATH_INFO'] != "/siscan/contact.html"%>"/siscan/contact.html"<%else%>false<%end%>
-					});
-				</script>
-			</main>
-			<%if @columns != 1 then %>
-			<nav class="wb-sec col-md-3 col-md-pull-9" typeof="SiteNavigationElement" id="wb-sec" role="navigation">
-				<!-- Insert static fall-back -->
-				<%= render file: Rails.public_path.join("wet-v4.0.27", "secMenu-fr.html") %>
-			</nav>
-			<script type="text/javascript">
-				var secondarymenu = document.getElementById("wb-sec");
-				secondarymenu.innerHTML = wet.builder.secmenu({
-					sections: [{
-						sectionName: "Cartes", 
-						menuLinks: [{
-							href: "/siscan/publications/maps/index.html", 
-							text: "Cartes imprimées"
-						},{
-							href: "/siscan/publications/webmaps.html",
-							text: "Cartes interactives"
-						}]
-					},{
-						sectionName: "Données", 
-						menuLinks: [{
-							href: "/siscan/nsdb/ecostrat/index.html",
-							text: "Cadre écologique du Canada"
-						},{
-							href: "/siscan/nsdb/slc/index.html",
-							text: "Pédopaysages du Canada"
-						}, {
-							href: "/siscan/nsdb/cli/index.html",
-							text: "Inventaire des terres du Canada"
-						}, {
-							href: "/siscan/nsdb/dss/index.html",
-							text: "Données pédologiques"
-						}]
-					},{
-						sectionName: "Publications", 
-						menuLinks: [{
-							href: "/siscan/publications/surveys/index.html",
-							text: "Levés pédologiques"
-						},{
-							href: "/siscan/publications/manuals/index.html",
-							text: "Manuels de référence"
-						}]
-					},{
-						sectionName: "Plus d'aide", 
-						menuLinks: [{
-							href: "/siscan/images/index.html",
-							text: "Gallerie de photos"
-						},{
-							href: "/siscan/glossary/index.html",
-							text: "Glossaire"
-						},{
-							href: "/siscan/index-site.html",
-							text: "Plan du site"
-						},{
-							href: "/siscan/neuw.html",
-							text: "Quoi du neuf"
-						},{
-							href: "/siscan/faq.html",
-							text: "FAQ"
-						},{
-							href: "/siscan/contact.html",
-							text: "Contactez SISCan"
-						}]
-					}]
-				});
-			</script>
-		
-			<%end%>
+	
+	<main class="container" role="main" property="mainContentOfPage" typeof="WebPageElement">
+		<%=yield%>
+		<div id="def-preFooter">
+			<!-- Write closure fall-back static file -->
+			<%= render file: Rails.public_path.join("wet-v4.0.27", "preFooter-fr.html") %>
 		</div>
-	</div>
+		<!-- Write closure template -->
+		<script type="text/javascript">
+			var defPreFooter = document.getElementById("def-preFooter");
+			defPreFooter.outerHTML = wet.builder.preFooter({
+				dateModified: "<%=yield :date%>",
+				showShare: false,
+				showFeedback: <%if request.env['PATH_INFO'] != "/siscan/contact.html"%>"/siscan/contact.html"<%else%>false<%end%>
+			});
+		</script>
+
+	</main>
+	<%if @columns != 1 then %>
+	<nav class="wb-sec col-md-3 col-md-pull-9" typeof="SiteNavigationElement" id="wb-sec" role="navigation">
+		<!-- Insert static fall-back -->
+		<%= render file: Rails.public_path.join("wet-v4.0.27", "secMenu-fr.html") %>
+	</nav>
+	<script type="text/javascript">
+		var secondarymenu = document.getElementById("wb-sec");
+		secondarymenu.innerHTML = wet.builder.secmenu({
+			sections: [{
+				sectionName: "Cartes", 
+				menuLinks: [{
+					href: "/siscan/publications/maps/index.html", 
+					text: "Cartes imprimées"
+				},{
+					href: "/siscan/publications/webmaps.html",
+					text: "Cartes interactives"
+				}]
+			},{
+				sectionName: "Données", 
+				menuLinks: [{
+					href: "/siscan/nsdb/ecostrat/index.html",
+					text: "Cadre écologique du Canada"
+				},{
+					href: "/siscan/nsdb/slc/index.html",
+					text: "Pédopaysages du Canada"
+				}, {
+					href: "/siscan/nsdb/cli/index.html",
+					text: "Inventaire des terres du Canada"
+				}, {
+					href: "/siscan/nsdb/dss/index.html",
+					text: "Données pédologiques"
+				}]
+			},{
+				sectionName: "Publications", 
+				menuLinks: [{
+					href: "/siscan/publications/surveys/index.html",
+					text: "Levés pédologiques"
+				},{
+					href: "/siscan/publications/manuals/index.html",
+					text: "Manuels de référence"
+				}]
+			},{
+				sectionName: "Plus d'aide", 
+				menuLinks: [{
+					href: "/siscan/images/index.html",
+					text: "Gallerie de photos"
+				},{
+					href: "/siscan/glossary/index.html",
+					text: "Glossaire"
+				},{
+					href: "/siscan/index-site.html",
+					text: "Plan du site"
+				},{
+					href: "/siscan/neuw.html",
+					text: "Quoi du neuf"
+				},{
+					href: "/siscan/faq.html",
+					text: "FAQ"
+				},{
+					href: "/siscan/contact.html",
+					text: "Contactez SISCan"
+				}]
+			}]
+		});
+	</script>
+
+	<%end%>
+		
 	<div id="def-footer">
 		<!-- Insert static fall-back -->
 		<%= render file: Rails.public_path.join("wet-v4.0.27", "footer-fr.html") %>
