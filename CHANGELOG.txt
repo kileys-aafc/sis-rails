@@ -31,3 +31,11 @@ Rails:
 	- updated taxonomy_controller.rb to fix a bug with "-" values in soilgreatgroups/subgroups
 	- updated report_en.erb and report_fr.erb websurvey views (no longer displays missing soil surveys)
 	- updated web_en.erb and web_fr.erb layouts to remove "Report an issue on this page" button on Contact page
+
+v2.2 - Date ???
+
+- updated <meta> tags
+- added typeof="WebPageElement" to <main> required for WET v4.0.31 updated 
+- removed archive banner from reports/manual pages
+- removed links to pdf applications on sis.agr.gc.ca/cansis/publications/manuals/index.html
+
