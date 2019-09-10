@@ -131,5 +131,7 @@ Thumbs.db
 /public/*
 /tmp/*
 /config/database.yml
+Gemfile
+Gemfile.lock
 
 
