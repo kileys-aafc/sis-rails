@@ -1,8 +1,7 @@
-# encoding: iso-8859-1
-<% content_for :title do %>Études pédologiques pour <%=@province.name_fr%><%end%>
+<% content_for :title do %>Ã‰tudes pÃ©dologiques pour <%=@province.name_fr%><%end%>
 <% content_for :date do %>2012-01-17<%end%>
 
-<h1>Études pédologiques pour <%=@province.name_fr%></h1>
+<h1>Ã‰tudes pÃ©dologiques pour <%=@province.name_fr%></h1>
 <%for ssclass in @ssclasses do %>
 <ul>
 <li><a href="#<%=ssclass.name%>"><%=ssclass.title_fr%></a></li>
@@ -18,25 +17,27 @@
 <caption class="blueBG alignCenter white"><strong><%=ssclass.title_fr%></strong></caption>
 <thead>
 <tr>
-	<th id="1rn">Numéro de l'étude</th>
-	<th id="1ss">Étude pédologique</th>
+	<th id="1rn">NumÃ©ro de l'Ã©tude</th>
+	<th id="1ss">Ã‰tude pÃ©dologique</th>
 	<th id="1vi">Date</th>
-	<th id="1sc">Échelle</th>
-	<th id="1re">Étude</th>
-	<th id="1da">Données</th>
+	<th id="1sc">Ã‰chelle</th>
+	<th id="1re">Ã‰tude</th>
+	<th id="1da">DonnÃ©es</th>
 </tr>
 </thead>
 <tbody>
 
 <%for report in @reports do %>
+<%if report.report_available == "Y" or report.map_available == "Y" or report.data_available == "Y" then%>
 <%if report.sort_group == ssclass.name then%><tr>
 <th headers="1rn" id="<%=report.report_id%>"><%=report.report_id%></th>
 <td headers="1ss <%=report.report_id%>"><%=report.title_fr%></td>
 <td headers="1vi <%=report.report_id%>"><%=report.vintage%></td>
 <td headers="1sc <%=report.report_id%>" class="alignRight"><%=report.scale%></td>
-<td headers="1re <%=report.report_id%>" class="alignCenter"><%if report.report_available == "Y" or report.map_available == "Y" then%><a href="/siscan/publications/surveys/<%=@prov%>/<%=report.report_id.downcase%>/index.html">voir l'étude</a><%end%> </td>
-<td headers="1da <%=report.report_id%>"><%if report.data_available == "Y" then%><a href="/cansis/nsdb/dss/v2/<%=@prov%>/<%=report.distribution_name%>.zip">télécharger les données</a><%end%> </td>
+<td headers="1re <%=report.report_id%>" class="alignCenter"><%if report.report_available == "Y" or report.map_available == "Y" then%><a href="/siscan/publications/surveys/<%=@prov%>/<%=report.report_id.downcase%>/index.html">voir l'Ã©tude</a><%end%> </td>
+<td headers="1da <%=report.report_id%>"><%if report.data_available == "Y" then%><a href="/cansis/nsdb/dss/v2/<%=@prov%>/<%=report.distribution_name%>.zip">tÃ©lÃ©charger les donnÃ©es</a><%end%> </td>
 </tr>
+<%end%>
 <%end%>
 <%end%>
 </tbody>

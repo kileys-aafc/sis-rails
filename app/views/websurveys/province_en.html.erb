@@ -28,6 +28,7 @@
 <tbody>
 
 <%for report in @reports do %>
+<%if report.report_available == "Y" or report.map_available == "Y" or report.data_available == "Y" then%>
 <%if report.sort_group == ssclass.name then%><tr>
 <th headers="1rn" id="<%=report.report_id%>"><%=report.report_id%></th>
 <td headers="1ss <%=report.report_id%>"><%=report.title_en%></td>
@@ -36,6 +37,7 @@
 <td headers="1re <%=report.report_id%>" class="alignCenter"><%if report.report_available == "Y" or report.map_available == "Y" then%><a href="/cansis/publications/surveys/<%=@prov%>/<%=report.report_id.downcase%>/index.html">view the report</a><%end%> </td>
 <td headers="1da <%=report.report_id%>"> <%if report.data_available == "Y" then%><a href="/cansis/nsdb/dss/v2/<%=@prov%>/<%=report.distribution_name%>.zip">download the data</a><%end%> </td>
 </tr>
+<%end%>
 <%end%>
 <%end%>
 </tbody>
