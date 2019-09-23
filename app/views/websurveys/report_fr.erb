@@ -1,4 +1,3 @@
-# encoding: iso-8859-1
 <% content_for :title do %><%=@report.title_fr%><%end%>
 <% content_for :date do %>2013-06-25<%end%>
 
@@ -9,7 +8,7 @@
 <!-- Archived Content Banner <%= render :partial=>"home/archived_fr"%> -->
 
 <%if @report.language_report=="E" then%>
-  <p>Ce rapport est uniquement disponible en <a href="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/index.html">anglais</a>, en conformit� avec les politiques en vigueur � l'�poque et le lieu de publication.</p>
+  <p>Ce rapport est uniquement disponible en <a href="/cansis/publications/surveys/<%=@prov%>/<%=@report.report_id%>/index.html">anglais</a>, en conformité avec les politiques en vigueur à l'époque et le lieu de publication.</p>
 <%else%>
   <%if @report.report_unusual == "Y" then%>
     <a href="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_link%>"><img src="/siscan/publications/surveys/<%=@prov%>/<%=@report.report_id%>/<%=@report.report_id%>_report_thumb.jpg" alt="Voir le <%=@report.title_fr%> (Format PDF)" /></a><br />
