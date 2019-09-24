@@ -1,39 +1,38 @@
-# encoding: iso-8859-1
 <% content_for :title do %><%if @char1 == '_' then%>Glossaire : Autre<%else%>Glossaire: <%=@char1%><%end%><%end%>
-<% content_for :date do %>2013-06-25<%end%>
+<% content_for :date do %>2019-09-24<%end%>
 
 <h1>Glossaire des termes de la science des sols</h1>
 
-<div class="alignCenter"> 
-<nav> 
-<p class="fontsize120"><strong>
-<%for i in 0..25%>
-<a href="/<%=params[:rootdir]%>/glossary/<%=@SimpleCharArray[i]%>/index.html"><%=@CapitalCharArray[i]%></a>&#160;
-<%end%>
-</strong></p>
-</nav>
+<div class="row"> 
+	<div class="col-md-12"> 
+		<ul class="list-inline">
+			<%for i in 0..25%>
+				<li class="h4"><a href="/<%=params[:rootdir]%>/glossary/<%=@SimpleCharArray[i]%>/index.html"><%=@CapitalCharArray[i]%></a></li>
+			<%end%>
+		</ul>
+	<div>
 </div>
 
 <dl>
- <%if @char1 == '_' then%>
-  <%for item in @char1_fr do%>
-   <dt><%=item.term_fr%></dt>
-   <dd><p><%=raw item.definition_fr%></p></dd>
-  <%end%>
- <%else%>
-  <%for item in @char1_all_fr do%>
-   <dt><%=item.term_fr%></dt>
-   <dd><p><%=raw item.definition_fr%></p></dd>
-  <%end%>
-<%end%>
+	<%if @char1 == '_' then%>
+		<%for item in @char1_fr do%>
+			<dt><%=item.term_fr%></dt>
+			<dd><%=raw item.definition_fr%></dd>
+		<%end%>
+	<%else%>
+		<%for item in @char1_all_fr do%>
+			<dt><%=item.term_fr%></dt>
+			<dd><%=raw item.definition_fr%></dd>
+		<%end%>
+	<%end%>
 </dl>
 
-<div class="alignCenter"> 
-<nav> 
-<p class="fontsize120"><strong>
-<%for i in 0..25%>
-<a href="/<%=params[:rootdir]%>/glossary/<%=@SimpleCharArray[i]%>/index.html"><%=@CapitalCharArray[i]%></a>
-<%end%>
-</strong></p>
-</nav>
+<div class="row"> 
+	<div class="col-md-12"> 
+		<ul class="list-inline">
+			<%for i in 0..25%>
+				<li class="h4"><a href="/<%=params[:rootdir]%>/glossary/<%=@SimpleCharArray[i]%>/index.html"><%=@CapitalCharArray[i]%></a></li>
+			<%end%>
+		</ul>
+	<div>
 </div>
