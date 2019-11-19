@@ -2,8 +2,11 @@
 <% content_for :title do %>SISCan Quoi du Neuf<%end%>
 <% content_for :date do %><%=Time.now.strftime("%Y-%m-%d")%><%end%>
 
+<h1>Quoi du neuf</h1>
+<div class="row">
+<div class="col-md-10">
+
 <section>
-<h1>Quoi du Neuf</h1>
 <h3>Dernières mises à jour</h3>
 <table class="table table-bordered">
 <thead>
@@ -22,7 +25,7 @@
 </tbody>
 </table>
 
-<h3>Chronologie Historique du Site Web SISCan</h3>
+<h3>Chronologie historique du site web SISCan</h3>
 
 <table class="table table-bordered">
 <thead>
@@ -41,3 +44,6 @@
 </tbody>
 </table>
 </section>
+
+</div>
+</div>
