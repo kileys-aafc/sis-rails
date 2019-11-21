@@ -20,7 +20,7 @@ function getPopupInfo(feature, layer) {
 var mymap = L.map('mapid').setView([52, -96.00], 4);
 
 /*Add NRCAN basemap */
-var wmsLayer = L.tileLayer.wms('http://cartes.geogratis.gc.ca/wms/CBCT?', {
+var wmsLayer = L.tileLayer.wms('https://cartes.geogratis.gc.ca/wms/CBCT?', {
     layers: ['National', 'Sub_national', 'Regional'],
     attribution: '<a href="https://geogratis.gc.ca/geogratis/CBM_CBC?lang=fr">©GéoGratis - Carte de base du Canada</a>'
 }).addTo(mymap);
