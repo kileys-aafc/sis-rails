@@ -1,26 +1,31 @@
-v1.3 - Date ???
+v1.3 - Nov. 2019
 
-- updated <meta> tags
-- added typeof="WebPageElement" to <main> required for WET v4.0.31 updated 
-- removed archive banner from reports and manual pages
-- removed links to pdf applications on sis.agr.gc.ca/cansis/publications/manuals/index.html
-- fixed text misalignment on splash page (no longer using wet.builder for parts of this page)
-- corrected invalid french characters in database
-- removed links to .e00 files for the Ecological Framework and SLC v2.2
-- removed links to offline webservices (Ecological Framework)
-- soil survey pages no longer display surveys from database without a report or map available
-- added leaflet webmap on soil survey reports page
-- risk_1m_water_maritimes.jpg and risk_1m_water_ontario.jpg image orientation corrected
-- cli_250k_for_82m_se.jpg missing file added
-- on12 	Soil Survey of Grenville County corrected vintage to 1949
-- ons-1 	Soil Erosion and Land Use Survey - Hope Township Project Area - Durham County, Ontario; updated scale to 15,840, moved to DSS group
-- removed link to .e00 download on PROV coverage page
-- added data tables plugin to provincial soil name pages
-- fixed broken mobile link to scroll to top of the page 
-- removed 300+ obsolete webpages
-- updated CLI index page
-- removed outdated figures from SLC v2.2 pages
-- NSDB DSS link goes directly to v3 page now
+- Configured for HTTPS (and redirected from HTTP)
+- Corrected display for mobile devices
+- Removed archive banner from reports and manual pages
+- Soil survey pages no longer display surveys from database without a report or map available
+- Added Leaflet webmap on soil survey reports page
+- Added Data Tables plugin to provincial soil name pages
+- Updated <meta> tags to include the mandatory Dublin Core properties
+- Added typeof="WebPageElement" to <main> tag (required for WET v4.0.31+)
+- Fixed text misalignment on splash page (no longer using wet.builder for parts of this page)
+- Corrected invalid French characters stored in database 
+
+Contents:
+
+- Removed 300+ obsolete webpages
+- Updated the CanSIS contact email (aafc.cansis-siscan.aac@canada.ca)
+- NSDB index DSS link now points to v3 page
+- Updated CLI index page
+- Removed links to PDF applications on manuals index page
+- Removed links to .e00 files for the Ecological Framework and SLC v2.2
+- Removed links to offline web services (Ecological Framework)
+- Removed link to .e00 file on PROV coverage page
+- Removed outdated figures from SLC v2.2 pages
+- Image orientation corrected (risk_1m_water_maritimes.jpg, risk_1m_water_ontario.jpg)
+- Missing file added (cli_250k_for_82m_se.jpg)
+- Soil Survey on12 (Grenville County) vintage corrected to 1949
+- Soil Survey ons-1 (Hope Township) scale corrected to 15,840; moved to DSS group
 
 
 v1.2 - (July 24, 2018)
