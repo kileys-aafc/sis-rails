@@ -10,31 +10,31 @@
 				<caption><strong>General Characteristics</strong></caption>
 				<tr>
 					<th><a href="/cansis/nsdb/soil/v2/snt/s_group3.html">Classification</a></th>
-					<td><strong><%=@nameData.s_group3%>.<%=@nameData.g_group3%></strong><p><a href="/cansis/taxa/cssc3/<%=@nameData.order3%>/<%=@nameData.g_group3%>/<%=@nameData.s_group3%>/index.html"><%=raw Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/s_group3", :valuegroup=>@nameData.g_group3, :identifier=>@nameData.s_group3}).title_en%></a></p></td>
+					<td><strong><%=@nameData.s_group3%>.<%=@nameData.g_group3%></strong><p><a href="/cansis/taxa/cssc3/<%=@nameData.order3%>/<%=@nameData.g_group3%>/<%=@nameData.s_group3%>/index.html"><%=raw Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/s_group3", :valuegroup=>@nameData.g_group3, :identifier=>@nameData.s_group3}).title_en%></a></p></td>
 				</tr>
 				<tr>
 					<th><a href="/cansis/nsdb/soil/v2/snt/profile.html">Profile</a></th>
-					<td><%profile = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/slc/v3.0/component/lu", :identifier=>@nameData.profile})%><strong><%=profile.title_en%></strong><%= raw profile.abstract_en%></td>
+					<td><%profile = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/slc/v3.0/component/lu", :identifier=>@nameData.profile})%><strong><%=profile.title_en%></strong><%= raw profile.abstract_en%></td>
 				</tr>
 				<tr>
 					<th><a href="/cansis/nsdb/soil/v2/snt/kind.html">Kind of material</a></th>
-					<td><%kind = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/kind", :identifier=>@nameData.kind})%><strong><%=kind.title_en%></strong><%= raw kind.abstract_en%></td>
+					<td><%kind = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/kind", :identifier=>@nameData.kind})%><strong><%=kind.title_en%></strong><%= raw kind.abstract_en%></td>
 				</tr>
 				<tr>
 					<th><a href="/cansis/nsdb/soil/v2/snt/watertbl.html">Water table</a></th>
-					<td><%watertbl = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/watertbl", :identifier=>@nameData.watertbl})%><strong><%=watertbl.title_en%></strong><%= raw watertbl.abstract_en%></td>
+					<td><%watertbl = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/watertbl", :identifier=>@nameData.watertbl})%><strong><%=watertbl.title_en%></strong><%= raw watertbl.abstract_en%></td>
 				</tr>
 				<tr>
 					<th><a href="/cansis/nsdb/soil/v2/snt/rootrestri.html">Root restrictions</a></th>
-					<td><%rootrestri = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/rootrestri", :identifier=>@nameData.rootrestri})%><strong><%=rootrestri.title_en%></strong><%= raw rootrestri.abstract_en%></td>
+					<td><%rootrestri = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/rootrestri", :identifier=>@nameData.rootrestri})%><strong><%=rootrestri.title_en%></strong><%= raw rootrestri.abstract_en%></td>
 				</tr>
 				<tr>
 					<th><a href="/cansis/nsdb/soil/v2/snt/restr_type.html">Type of root restricting layer</a></th>
-					<td><%restr_type = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/restr_type", :identifier=>@nameData.restr_type})%><strong><%=restr_type.title_en%></strong><%= raw restr_type.abstract_en%></td>
+					<td><%restr_type = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/restr_type", :identifier=>@nameData.restr_type})%><strong><%=restr_type.title_en%></strong><%= raw restr_type.abstract_en%></td>
 				</tr>
 				<tr>
 					<th><a href="/cansis/nsdb/soil/v2/snt/drainage.html">Drainage</a></th>
-					<td><%drainage = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/drainage", :identifier=>@nameData.drainage})%><strong><%=drainage.title_en%></strong><%= raw drainage.abstract_en%></td>
+					<td><%drainage = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/drainage", :identifier=>@nameData.drainage})%><strong><%=drainage.title_en%></strong><%= raw drainage.abstract_en%></td>
 				</tr>
 			</table>
 		</div>
@@ -58,9 +58,9 @@
 					<%if @nameData.mdep2 != "-" then%>
 						<th headers="1p" id="1m">Uppermost</th>
 					<%end%>
-						<td headers="1md 1m"><%mdep = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/mdep", :identifier=>@nameData.mdep1})%><strong><%=mdep.title_en%></strong><%=raw mdep.abstract_en%></td>
-						<td headers="1tx 1m"><%pmtex = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/pmtex", :identifier=>@nameData.pmtex1})%><strong><%=pmtex.title_en%></strong><%=raw pmtex.abstract_en%></td>
-						<td headers="1ch 1m"><%pmchem = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v2/snt/pmchem", :identifier=>@nameData.pmchem1})%><strong><%=pmchem.title_en%></strong><%=raw pmchem.abstract_en%></td>
+						<td headers="1md 1m"><%mdep = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/mdep", :identifier=>@nameData.mdep1})%><strong><%=mdep.title_en%></strong><%=raw mdep.abstract_en%></td>
+						<td headers="1tx 1m"><%pmtex = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/pmtex", :identifier=>@nameData.pmtex1})%><strong><%=pmtex.title_en%></strong><%=raw pmtex.abstract_en%></td>
+						<td headers="1ch 1m"><%pmchem = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v2/snt/pmchem", :identifier=>@nameData.pmchem1})%><strong><%=pmchem.title_en%></strong><%=raw pmchem.abstract_en%></td>
 					</tr>
 					<%if @nameData.mdep2 != "-" then%>
 					<tr>
@@ -69,16 +69,16 @@
 					<%else%>
 						<th headers="1p" id="2m">Middle</th>
 					<%end%>
-						<td headers="1md 2m"><%mdep = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/mdep", :identifier=>@nameData.mdep2})%><strong><%=mdep.title_en%></strong><%=raw mdep.abstract_en%></td>
-						<td headers="1tx 2m"><%pmtex = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/pmtex", :identifier=>@nameData.pmtex2})%><strong><%=pmtex.title_en%></strong><%=raw pmtex.abstract_en%></td>
-						<td headers="1ch 2m"><%pmchem = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v2/snt/pmchem", :identifier=>@nameData.pmchem2})%><strong><%=pmchem.title_en%></strong><%=raw pmchem.abstract_en%></td>
+						<td headers="1md 2m"><%mdep = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/mdep", :identifier=>@nameData.mdep2})%><strong><%=mdep.title_en%></strong><%=raw mdep.abstract_en%></td>
+						<td headers="1tx 2m"><%pmtex = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/pmtex", :identifier=>@nameData.pmtex2})%><strong><%=pmtex.title_en%></strong><%=raw pmtex.abstract_en%></td>
+						<td headers="1ch 2m"><%pmchem = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v2/snt/pmchem", :identifier=>@nameData.pmchem2})%><strong><%=pmchem.title_en%></strong><%=raw pmchem.abstract_en%></td>
 					</tr>
 					<%if @nameData.mdep3 != "-" then%>
 					<tr>
 						<th headers="1p" id="3m">Lowest</th>
-						<td headers="1md 3m"><%mdep = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/mdep", :identifier=>@nameData.mdep3})%><strong><%=mdep.title_en%></strong><%=raw mdep.abstract_en%></td>
-						<td headers="1tx 3m"><%pmtex = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/pmtex", :identifier=>@nameData.pmtex3})%><strong><%=pmtex.title_en%></strong><%=raw pmtex.abstract_en%></td>
-						<td headers="1ch 3m"><%pmchem = Datavalue.find(:first, :conditions=>{:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v2/snt/pmchem", :identifier=>@nameData.pmchem3})%><strong><%=pmchem.title_en%></strong><%=raw pmchem.abstract_en%></td>
+						<td headers="1md 3m"><%mdep = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/mdep", :identifier=>@nameData.mdep3})%><strong><%=mdep.title_en%></strong><%=raw mdep.abstract_en%></td>
+						<td headers="1tx 3m"><%pmtex = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v1/snt/pmtex", :identifier=>@nameData.pmtex3})%><strong><%=pmtex.title_en%></strong><%=raw pmtex.abstract_en%></td>
+						<td headers="1ch 3m"><%pmchem = Datavalue.find_by({:classesuri=>"http://sis.agr.gc.ca/cansis/nsdb/soil/v2/snt/pmchem", :identifier=>@nameData.pmchem3})%><strong><%=pmchem.title_en%></strong><%=raw pmchem.abstract_en%></td>
 					</tr>
 					<%end%>
 				<%end%>
