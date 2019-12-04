@@ -2,48 +2,45 @@
 <% content_for :date do %><%=Time.now.strftime("%Y-%m-%d")%><%end%>
 
 <h1>What's New</h1>
-
 <div class="row">
-<div class="col-md-10">
-
-<section>
-<h3>Latest Updates</h3>
-<table class="table table-bordered">
-<thead>
-<tr>
-  <th id="ttl">Title</th> 
-  <th id="dte">Date</th>  
-</tr>  
-</thead>
-<tbody>
-<%for item in @neuws do%>
-<tr>
-  <th id="r<%=item.id%>" headers="dte"><%if item.url_en == "" then%><%=item.title_en%><%else%><a href="<%=item.url_en%>"><%=item.title_en%></a><%end%></th>
-  <td headers="ttl r<%=item.id%>" align="right"><%=item.created_at.strftime("%B %Y")%></td>
-</tr>
-<%end%>
-</tbody>
-</table>
-
-<h3>CanSIS Website Historic Timeline</h3>
-<table class="table table-bordered">
-<thead>
-<tr>
-  <th id="ttl">Title</th> 
-  <th id="dte">Date</th>  
-</tr>  
-</thead>
-<tbody>
-<%for item in @oldNeuws do%>
-<tr>
-  <th id="r<%=item.id%>" headers="dte"><%if item.url_en == "" then%><%=item.title_en%><%else%><a href="<%=item.url_en%>"><%=item.title_en%></a><%end%></th>
-  <td headers="ttl r<%=item.id%>" align="right"><%=item.created_at.strftime("%B %Y")%></td>
-</tr>
-<%end%>
-</tbody>
-</table>
-
-</section>
-
+	<div class="col-md-10">
+	<section>
+		<h3>Latest Updates</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th id="ttl">Title</th> 
+					<th id="dte">Date</th>  
+				</tr>  
+			</thead>
+			<tbody>
+				<%for item in @neuws do%>
+				<tr>
+					<th id="r<%=item.id%>" headers="dte"><%if item.url_en == "" then%><%=item.title_en%><%else%><a href="<%=item.url_en%>"><%=item.title_en%></a><%end%></th>
+					<td headers="ttl r<%=item.id%>"><%=item.created_at.strftime("%B %Y")%></td>
+				</tr>
+				<%end%>
+			</tbody>
+		</table>
+	</section>
+	<section>
+		<h3>CanSIS Website Historic Timeline</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th id="ttl">Title</th> 
+					<th id="dte">Date</th>  
+				</tr>  
+			</thead>
+			<tbody>
+			<%for item in @oldNeuws do%>
+			<tr>
+				<th id="r<%=item.id%>" headers="dte"><%if item.url_en == "" then%><%=item.title_en%><%else%><a href="<%=item.url_en%>"><%=item.title_en%></a><%end%></th>
+				<td headers="ttl r<%=item.id%>"><%=item.created_at.strftime("%B %Y")%></td>
+			</tr>
+			<%end%>
+			</tbody>
+		</table>
+	</section>
 </div>
 </div>
