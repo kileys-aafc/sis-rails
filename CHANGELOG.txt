@@ -1,4 +1,4 @@
-v1.3 - Nov. 2019
+v1.3 - Feb. 2020
 
 - Configured for HTTPS (and redirected from HTTP)
 - Corrected display for mobile devices
