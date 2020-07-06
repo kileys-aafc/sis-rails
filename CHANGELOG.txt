@@ -2,6 +2,7 @@ v1.3 - Feb. 2020
 
 - Configured for HTTPS (and redirected from HTTP)
 - Corrected display for mobile devices
+- Updated Submit Feedback links to populate AAFC input form
 - Removed archive banner from reports and manual pages
 - Soil survey pages no longer display surveys from database without a report or map available
 - Added Leaflet webmap on soil survey reports page
@@ -24,6 +25,7 @@ Contents:
 - Removed outdated figures from SLC v2.2 pages
 - Image orientation corrected (risk_1m_water_maritimes.jpg, risk_1m_water_ontario.jpg)
 - Missing file added (cli_250k_for_82m_se.jpg)
+- Soil Survey pq37-38 added
 - Soil Survey on12 (Grenville County) vintage corrected to 1949
 - Soil Survey ons-1 (Hope Township) scale corrected to 15,840; moved to DSS group
 - Soil Survey mb00 now displaying thumbnails and download links correctly
