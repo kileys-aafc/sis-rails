@@ -1,4 +1,4 @@
-v1.3 - Feb. 2020
+v1.3 - Feb. 2021
 
 - Configured for HTTPS (and redirected from HTTP)
 - Corrected display for mobile devices
@@ -10,7 +10,8 @@ v1.3 - Feb. 2020
 - Updated <meta> tags to include the mandatory Dublin Core properties
 - Added typeof="WebPageElement" to <main> tag (required for WET v4.0.31+)
 - Fixed text misalignment on splash page (no longer using wet.builder for parts of this page)
-- Corrected invalid French characters stored in database 
+- Corrected invalid French characters stored in database
+- Updated 'Home' breadcrumb link to new AAFC index page
 
 Contents:
 
