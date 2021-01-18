@@ -132,5 +132,8 @@ Thumbs.db
 /tmp/*
 /config/database.yml
 
+# ignored due to ruby version mismatch on prd
+/controllers/soils_controller.rb 
+
 
 
