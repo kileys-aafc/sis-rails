@@ -14,10 +14,7 @@ Website::Application.routes.draw do
   get ':rootdir/images/:region/index.html' => 'images#region'
   get ':rootdir/images/:region/:factor/' => 'images#factor'
   get ':rootdir/images/:region/:factor/index.html' => 'images#factor'
-	
-	# /cansis/neuws
-  get ':rootdir/neuw.:format' => 'neuws#publish'
-
+		
 	# /cansis/nsdb/...
 	get ':rootdir/nsdb/soil/v2/download.:format' => 'soils#download'
   get ':rootdir/nsdb/:framework/:version/:filename.html' => 'webpages#showpage', :constraints => { :version => /[^\/]+/ }
