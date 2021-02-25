@@ -1,2 +1,0 @@
-ariel /usr/share/fonts/truetype/Ariel.ttf
-liberation /usr/share/fonts/liberation/LiberationSerif-Regular.ttf
