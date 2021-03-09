@@ -1,3 +1,10 @@
+v1.3.1
+
+- Removed "What's New" page
+- Removed Soil Name and Layer pages
+- Fixed gallery displaying images via HTTP instead of HTTPS
+- Updated 404.html and 500.html pages
+
 v1.3 - Feb. 2021
 
 - Configured for HTTPS (and redirected from HTTP)
